@@ -1,0 +1,106 @@
+.fans-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 20px 20px 0 20px;
+}
+
+.fans-wrapper .nav {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.fans-wrapper .content .fans-item {
+    display: inline-flex;
+    padding: 10px;
+    margin: 0 10px 10px 0;
+    border: 1px solid rgba(7, 17, 27, 0.2);
+}
+
+.fans-wrapper .content .fans-item:hover {
+    background: rgba(7, 17, 27, 0.1);
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+.fans-wrapper .content .fans-item .cancel {
+    display: none;
+    cursor: pointer;
+    float: right;
+    line-height: 20px;
+    font-size: 12px;
+    color: rgb(240, 20, 20);
+}
+
+.fans-wrapper .content .fans-avatar {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.fans-wrapper .content .fans-avatar img {
+    width: 50px;
+    height: 50px;
+}
+
+.fans-wrapper .content .name span {
+    line-height: 15px;
+    font-size: 15px;
+}
+
+.fans-wrapper .content .name .username {
+    display: inline-block;
+    width: 130px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.fans-wrapper .content .autograph {
+    width: 190px;
+}
+
+.fans-wrapper .content .autograph .nickname {
+    vertical-align: bottom;
+    width: 130px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.fans-wrapper .content .autograph span {
+    display: inline-block;
+    line-height: 20px;
+    font-size: 12px;
+    color: rgba(7, 17, 27, 0.8);
+}
+
+.fans-wrapper .fans-page {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    bottom: 20px;
+}
+
+.fans-wrapper .fans-page .page-wrapper {
+    margin: 0 auto;
+}
+
+.fans-wrapper .fans-page .page-wrapper div {
+    display: inline-block;
+    line-height: 20px;
+    font-size: 15px;
+    padding: 2px 8px;
+    border: 1px solid rgba(7, 17, 27, 0.1);
+    border-radius: 2px;
+}
+
+.fans-wrapper .fans-page .page-wrapper div:hover {
+    background: rgba(7, 17, 27, 0.1);
+}
+
+.no-fans {
+    padding: 50px;
+    text-align: center;
+    font-size: 20px;
+    display: none;
+}

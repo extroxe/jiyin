@@ -1,0 +1,219 @@
+.content-title {
+    margin: 10px 12px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.address-info {
+    margin: 0 15px;
+    border: solid 2px #117d94;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+.page-link-address {
+    position: absolute;
+    width: 100%;
+    height: 144px;
+    left: 0;
+    top: 96px;
+}
+
+.address-info p:nth-child(1) {
+    padding: 15px 20px;
+}
+
+.address-info p:nth-child(3) {
+    padding: 20px 20px;
+}
+
+.address-info .address-user-info > span:nth-child(1) {
+    color: #666666;
+}
+
+.address-info .address-user-info > span:nth-child(3) {
+    display: block;
+    float: right;
+    padding-top: 1px;
+}
+
+.address-info .address-place {
+    display: flex;
+}
+
+.address-info .address-place > span:nth-child(1){
+    margin-right: 10px;
+    margin-top: -8px;
+}
+
+.address-info .address-place > span:nth-child(2){
+    width: 75%;
+}
+
+.address-info .address-place > span:nth-child(3){
+    position: absolute;
+    right: 25px;
+    margin-top: -15px;
+}
+
+.address-info .address-place > span:nth-child(3) > i {
+    color: #666666;
+}
+
+.address-info .address-place > span > img {
+    height: 40px;
+}
+
+.card {
+    margin: 15px 0 8px 0;
+    background-color: #FFFFFF;
+}
+
+.card > div,
+.card .info-box > div {
+    padding: 13px 20px;
+    color: #666666;
+}
+
+.card > div:nth-child(2) {
+    display: flex
+}
+
+.card .info-box .info-title {
+    color: #333333;
+    font-size: 16px;
+    line-height: 16px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding-bottom: 0;
+    margin-bottom: 18px;
+}
+
+.card .info-box .info-price {
+    color: #F6BF00;
+    font-size: 20px;
+}
+
+.card img {
+    flex: 0 0 120px;
+    width: 120px;
+    height: 120px;
+}
+
+.card .info-box {
+    display: inline-block;
+}
+
+.card .item-num {
+    position: absolute;
+    right: 25px;
+    bottom: 32px;
+}
+
+.card .inputbox .input-text{
+    padding: 8px 12px;
+    text-align: right;
+}
+
+.card .inputbox.message {
+    padding: 10px 20px;
+}
+
+.card .item-span-right {
+    position: absolute;
+    right: 20px;
+    top: 13px;
+}
+
+.page-link-discount {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    z-index: 100;
+}
+
+.card .item-info {
+    display: list-item;
+}
+
+.card .item-info span:nth-child(2) {
+    color: #F6BF00;
+}
+
+.card .item-info span:nth-child(3) {
+    color: #F6BF00;
+    font-size: 12px;
+}
+
+.confirm-order-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.confirm-order-footer .confirm-btn {
+    padding: 10px 0;
+    line-height: 24px;
+    font-size: 18px;
+    color: #fff;
+    background: #117D94;
+}
+
+/*地址-<<<<<<*/
+.address-item {
+    margin-top: 20px;
+}
+
+.address-item:nth-child(1) {
+    margin-top: 0;
+}
+
+.address-item .item {
+    font-size: 16px;
+    padding: 15px;
+    background-color: #FFFFFF;
+}
+
+.address-item .item-title > span:nth-child(2) {
+    line-height: 25px;
+    float: right;
+}
+
+.address-item .item-info {
+    color: #666666;
+    font-size: 14px;
+    margin-top: 25px;
+}
+
+.address-item input[type=radio]:checked {
+    color: #117D94;
+}
+
+.address-item .item-operation > span:nth-child(2) {
+    margin-left: 10px;
+}
+
+.address-item .item-operation > span:nth-child(3),
+.address-item .item-operation > span:nth-child(4) {
+    float: right;
+}
+
+.address-item .item-operation > span:nth-child(4) {
+    margin-right: 5px;
+}
+
+.address-item .item-operation img {
+    width: 25px;
+    margin: 0 10px;
+}
+
+.address-item .item-operation .icon {
+    vertical-align: sub;
+}
+
+/*地址->>>>>>*/

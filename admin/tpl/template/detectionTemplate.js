@@ -1,0 +1,144 @@
+/**
+ * Created by sailwish001 on 2017/5/19.
+ */
+
+app.controller('detectionTemplateCtrl', ['$scope', '_jiyin', 'dataToURL', function ($scope, _jiyin, dataToURL) {
+    $scope.detectionTemplateList = {};
+    $scope.inputPage = 1;
+    /**
+     * 获取数据
+     */
+    $scope.getData = function(){
+        _jiyin.dataPost('admin/detection_template_admin/get_template_by_page',dataToURL({
+            page :$scope.inputPage,
+            page_size : 10
+        }))
+            .then(function(result){
+                $scope.detectionTemplateList = result.data;
+                $scope.totalPage = result.total_page;
+            });
+    };
+    $scope.getData();
+    /**
+     * 增加
+     */
+    $scope.addList = function () {
+        $scope.title = '增加数据';
+        _jiyin.modal({
+            tempUrl : '/source/admin/tpl/modal/modal-detectionTemplate.html',
+            tempCtrl : 'modalDeplateCtrl',
+            ok : $scope.add,
+            size : 'lg',
+            params : {
+                title: $scope.title,
+                infoList: {},
+                ael: 'add'
+            }
+        });
+    };
+    $scope.add = function (list) {
+        _jiyin.dataPost('admin/detection_template_admin/add_template',dataToURL(list))
+            .then(function (result) {
+                if(result.success == true){
+                    _jiyin.msg('s','添加成功');
+                    $scope.getData();
+                }else{
+                    _jiyin.msg('e', result.msg);
+                }
+            });
+    };
+    /**
+     * 编辑
+     */
+    $scope.editList = function (data) {
+        $scope.title = '编辑数据';
+        _jiyin.modal({
+            tempUrl : '/source/admin/tpl/modal/modal-detectionTemplate.html',
+            tempCtrl : 'modalDeplateCtrl',
+            ok : $scope.edit,
+            size : 'lg',
+            params : {
+                title: $scope.title,
+                infoList: data,
+                ael: 'edit'
+            }
+        });
+    };
+    $scope.edit = function (list) {
+        _jiyin.dataPost('admin/detection_template_admin/update_template',dataToURL(list))
+            .then(function (result) {
+                if(result.success == true){
+                    _jiyin.msg('s','修改成功');
+                    $scope.getData();
+                }else{
+                    _jiyin.msg('e', result.msg);
+                }
+            });
+    };
+    /**
+     * 删除信息
+     * @param data
+     */
+    $scope.deleteData = function(data){
+        if(confirm('确认删除这条数据吗?')){
+            _jiyin.dataPost('admin/detection_template_admin/delete_template',dataToURL({ id: data.id}))
+                .then(function(result){
+                    if(result.success == true){
+                        _jiyin.msg('s', '删除成功');
+                        $scope.getData();
+                    }else {
+                        _jiyin.msg('e', result.msg);
+                    }
+                });
+        }
+    };
+    /**
+     * 下一页
+     */
+    $scope.nextPage = function(){
+        if($scope.inputPage < $scope.totalPage){
+            $scope.inputPage ++;
+            $scope.getData();
+        }else{
+            _jiyin.msg('e', '当前是最后一页');
+        }
+    };
+    /**
+     * 上一页
+     */
+    $scope.previousPage = function(){
+        if($scope.inputPage > 1){
+            $scope.inputPage --;
+            $scope.getData();
+        }else{
+            _jiyin.msg('e', '当前是第一页');
+        }
+    };
+    /**
+     * 第一页
+     */
+    $scope.firstPage = function () {
+        $scope.inputPage = 1;
+        $scope.getData();
+    };
+    /**
+     * 最后一页
+     */
+    $scope.lastPage = function () {
+        $scope.inputPage = $scope.totalPage;
+        $scope.getData();
+    };
+    $scope.selectPage = function (page) {
+        $scope.inputPage = page;
+        $scope.getData();
+    }
+}]);
+app.filter('hidden',function () {
+    return function (data) {
+        var lenth= data.length;
+        if (lenth >15){
+            data = data.substring(0,15)+"...";
+        }
+        return data;
+    }
+});

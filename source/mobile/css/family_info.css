@@ -1,0 +1,200 @@
+header .titlebar h1 {
+    margin-right: 40px;
+}
+
+article {
+    font-size: 16px;
+}
+
+article input[name=file] {
+    position: absolute;
+    height: 60px;
+    width: 200px;
+    z-index: 100;
+    opacity: 0;
+    right: 0;
+}
+
+article a {
+    color: #333333;
+}
+
+article > div {
+    padding: 15px;
+    background-color: #FFFFFF;
+}
+
+article > div > span:nth-child(2){
+    color: #666666;
+}
+
+.avatar-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+section {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+section > div {
+    top: 30%;
+    width: 200px;
+    height: auto;
+    margin: auto;
+    padding: 3px 0 10px 0;
+    position: relative;
+    background-color: #FFFFFF;
+}
+
+section input {
+    margin-left: 36px;
+}
+
+section > div .button {
+    width: 30%;
+    margin: 40px 0 20px 0px;
+    background-color: #117D94;
+    margin-left: 30px;
+}
+
+section > div .cancel-btn {
+    margin: 18px 0 0 30px;
+    color: #999999;
+}
+
+@media only screen and (max-width: 375px) {
+    article {
+        font-size: 15px;
+    }
+
+    article i.icon.icon-arrowright {
+        font-size: 16px;
+        width: 19px;
+        height: 19px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    article {
+        font-size: 15px;
+    }
+
+    article i.icon.icon-arrowright {
+        font-size: 15px;
+        width: 18px;
+        height: 18px;
+    }
+}
+
+.inputbox-left{
+    min-width: 42%;
+}
+.topline:before, .underline:after{
+    height: 0;
+}
+label .input-checkbox + span, label .input-radio + span{
+    color: #888;
+}
+i.size20, .icon.size20{
+    font-size: 17px;
+}
+.input-checkbox:checked, .input-radio:checked, .input-checkbox.active, .input-radio.active{
+    color: #117d94;
+}
+
+
+.clinical_history .input-text{
+    padding: 15px 2px 0;
+}
+.clinical_history label:not(first-child){
+    margin-left: 8px;
+}
+#curative_effect{
+    height: 100%;
+    position: fixed;
+}
+#curative_effect textarea.clinical_history_detail{
+    margin: 0 auto;
+    padding: 10px;
+    line-height: 20px;
+    min-height: 170px;
+    width: 210px;
+    border-color: #117d94;
+}
+
+/*添加亲属按钮*/
+.sendcode{
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    padding: 10px 0 10px;
+    background-color: #f9f9f9;
+}
+
+.sendcode a{
+    width: 262px;
+    margin: 0 auto;
+    background-color: #117d94;
+    font-size: 17px;
+}
+
+.scrollpicker{
+    padding: 0;
+}
+ul.scrollpicker-slot, .scrollpicker-slot ul{text-align: center}
+.scrollpicker-cancel, .scrollpicker-done{
+    color: #20aeff;
+}
+
+.button.block{
+    display: inline-block;
+    text-align: center;
+    line-height: 35px;
+    height: 35px;
+    width: 100px;
+    margin: 0 14px;
+}
+.button.add_family_member{
+    width: 261px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+}
+@media(max-width: 320px) {
+    .input-checkbox, .input-radio{
+        height: 15px;
+        width: 18px;
+        line-height: 15px;
+    }
+    label .input-checkbox + span, label .input-radio + span{
+        margin: 0 0 0 4px;
+    }
+    .clinical_history label:not(first-child){
+        margin-left: 0px;
+    }
+    .clinical_history label{
+        font-size: 14px;
+    }
+    .clinical_history .input-text{padding-top: 10px}
+}
+
+@media(max-width: 375px )and (min-width:321px) {
+    .input-checkbox, .input-radio{
+        height: 15px;
+        width: 18px;
+        line-height: 15px;
+    }
+    label .input-checkbox + span, label .input-radio + span{
+        margin: 0 0 0 4px;
+    }
+    .clinical_history label:not(first-child){
+        margin-left: 6px;
+    }
+    .clinical_history label{
+        font-size: 15px;
+    }
+    .clinical_history .input-text{padding-top: 10px}
+}

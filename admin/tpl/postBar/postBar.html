@@ -1,0 +1,135 @@
+<div ng-controller="postBarCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">贴吧管理</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                贴吧管理表
+            </div>
+            <div class="panel-body b-b b-light">
+                <!--<button class="btn m-b-xs  btn-primary" ng-click="addList()"><i class="fa fa-plus"></i> 增加</button>-->
+                <button class="btn m-b-xs  btn-primary" ng-click="show()"><i class="fa fa-plus"></i> 增加</button>
+                <span class="pull-right">
+                    <!--Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>-->
+                    Search: <input id="search" type="text" ng-model="keyword" class="form-control input-sm w-sm inline m-r"/>
+                    <button class="btn m-b-xs  btn-success" ng-click="search()"><i class="fa fa-search"></i> 搜索</button>
+                </span>
+
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th>
+                            贴吧标题
+                        </th>
+                        <th>
+                            创建者
+                        </th>
+                        <th>
+                            是否推荐
+                        </th>
+                        <th>
+                            创建时间
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in postbarList">
+                        <td>{{data.name}}</td>
+                        <td>{{data.username}}</td>
+                        <td>
+                            <label class="i-switch m-t-xs m-r">
+                                <input type="checkbox" ng-model="data.is_recommended" ng-click="recommend(data.id)" ng-true-value="'1'" ng-false-value="'0'">
+                                <i></i>
+                            </label>
+                        </td>
+                        <td>{{data.create_time}}</td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="edit(data)">编辑</button>
+                            <button class="btn m-b-xs btn-sm btn-default btn-addon" ng-click="deleteData(data)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="modal fade" id="postBar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="articleForm" name="articleForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">贴吧标题</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="infoList.name" placeholder="贴吧标题" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">贴吧描述</label>
+                            <div class="col-lg-10">
+                                <textarea rows="3" class="form-control" ng-model="infoList.description" placeholder="贴吧描述" required>
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">是否推荐</label>
+                            <div class="col-lg-10">
+                                <!--<input type="text" class="form-control" ng-model="infoList.is_recommended" required>-->
+                                <label class="i-switch m-t-xs m-r">
+                                    <input type="checkbox" ng-model="infoList.is_recommended" ng-true-value="'1'" ng-false-value="'0'">
+                                    <i></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="add == false">
+                            <label class="col-lg-2 control-label redstar">帖子数</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="infoList.post_count" placeholder="帖子数" required ng-disabled="true">
+                            </div>
+                            <label class="col-lg-2 control-label redstar">创建者</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="infoList.create_by" placeholder="创建者" required ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="add == false">
+                            <label class="col-lg-2 control-label redstar">创建时间</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="infoList.create_time" required ng-disabled="true">
+                            </div>
+                            <label class="col-lg-2 control-label redstar">更新时间</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="infoList.update_time" required ng-disabled="true">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="ok()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

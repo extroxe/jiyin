@@ -1,0 +1,431 @@
+<div ng-controller="reportListCtrl1">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">报告管理<span style="font-size: 14px; font-weight: bold; color: #0a1015;"> （共 {{totalNum}} 条，{{totalPage}}页）</span></h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-body b-b b-light">
+                <button class="btn btn-sm btn-info" ng-click="openImport()" ng-if="role_id != 30">批量导入编码</button>
+                <button class="btn btn-sm btn-info" ng-click="deleteBatch()" ng-if="role_id != 30">批量删除报告</button>
+                <span class="pull-right" style="margin-right: 20px;">
+                      下单起止时间：<input type="text" ui-datetime="" class="form-control input-sm w-sm inline m-r ng-pristine ng-touched ng-valid ng-valid-required" ng-model="start_time" placeholder="起始日期" required="">
+                     <input type="text" ui-datetime="" class="form-control input-sm w-sm inline m-r ng-pristine ng-touched ng-valid ng-valid-required" ng-model="end_time" placeholder="结束日期" required="">
+                     <span ng-if="role_id != 30">
+                     代理商：<div class="btn-group dropdown" dropdown>
+                        <select class="form-control input-sm w-sm inline m-r" ng-model="agent_id">
+                            <option value="">全部</option>
+                            <option ng-repeat="agent in agents" value="{{agent.id}}">{{agent.name != null ? agent.name : agent.username}}</option>
+                        </select>
+                     </div>
+                     </span>
+                     <input auto-focus id="search" type="text" ng-model="keywords" placeholder="订单编号|子订单编号" class="form-control input-sm w-sm inline m-r" style="width: 220px;"/>
+                     <button class="btn btn-sm btn-info" ng-click="search()">搜索</button>
+                </span>
+            </div>
+            <div>
+                <div id="orderList">
+                    <div ng-repeat="report in reportList">
+                        <div class="head" style="padding: 10px 12px; border: solid #aaa; border-width: 1px 1px 0; overflow: hidden; font-size: 15px;">
+                            <span style="margin-right: 12px">订单号：{{report.order_number}}</span>
+                            <span style="margin-right: 12px">子订单号：{{report.order_commodity_number}}</span>
+                            <span ng-if="report.agent_name != null" class="agent-name" style="color: #f05050; margin-right: 12px">{{report.agent_name}}</span>
+                            <span ng-if="report.address != null" class="agent-name" style="margin-right: 12px">收件人：{{report.address.name}}</span>
+                            <span class="agent-name label label-info" style="margin-right: 12px">
+                                商品：{{report.erp_order == true ? report.erp_commodity_name : report.commodity_name}}
+                            </span>
+                            <span class="agent-name label label-info" style="margin-right: 12px" ng-if="report.erp_order == true">
+                                规格 {{report.erp_commodity_center_name || report.erp_commodity_specification_name}} {{report.erp_package_type_name}}
+                            </span>
+                            <span class="agent-name label label-info" style="margin-right: 12px" ng-if="report.erp_order == false">
+                                 规格：{{report.commodity_center_name || report.commodity_specification_name}} {{report.package_type_name}}
+                            </span>
+                            <span class="pull-right" style="margin-right: 12px;">
+                                <button class="btn btn-sm btn-info" ng-click="download_for_template(report)">下载批量导入编码模板</button>
+                            </span>
+                        </div>
+                        <div>
+                            <table class="table b-t b-light table-bordered">
+                                <thead>
+                                <tr>
+                                    <th style="background: #eee; border: #ddd; text-align: center;">样本编码(共 <strong style="color: red">{{report.report_num}}/{{report.amount}}</strong> 条)</th>
+                                    <th style="background: #eee; border: #ddd; text-align: center;">姓名</th>
+                                    <th style="background: #eee; border: #ddd; text-align: center;">手机号</th>
+                                    <th style="background: #eee; border: #ddd; text-align: center;">检测人录入时间</th>
+                                    <th style="background: #eee; border: #ddd; text-align: center;">上传报告</th>
+                                    <th style="background: #eee; border: #ddd; text-align: center;">上传报告时间</th>
+                                    <th style="background: #eee; border: #ddd; text-align: center;">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody style="text-align: center;">
+                                <tr ng-if="report.report_list.length > 0" ng-repeat="list in report.report_list">
+                                    <td>{{list.report_number}}</td>
+                                    <td>{{list.name}}</td>
+                                    <td style="width: 10%;">{{list.phone}}</td>
+                                    <td>{{list.enter_information_time}}</td>
+                                    <td ng-if="list.report_attachment"><a href="javascript:void(0)"><span class="label label-success" ng-click="download(list)">已上传</span></a></td>
+                                    <td ng-if="!list.report_attachment"><span class="label label-info">未上传</span></td>
+                                    <td>{{list.report_attachment_upload_time}}</td>
+                                    <td style="width:15%;">
+                                        <button type="button" class="btn btn-sm btn-info" ng-click="edit(report, list)">编辑</button>
+                                        <button type="button" class="btn btn-sm btn-danger" ng-if="is_admin" ng-click="delete(list)">删除</button>
+                                        <button ng-if="list.report_attachment && is_admin" type="button" class="btn btn-sm btn-warning" ng-click="deleteReport(list.id)">删除报告</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td ng-if="report.report_list.length <= 2 && tempReportList[$index].length > 0" colspan="7" style="background: #f5f5f5; border: 1px solid #ccc">
+                                        <a href="javascript:void(0)" ng-click="push_report($index)">展开全部 <i class="fa fa-angle-double-down"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td ng-show="report.report_list.length > 2" colspan="7" style="background: #f5f5f5; border: 1px solid #ccc">
+                                        <a href="javascript:void(0)" ng-click="shift_report($index)">收起 <i class="fa fa-angle-double-down"></i></a>
+                                    </td>
+                                </tr>
+                                <tr ng-if="report.report_list.length == 0">
+                                    <td colspan="7" style="background: #f5f5f5; border: 1px solid #ccc; height: 60px;"><span>暂无报告信息</span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav ng-if="totalPage > 0">
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">{{is_edit == true ? '编辑报告' : '添加报告'}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="reportForm" name="reportForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">报告编号</label>
+                            <div class="col-lg-9">
+                                <input id="focus_number" auto-focus type="text" class="form-control" ng-model="reportData.report_number" placeholder="报告编号" required disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">订单编号</label>
+                            <div class="col-lg-9">
+                                <select class="form-control" name="1" ng-if="flag" ng-disabled="!flag" ng-model="list.order_id" ng-change="getOrderCommodity()">
+                                    <option value="">--请选择--</option>
+                                    <option ng-repeat="datas in OrderNumberList" value="{{datas.id}}">编号：{{datas.number}}，用户名：{{datas.username}}，下单时间：{{datas.create_time}}</option>
+                                </select>
+                                <input type="text" ng-if="is_edit" class="form-control" disabled ng-model="order.order_number" placeholder="订单编号" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">商品名称</label>
+                            <div class="col-lg-9">
+                                <select class="form-control" ng-if="flag" ng-disabled="!flag" ng-model="list.order_commodity_id">
+                                    <option value="">--请选择--</option>
+                                    <option ng-repeat="datas in OrderCommodityList" value="{{datas.id}}">{{datas.commodity_name}}</option>
+                                </select>
+                                <input type="text" ng-if="is_edit" class="form-control" disabled ng-model="order.erp_order == true ? order.erp_commodity_specification_name : order.commodity_specification_name" placeholder="商品名称" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">子订单模板</label>
+                            <div class="col-lg-9 commodity-box">
+                                <div class="form-control" style="min-height: 150px; overflow-y: auto">
+                                    <span class="btn btn-success add-commodity" style="margin: 10px" ng-repeat="template in order.template_list">
+                                        {{template.name}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">项目数</label>
+                            <div class="col-lg-4">
+                                <input type="text" id="project_num"  class="form-control" ng-model="order.total_project_num" placeholder="项目数" required disabled>
+                            </div>
+                            <!--<label class="col-lg-2 control-label">已选项目数</label>-->
+                            <!--<div class="col-lg-3">-->
+                                <!--<input type="text"  class="form-control" ng-model="order.project_num" placeholder="已选项目数" required disabled>-->
+                            <!--</div>-->
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">姓名</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="reportData.name" placeholder="姓名">
+                            </div>
+                            <label class="col-lg-2 control-label">手机号</label>
+                            <div class="col-lg-3">
+                                <input type="text" class="form-control" ng-model="reportData.phone" placeholder="手机号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">性别</label>
+                            <div class="col-lg-4">
+                                <select class="form-control" ng-model="reportData.gender">
+                                    <option value="" ng-selected="">--请选择--</option>
+                                    <option value="1">男</option>
+                                    <option value="0">女</option>
+                                </select>
+                            </div>
+                            <label class="col-lg-2 control-label">出生日期</label>
+                            <div class="col-lg-3" ng-controller="DatepickerDemoCtrl">
+                                <div class="input-group">
+                                    <input type="text" class="user-birthday form-control" datepicker-popup="yyyy-MM-dd" ng-model="reportData.birth" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                  <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">身高/体重</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="reportData.height" style="width: 114px; display: inline-block; height: 35px" placeholder="身高"> cm
+                                <input type="text" class="form-control" ng-model="reportData.weight" style="width: 114px; display: inline-block; height: 35px" placeholder="体重"> kg
+                            </div>
+                            <label class="col-lg-2 control-label">是否吸烟</label>
+                            <div class="col-lg-3">
+                                <select class="form-control" ng-model="reportData.smoking">
+                                    <option value="">--请选择--</option>
+                                    <option value="1">是</option>
+                                    <option value="0">否</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">身份证号</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" ng-model="reportData.identity_card" placeholder="身份证号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">所在地区</label>
+                            <div class="col-lg-8">
+                                <select id="province" style="width: 115px; height: 35px" class="border_radius" >
+                                    <option>--省--</option>
+                                </select>
+                                <select id="city" class="border_radius" style="width: 115px; height: 35px">
+                                    <option>--市--</option>
+                                </select>
+                                <select id="district" class="border_radius" style="width: 115px; height: 35px">
+                                    <option>--区--</option>
+                                </select>
+                                <span id="district_error" class="help-inline error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">详细地址</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" ng-model="reportData.address" placeholder="详细地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">个人病史</label>
+                            <div class="col-lg-4">
+                                <textarea id="personal_history" style="width: 266px; height: 100px" ng-model="reportData.personal_history" placeholder="选填，请输入个人病史"></textarea>
+                            </div>
+                            <label class="col-lg-1 control-label">家族病史</label>
+                            <div class="col-lg-3">
+                                <textarea id="family_history" style="width: 266px; height: 100px" ng-model="reportData.family_history" placeholder="选填，请输入家族病史"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-controller="reportFileUploadCtrl" uploader="uploader" filters="queueLimit, customFilter" ng-if="is_admin">
+                            <label for="name" class="col-sm-2 control-label redstar no-padding-right must">上传报告</label>
+                            <div data-ng-include=" '/source/admin/tpl/uploader.html' "></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-if="is_admin" ng-click="ok()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="reportTemplateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">下载报告模板</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="reportTemplateDownload" name="reportForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">线下订单</label>
+                            <div class="col-lg-10">
+                                <select class="form-control" name="1" ng-if="flag" ng-disabled="!flag" ng-model="list.order_id" ng-change="getOrderCommodity()">
+                                    <option value="">--请选择--</option>
+                                    <option ng-repeat="datas in OrderNumberList" value="{{datas.id}}">编号：{{datas.number}}，用户名：{{datas.username}}，下单时间：{{datas.create_time}}</option>
+                                </select>
+                                <input type="text" ng-if="!flag" class="form-control" ng-disabled="!flag" ng-model="list.order_number" placeholder="订单编号" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">线下子订单</label>
+                            <div class="col-lg-10">
+                                <select class="form-control" ng-if="flag" ng-disabled="!flag" ng-model="list.order_commodity_id">
+                                    <option value="">--请选择--</option>
+                                    <option ng-repeat="datas in OrderCommodityList" value="{{datas.id}}">{{datas.commodity_name}}</option>
+                                </select>
+                                <input type="text" ng-if="!flag" class="form-control" ng-disabled="!flag" ng-model="list.commodity_name" placeholder="商品名称" required>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" ng-click="download_for_template(1)" ng-if="isOnline == 1">下载</button>
+                        <button type="button" class="btn btn-primary" ng-click="download_for_template(2)" ng-if="isOnline == 0">下载</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">上传文件</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="uploadForm" name="uploadForm" class="form-horizontal" method="POST">
+                        <div class="form-group" ng-controller="reportTemplateFileUploadCtrl" uploader="uploader" filters="queueLimit, customFilter">
+                            <label for="name" class="col-sm-2 control-label redstar no-padding-right must">上传文件</label>
+                            <div data-ng-include=" '/source/admin/tpl/uploader.html' "></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="closeImport()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="importReportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">上传文件</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="importReportForm" name="uploadForm" class="form-horizontal" method="POST">
+                        <div class="form-group" ng-controller="importReportCtrl" uploader="uploader" filters="queueLimit, customFilter">
+                            <label for="name" class="col-sm-2 control-label redstar no-padding-right must">上传文件</label>
+                            <div data-ng-include=" '/source/admin/tpl/uploader.html' "></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="confirmImport()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteReportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">上传文件</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="importReportForm" name="uploadForm" class="form-horizontal" method="POST">
+                        <div class="form-group" ng-controller="deleteReportCtrl" uploader="uploader" filters="queueLimit, customFilter">
+                            <label for="name" class="col-sm-2 control-label redstar no-padding-right must">上传文件</label>
+                            <div data-ng-include=" '/source/admin/tpl/uploader.html' "></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <!-- <button type="button" class="btn btn-primary" ng-click="confirmReport()">确定</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="reportErrorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">失败信息</h4>
+                </div>
+                <div class="modal-body"  style="height:500px; overflow:scroll; overflow-x: hidden">
+                    <div ng-repeat="err in error">
+                        {{err}}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="closeError()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="reportResultModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!--<div class="" id="reportResultModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">以下报告已存在(共 <strong style=" color: #e20808;font-size: 20px;margin: 0 3px;">{{resultData.length}}</strong>条)</h4>
+                </div>
+                <div class="modal-body"  style="height:500px; overflow:scroll; overflow-x: hidden">
+                    <!--<div ng-repeat="data in resultData">-->
+                    <!--报告编号：{{data.number}} 已存在-->
+                    <!--</div>-->
+                    <div class="table-responsive">
+                        <table class="table table-striped b-t b-light">
+                            <thead>
+                            <tr>
+                                <th style="width:20px;">
+                                    <label class="i-checks m-b-none">
+                                        <input class="select-all" ng-click="selectAll($event)" type="checkbox"><i></i>
+                                    </label>
+                                </th>
+                                <th>报告编号</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="data in resultData">
+                                <td><label class="i-checks m-b-none"><input class="select-single" ng-click="selectSingle(data, $event)" type="checkbox" name="post[]"><i></i></label></td>
+                                <td>{{data.number}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" ng-click="coverSingle(data)">覆盖</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="coverData()">覆盖</button>
+                    <button type="button" class="btn btn-info" ng-click="closeData()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

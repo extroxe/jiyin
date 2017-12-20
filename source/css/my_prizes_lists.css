@@ -1,0 +1,52 @@
+.top{
+    background-color: #ffbe04;
+    padding-bottom: 1px;
+}
+.top .rotate{
+    font-size: 32px;
+    padding: 16px;
+    text-align: center;
+    color: #fff;
+    height: 41px;
+    line-height: 41px;
+    padding-bottom: 0;
+    margin-bottom: 24px;
+}
+
+/*活动列表*/
+.activity-record{
+    margin-top: 30px;
+}
+.activity-record li{
+    padding: 10px;
+    position: relative;
+    background-color: #f9f9f9;
+    margin: 10px 0;
+}
+.activity-record li .activity-img{
+    width: 150px;
+    height: 150px;
+    float: left;
+}
+.activity-record li div {
+    float: left;
+    margin-left: 20px;
+}
+.activity-record li div .activity-name{
+    font-size: 20px;
+    color: #ffbe04;
+}
+.activity-record li div .activity-time{
+    font-size: 16px;
+    color: #999;
+}
+.activity-record li .accept-prize{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -15px;
+}
+.activity-record li p:last-child{
+    clear: both;
+    margin: 0;
+}

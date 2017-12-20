@@ -1,0 +1,87 @@
+<div ng-controller="setPostageCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">{{title}}</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="row">
+            <div class="col-md-2">
+                <div>
+                    <a class="btn m-b-xs btn-sm btn-success btn-addon" style="margin-left: 35px;width: 140px" href="#/app/commodityCategory"><i class="fa fa-angle-double-left"></i>返回商品分类管理</a>
+                </div>
+                <div>
+                    <a class="btn m-b-xs btn-sm btn-success btn-addon" style="margin-left: 35px;width: 140px" href="#/app/commodityClass"><i class="fa fa-angle-double-left"></i>返回现金商品管理</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper-md" sw-auth="packages_list">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{name}}
+            </div>
+            <div class="panel-body b-b b-light">
+                    <label class="col-xs-2">添加免邮规则</label>
+                    <div class="col-xs-6">
+                        <select class="form-control m-b" ng-model="currentPostage" ng-options="data.id as data.name for data in postageList" required>
+                            <option value="">--请选择--</option>
+                        </select>
+                    </div>
+                <button class="btn btn-success" sw-auth="add_packages" ng-click="view_detail_index(currentPostage)">
+                    查看
+                </button>
+                <button class="btn btn-success" sw-auth="add_packages" ng-click="add(currentPostage)">
+                    添加
+                </button>
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <caption>已使用免邮规则</caption>
+                    <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>角色</th>
+                        <th>订单金额</th>
+                        <th>订单商品数量</th>
+                        <th>会员等级</th>
+                        <th>下单终端</th>
+                        <th>单件商品邮费</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in useList">
+                        <td>{{data.name}}</td>
+                        <td>{{data.role_name}} <span ng-if="data.role_rule == 0" class="label bg-success">OR</span><span ng-if="data.role_rule == 1" class="label bg-info">AND</span></td>
+                        <td>{{data.total_cost}} <span ng-if="data.total_cost_rule == 0" class="label bg-success">OR</span><span ng-if="data.total_cost_rule == 1" class="label bg-info">AND</span></td>
+                        <td>{{data.commodities_count}} <span ng-if="data.commodities_count_rule == 0" class="label bg-success">OR</span><span ng-if="data.commodities_count_rule == 1" class="label bg-info">AND</span></td>
+                        <td>{{data.level_name}} <span ng-if="data.member_level_id_rule == 0" class="label bg-success">OR</span><span ng-if="data.member_level_id_rule == 1" class="label bg-info">AND</span></td>
+
+                        <td>
+                            <span ng-if="data.client_id == 0">全部</span>
+                            <span ng-if="data.client_id == 1">网站</span>
+                            <span ng-if="data.client_id == 2">微信</span>
+                            <span ng-if="data.client_id == 3">APP</span>
+                            <span ng-if="data.client_rule == 0" class="label bg-success">OR</span><span ng-if="data.client_rule == 1" class="label bg-info">AND</span>
+                        </td>
+
+                        <td>{{data.single_postage}} <span ng-if="data.single_postage_rule == 0" class="label bg-success">OR</span><span ng-if="data.single_postage_rule == 1" class="label bg-info">AND</span></td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-primary btn-addon" sw-auth="see_packages_detail" ng-click="view_detail(data)">查看</button>
+                            <button class="btn m-b-xs btn-sm btn-primary btn-addon" sw-auth="see_packages_detail" ng-click="delete(data)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <nav ng-if="totalPage > 0">
+            <ul class="pager">
+                <li><a ng-click="firstPage()">第一页</a></li>
+                <li><a ng-click="previousPage()">上一页</a></li>
+                <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 <span ng-if="total_num">(共 <strong style="color: red">{{total_num}}</strong> 条)</span> </li>
+                <li><a ng-click="nextPage()">下一页</a></li>
+                <li><a ng-click="lastPage()">最后一页</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

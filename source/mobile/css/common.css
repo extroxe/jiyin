@@ -1,0 +1,97 @@
+/**
+ * 手机端通用样式写于本页面
+ */
+
+/*顶部搜索框*/
+header .titlebar.search { padding: 0 10px; background-color: #77d3e7;min-height: 45px;}
+header .titlebar.search .icon-menudot{
+    margin-left: 13px;
+    font-size: 30px;
+    color: #fff;
+    top: -3px;
+}
+header .titlebar.search form i {
+    color: #969696;
+}
+header .lrmargin8{margin: 0 20px 0 27px}
+
+header .input-text{padding: 6px 12px}
+header .icon-search{color: #ccc}
+
+header .titlebar {
+    background-color: #117D94;
+    color: #F9F9F9;
+}
+
+header .titlebar h1,
+header .titlebar i {
+    color: #FFFFFF;
+}
+
+header .titlebar > a {
+    margin: 0 12px;
+}
+
+header {
+    position: absolute;
+}
+
+.class > header {
+    position: absolute;
+    z-index: 1;
+}
+
+hr:after,
+.underline:after {
+    background-color: #DADADA;
+}
+
+.tabbar-footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.tabbar-footer > li {
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+.tabbar-footer > li img {
+    width: 28px;
+    margin-top: 5px;
+}
+
+.tabbar-footer > li .tab-label {
+    font-size: 13px;
+}
+
+.tab.active {
+    color: #117D94;
+}
+
+/*顶部返回按钮大小*/
+.back_btn{
+    font-size: 16px;
+    color: #fff;
+}
+
+.size18 {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+label.redstar:after{
+    content: '*';
+    position: absolute;
+    color: red;
+    margin-left: 3px;
+}
+@media (max-width: 360px){
+    .tabbar-footer > li .tab-label{font-size: 13px;}
+    .tabbar-footer > li img{width: 28px}
+}
+@media (max-width: 320px){
+    .tabbar-footer > li .tab-label{font-size: 12px;}
+    .tabbar-footer > li img{width: 25px}
+}

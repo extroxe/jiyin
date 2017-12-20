@@ -1,0 +1,127 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body">
+    <form id="refundForm" name="refundForm" class="form-horizontal" method="POST">
+        <!--退款信息-->
+        <div class="form-group">
+            <label class="col-lg-2 control-label">退款信息</label>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">退款单号</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.number" placeholder="退款单号" ng-disabled="true" required>
+            </div>
+            <label class="col-lg-2 control-label">退款金额</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.price" placeholder="退款金额" ng-disabled="true" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">退款数量</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.amount" placeholder="退款数量" ng-disabled="true" required>
+            </div>
+            <label class="col-lg-2 control-label">退款原因</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.reason" placeholder="退款原因" ng-disabled="true" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">退款单号(第三方)</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.refund_order" placeholder="退款单号" ng-disabled="true" required>
+            </div>
+            <label class="col-lg-2 control-label">退款状态</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.refund_status_name" placeholder="退款状态" ng-disabled="true" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">退款申请时间</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.create_time" placeholder="退款申请时间" ng-disabled="true" required>
+            </div>
+            <label class="col-lg-2 control-label">退款审核时间</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.update_time" placeholder="退款审核时间" ng-disabled="true" required>
+            </div>
+        </div>
+
+        <!--订单信息-->
+        <div class="form-group">
+            <label class="col-lg-2 control-label">订单信息</label>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">订单编号</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.order_number" placeholder="订单编号" ng-disabled="true" required>
+            </div>
+            <label class="col-lg-2 control-label redstar">订单状态</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.order_status_name" placeholder="订单状态" ng-disabled="true" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">下单用户</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.username" placeholder="用户名" ng-disabled="true" required>
+            </div>
+            <label class="col-lg-2 control-label redstar">用户手机</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.phone" placeholder="用户手机" ng-disabled="true" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">订单总价</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.total_price" placeholder="订单总价" ng-disabled="true" required>
+            </div>
+            <label class="col-lg-2 control-label redstar">实际支付金额</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.payment_amount" placeholder="实际支付金额" ng-disabled="true" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">终端名称</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.terminal_type_name" placeholder="终端名称" ng-disabled="true" required>
+            </div>
+            <label class="col-lg-2 control-label redstar">优惠券名称</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.discount_coupon_name" placeholder="优惠券名称" ng-disabled="true" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">支付单号</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.payment_order" placeholder="支付单号" ng-disabled="true" required>
+            </div>
+            <label class="col-lg-2 control-label redstar">支付方式</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.payment_name" placeholder="支付方式" ng-disabled="true" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">订单创建时间</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.order_create_time" placeholder="订单创建时间" ng-disabled="true" required>
+            </div>
+            <label class="col-lg-2 control-label redstar">订单支付时间</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.order_payment_time" placeholder="订单支付时间" ng-disabled="true" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">地址</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="infoList.address" placeholder="地址" ng-disabled="true" required>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+    <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>
+</div>

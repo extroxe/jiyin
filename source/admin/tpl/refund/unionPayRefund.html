@@ -1,0 +1,76 @@
+<div ng-controller="unionpayCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">银联支付退款管理</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                银联支付退款管理表
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-primary" ng-click="addInfo()"><i class="fa fa-plus"></i> 增加</button>
+                <span class="pull-right">
+                    Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
+                </span>
+
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th>
+                            退款编号
+                        </th>
+                        <th>
+                            退款金额
+                        </th>
+                        <th>
+                            退款状态
+                        </th>
+                        <th>
+                            订单状态
+                        </th>
+                        <th>
+                            支付方式
+                        </th>
+                        <th>
+                            创建时间
+                        </th>
+                        <th>
+                            审核时间
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in unionpayList">
+                        <td>{{data.number}}</td>
+                        <td>{{data.price}}</td>
+                        <td>{{data.refund_status_name}}</td>
+                        <td>{{data.order_status_name}}</td>
+                        <td><span class="label bg-success" title="Active">{{data.payment_name}}</span></td>
+                        <td>{{data.create_time}}</td>
+                        <td>{{update_time}}</td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="look(data)">查看</button>
+                            <button class="btn m-b-xs btn-sm btn-sucess btn-addon" ng-click="agree(data)" ng-if="data.status_id == 10">同意</button>
+                            <button class="btn m-b-xs btn-sm btn-default btn-addon" ng-click="refuse(data)" ng-if="data.status_id == 10">拒绝</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

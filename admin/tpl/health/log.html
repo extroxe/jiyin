@@ -1,0 +1,128 @@
+<div ng-controller="logCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">日志管理</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                日志管理表
+            </div>
+            <div class="panel-body b-b b-light">
+                <span class="pull-right">
+                    时间段：<input type="text" ui-datetime="" class="form-control input-sm w-sm inline m-r ng-pristine ng-touched ng-valid ng-valid-required" ng-model="register_start_time" placeholder="起始时间" required="">
+                         <input type="text" ui-datetime="" class="form-control input-sm w-sm inline m-r ng-pristine ng-touched ng-valid ng-valid-required" ng-model="register_end_time" placeholder="结束时间" required="">
+                    接口分类：<div class="btn-group dropdown" dropdown>
+                        <button class="btn btn-success " dropdown-toggle sw-auth="get_all_order_status">{{checkState[0]}} <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="statu in status"><a href ng-click="stateFlagSub($index)">{{statu.name}}</a></li>
+                        </ul>
+                    </div>
+                    Search: <input auto-focus id="search" type="text" ng-model="keyword" class="form-control input-sm w-sm inline m-r"/>
+                    <button class="btn m-b-xs  btn-success" ng-click="search()"><i class="fa fa-search"></i> 搜索</button>
+                    <button class="btn m-b-xs btn-success" ng-click="reset()">重置</button>
+                </span>
+
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th>
+                            接口分类
+                        </th>
+                        <th>
+                            提示信息
+                        </th>
+                        <th>
+                            创建时间
+                        </th>
+                        <th>
+                            是否成功
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in articleList">
+                        <td>{{data.interface_name}}</td>
+                        <td>{{data.msg}}</td>
+                        <td>{{data.create_time}}</td>
+                        <td class="text-success" ng-if="data.success == 1">是</td>
+                        <td class="text-danger" ng-if="data.success == 0">否</td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="watch(data)">查看</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="float: left; margin-top: 27px">
+                <ul class="pull-left" style="list-style:none;">
+                    <li style="float:left;">每页显示</li>
+                    <li style="float:left; margin-left: 10px"><select ng-model="pageSize" ng-change="getData()">
+                        <option value=10>10</option>
+                        <option value=50>50</option>
+                        <option value=100>100</option>
+                        <option value=300>300</option>
+                        <option value=500>500</option>
+                    </select>&nbsp;&nbsp;条
+                    </li>
+                </ul>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="modal fade" id="article" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="articleForm" name="articleForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">接口名称</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="infoList.interface_name" placeholder="接口名称" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">接口代码</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="infoList.code" placeholder="接口代码" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">提示信息</label>
+                            <div class="col-lg-10">
+                                <textarea type="text" class="form-control" ng-model="infoList.msg" placeholder="提示信息" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">创建时间</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="infoList.create_time" placeholder="创建时间" disabled>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

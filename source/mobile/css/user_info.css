@@ -1,0 +1,92 @@
+header .titlebar h1 {
+    margin-right: 40px;
+}
+
+article {
+    font-size: 16px;
+}
+
+article input[name=file] {
+    position: absolute;
+    height: 60px;
+    width: 200px;
+    z-index: 100;
+    opacity: 0;
+    right: 0;
+}
+
+article a {
+    color: #333333;
+}
+
+article > div {
+    padding: 15px;
+    background-color: #FFFFFF;
+}
+
+article > div > span:nth-child(2){
+    color: #666666;
+}
+
+.avatar-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+section {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+section > div {
+    top: 30%;
+    width: 200px;
+    height: auto;
+    margin: auto;
+    padding: 30px 0 10px 0;
+    position: relative;
+    background-color: #FFFFFF;
+}
+
+section input {
+    margin-left: 36px;
+}
+
+section > div .button {
+    width: 30%;
+    margin: 40px 0 20px 30px;
+    background-color: #117D94;
+}
+
+section > div .cancel-btn {
+    margin: 18px 0 0 30px;
+    color: #999999;
+}
+
+@media only screen and (max-width: 375px) {
+    article {
+        font-size: 15px;
+    }
+
+    article i.icon.icon-arrowright {
+        font-size: 16px;
+        width: 19px;
+        height: 19px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    article {
+        font-size: 15px;
+    }
+
+    article i.icon.icon-arrowright {
+        font-size: 15px;
+        width: 18px;
+        height: 18px;
+    }
+}
+i.size14, .icon.size14{
+    vertical-align: baseline;
+}

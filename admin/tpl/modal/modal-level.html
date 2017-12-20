@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body">
+    <form id="levelForm" name="levelForm" class="form-horizontal" method="POST">
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">等级名称</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="infoList.name" placeholder="等级名称" ng-disabled="ael == 'edit'" ng-required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">等级排序</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.rank" placeholder="等级排序" ng-disabled="ael == 'edit'" ng-required="true">
+            </div>
+            <label class="col-lg-2 control-label redstar">折扣</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.price_discount" placeholder="折扣" ng-required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">等级积分系数</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="infoList.points_coefficient"  placeholder="等级积分系数" ng-required="true"/>
+            </div>
+            <!--<label class="col-lg-2 control-label redstar">到当前等级所需价格</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.price"  placeholder="到当前等级所需价格" ng-required="true"/>
+            </div>-->
+        </div>
+        <div class="form-group" ng-controller="FileUploadCtrl" uploader="uploader" filters="queueLimit, customFilter">
+            <label for="name" class="col-sm-2 control-label redstar no-padding-right must">上传等级图片(推荐尺寸：96px*96px)</label>
+            <div data-ng-include=" '/source/admin/tpl/uploader.html' "></div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+    <button type="button" class="btn btn-primary" ng-click="ok()">保存</button>
+</div>

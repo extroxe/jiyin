@@ -1,0 +1,301 @@
+<div ng-controller="specificationCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">商品规格管理</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="row">
+            <div class="col-md-2">
+                <div>
+                    <a class="btn m-b-xs btn-sm btn-success btn-addon" style="margin-left: 3px;width: 140px" ng-if="flag == true" href="#/app/commodityClass"><i class="fa fa-angle-double-left"></i>返回商品页</a>
+                    <a class="btn m-b-xs btn-sm btn-success btn-addon" style="margin-left: 3px;width: 140px" ng-if="flag == false" href="#/app/integralCommodity"><i class="fa fa-angle-double-left"></i>返回商品页</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                商品规格管理表
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-primary" ng-click="show()" ng-if="commodity_type != 1"><i class="fa fa-plus"></i> 增加</button>
+                <span class="pull-right">
+                     Search：<input id="search" type="text" ng-model="keyword" placeholder="商品 | 商品规格 | 包装" class="form-control input-sm w-sm inline m-r"/>
+                    <button class="btn m-b-xs  btn-success" ng-click="search()"><i class="fa fa-search"></i> 搜索</button>
+                </span>
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th>
+                            商品名称
+                        </th>
+                        <th>
+                            商品中间层名称
+                        </th>
+                        <th>
+                            基本单位
+                        </th>
+                        <th>
+                            商品规格名称
+                        </th>
+                        <th>
+                            市场价格
+                        </th>
+                        <th>
+                            售价
+                        </th>
+                        <th>
+                            包装
+                        </th>
+                        <th>
+                            状态
+                        </th>
+                        <th>
+                            修改时间
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in specificationList" ng-show="dataShow == true">
+                        <td>{{data.commodity_name}}</td>
+                        <td>{{data.commodity_specification_name != null ? data.commodity_specification_name : data.name}}</td>
+                        <td>{{data.goodsunit}}</td>
+                        <td>{{data.name}}</td>
+                        <td>{{data.market_price}}</td>
+                        <td>{{data.selling_price}}</td>
+                        <td><span ng-class="data.packagetype == 1 ? 'label bg-success' : 'label bg-info'" class="label bg-success">{{data.package_type_name}}</span></td>
+                        <td><span ng-class="data.status_id == 1 ? 'label bg-success' : 'label bg-info'" class="label bg-success">{{data.specification_status}}</span></td>
+                        <td>{{data.update_time}}</td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="edit(data)">编辑</button>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="recommend(data)">推荐商品</button>
+                            <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-if="commodity_type == 1" ng-click="detectionManage(data, false)">模板管理</button>
+                            <button class="btn m-b-xs btn-sm btn-warning btn-addon" ng-click="getEvaluateBySpecification(data)">查看评价</button>
+                            <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-if="commodity_type != 1" ng-click="delete(data.id)">删除规格</button>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="upload(data)">上传规格图片</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show="dataShow == false" style="text-align: center; margin-top: 20px">
+                <b>当前暂无数据</b>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- 模态框 -->
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="bannerForm" name="bannerForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">商品名称</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="list.commodity_name" placeholder="商品名称" required ng-disabled="commodity_type == '1'">
+                            </div>
+                            <label class="col-lg-2 control-label redstar">商品中间层名称</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="list.commodity_specification_name" placeholder="商品中间层名称" required ng-disabled="commodity_type == '1'">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">商品规格名称</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="list.name" placeholder="商品规格名称" required>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="isPoint == false">
+                            <label class="col-lg-2 control-label redstar">市场价格</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="list.market_price" placeholder="市场价格" required>
+                            </div>
+                            <label class="col-lg-2 control-label redstar">销售价格</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="list.selling_price" placeholder="销售价格" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">包装</label>
+                            <div class="col-lg-4">
+                             <select class="form-control m-b" ng-model="list.packagetype" ng-options="data.value as data.name for data in packList" required ng-disabled="commodity_type == '1'">
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </div>
+                            <label class="col-lg-2 control-label">基本单位</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="list.goodsunit" placeholder="基本单位" required ng-disabled="commodity_type == '1'">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">商品规格状态</label>
+                            <div class="col-lg-4">
+                                <select class="form-control m-b" ng-model="list.status_id" ng-options="data.value as data.name for data in statusList" required>
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </div>
+                            <label class="col-lg-2 control-label redstar" ng-if="isPoint == false">购买所得积分</label>
+                            <div class="col-lg-4" ng-if="isPoint == false">
+                               <input type="text" class="form-control" placeholder="购买所得积分" ng-model="list.points">
+                            </div>
+                            <label class="col-lg-2 control-label redstar" ng-if="isPoint == true">购买积分</label>
+                            <div class="col-lg-4" ng-if="isPoint == true">
+                                <input type="text" class="form-control" placeholder="购买积分" ng-model="list.selling_price">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="url == true">
+                            <label class="col-lg-2 control-label">商品链接(PC)</label>
+                            <div class="col-lg-10">
+                                <a href="{{urlPC}}" target="_blank">{{urlPC}}</a>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="url == true">
+                            <label class="col-lg-2 control-label">商品链接(微信)</label>
+                            <div class="col-lg-10">
+                                <a href="{{urlWC}}" target="_blank">{{urlWC}}</a>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="ael == 'edit'">
+                            <label class="col-lg-2 control-label">商品图片</label>
+                            <div class="col-lg-10">
+                                <span ng-repeat="data in picList">
+                                    <img ng-src="{{ SITE_URL + data.path}}" alt=""  style="width:50px; height:50px"/>
+                                    <span class="badge badge-sm up bg-danger pull-right-xs" style="cursor: pointer" ng-click="removePic(data.id, $index)">&times;</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-controller="speFileUploadCtrl" uploader="uploader" filters="queueLimit, customFilter">
+                            <label for="name" class="col-sm-2 control-label no-padding-right must">上传图片(推荐尺寸：720px*720px)</label>
+                            <div data-ng-include=" '/source/admin/tpl/uploader.html' "></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="ok()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="detection" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">模板管理</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="theBannerForm" name="bannerForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">已设置模板</label>
+                            <div class="col-lg-10 commodity-box">
+                                <div class="form-control" style="min-height: 150px; overflow-y: auto">
+                                    <span class="btn btn-success add-commodity" style="margin: 10px" ng-repeat="specificationTemplate in specificationTemplates">
+                                        <i class="fa fa-times-circle-o delete-commodity" ng-click="deleteTemplate(specificationTemplate.id)">{{specificationTemplate.name}}</i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">检测模板</label>
+                            <div class="col-lg-4 control-label">
+                                <select class="form-control" ng-model="add.template_id">
+                                    <option value="">选择检测模板</option>
+                                    <option value="{{template.id}}" ng-repeat="template in templates">{{template.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">项目数量</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control commodity-name" ng-model="add.number" placeholder="请输入检测项目数量" required>
+                            </div>
+                            <div class="col-lg-4">
+                                <button type="button" class="btn btn-primary" ng-click="addTemplate()">添加模板</button>
+                            </div>
+                        </div>
+                    </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!--推荐规商品模态框-->
+    <div class="modal fade" id="recommend_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title">推荐商品</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="recommendForm" name="recommendForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">商品名称</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control m-b" ng-focus="add_commodity()" placeholder="请选择商品" ng-model="infoList.commodity_name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"></label>
+                            <div class="col-lg-3">
+                                <button class="btn btn-success" ng-click="addRecommend()">添加推荐</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <lable class="col-lg-2 control-label"></lable>
+                            <div class="col-lg-8">
+                                <div class="panel panel-success" draggable="false">
+                                    <div class="panel-heading">
+                                        已推荐
+                                    </div>
+                                    <ul class="list-group alt" ng-repeat="recommend in recommendList">
+                                        <li class="list-group-item" style="height: 50px">
+                                            <div class="media">
+                                                <span class="pull-left thumb-sm"><img ng-src="{{SITE_URL + recommend.path}}" alt="..." style="width: 50px; height: 20px"></span>
+                                                <span class="pull-right text-success m-t-sm" style="margin-top: 3px">
+                                                <button class="btn m-b-xs btn-sm btn-info btn-addon"  ng-click="deleteRecommend(recommend.id)">删除</button>
+                                            </span>
+                                                <div class="media-body">
+                                                    <div><a href="javascript:void(0)">{{ recommend.commodity_name }} {{ recommend.specification_name }} {{ recommend.name }}</a></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,235 @@
+/*header*/
+header #logo{
+    margin-left: 70px
+}
+header #logo img{
+
+}
+header .input_search{
+    width: 672px;margin: 16px 0 0 36px
+}
+header #search-btn{
+    border-radius: 0;position: absolute;
+}
+
+/*头部背景*/
+.head_background{
+    background-color: #ffffff;
+    min-height: 65px;
+}
+
+/*个人信息栏*/
+.personal_home .row-fluid{
+    background-color: #adc3d6;
+    height: 100px;
+    margin-top: 40px
+}
+.personal_home .portrait{
+    width: 150px;
+    height: 150px;
+    border-radius: 7px;
+    border: 4px solid #fff;
+    position: absolute;
+    margin-top: -75px;
+    margin-left: 20px;
+}
+.personal_home .personal_data{
+    margin-left: 200px;
+    margin-top: -37px;
+}
+.personal_home .personal_data a.focus{
+    background-image: -webkit-linear-gradient(top, #f54747, #f74c4c);
+
+    color: #fff;
+    text-shadow: none;
+}
+.personal_home .personal_data a.message{
+    margin-left: 10px;
+    color: #fff;
+    text-shadow: none;
+    background-image: -webkit-linear-gradient(top, #269bef, #478ade);
+}
+.personal_home .personal_data a:hover{
+    background-position: 0 0;
+}
+.personal_home .personal_data span{
+    font-size: 13px;
+}
+.personal_home .personal_data .nickname{
+    display: block;
+    margin: 10px 0;
+}
+.personal_home .personal_data .sex{
+    color: #117d94;
+}
+
+/*个人动态*/
+.social{
+    background-color: #f9f9f9;
+    border: solid #999;
+    border-width: 0 1px;
+    position: relative;
+}
+.social .focus_post{
+    width: 886px;
+    height: 300px;
+    background-color: #ddd;
+    float: left;
+}
+.social .my_focus_follows{
+    height: 600px;
+    background-color: #f9f9f9;
+    width: 251px;
+    float: left;
+    border: solid #999;
+    border-width: 1px 0 0 1px;
+}
+
+/*发表的帖子*/
+.social .focus_post .breadcrumb{
+    border: solid #999;
+    border-radius: 0;
+    border-width: 1px 0;
+    padding: 0;
+}
+.social .focus_post .breadcrumb li{
+    padding: 14px 20px;
+    background-color: #ddd;
+    border-right: 1px solid #999;
+}
+.social .focus_post .breadcrumb li a{
+    text-shadow: none;
+    font-size: 19px;
+    color: #707b8c;
+    font-family: '黑体';
+}
+.social .focus_post .breadcrumb li:hover{
+    background-color: #e5e5e5;
+}
+
+/*帖子列表*/
+.post_list_box .announcement p{
+    padding: 20px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9
+}
+.post_list_box .publish_post{
+    border: 1px solid #117d94;
+    background-color: #C2D5E3;
+    color: #555;
+    text-shadow: none;
+    font-size: 16px;
+    padding: 5px 16px;
+}
+
+table{
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+th{
+    padding: 10px 0;
+}
+td{padding: 10px 0; color: #444}
+table tbody tr{    text-align: center;    border-bottom: 1px solid #ddd; background-color: #fff}
+table tbody tr:hover{ background-color: #f7f9fc}
+/*table tbody td:first-child span{
+    background-color: #568de4;
+    color: #fff;
+    padding: 3px 7px;
+    border-radius: 2px;
+}*/
+/*table tbody td:nth-child(1){text-align: left;}*/
+table tbody td:nth-child(1) a{display: block; color: #117d94; font-size: 16px;}
+table tbody td:nth-child(1) span{display: block; color: #777}
+table tbody td:nth-child(1) span span{display: inline-block; }
+table tbody td:last-child span{color: #777}
+
+
+/*我的关注和粉丝*/
+.my_focus_follows .focus_list{
+    padding: 17px 0 17px 17px;
+    max-height: 200px;
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+}
+.my_focus_follows .focus_list li:first-child{
+    display: block;
+    padding-bottom: 15px;
+    margin: 0;
+    font-size: 15px;
+}
+.my_focus_follows .focus_list li:first-child span a{
+    font-size: 13px;
+    color: #aaa;
+    margin-left: 5px;
+}
+.my_focus_follows .focus_list li:first-child span a:hover{
+    text-decoration: underline;
+}
+.my_focus_follows .focus_list li{
+    display: inline-block;
+    margin-right: 8px;
+    margin-bottom: 13px;
+}
+.my_focus_follows .focus_list li img{
+    width: 45px;
+    height: 45px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#post_lists .post_bar{
+    color: #777;
+    font-size: 14px;
+}
+#post_lists .post_bar:hover{
+    color: #568de4;
+}
+
+/*分页*/
+.pagination ul{box-shadow: none}
+.pagination ul > li > a, .pagination ul > li > span{
+    float: none;
+    border:none;
+    text-decoration: underline;
+}
+#page_num{
+    width: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/*模态框*/
+.modal-header h3{
+    font-family: '微软雅黑';
+    font-weight: normal;
+    font-size: 23px;
+    color: #222;
+}
+
+.modal{
+    width: 680px;
+    margin-left: -383px;
+}
+
+.modal-body p{
+    color: #117d94;
+    margin-bottom: 10px;
+}
+.modal-body textarea{
+    width: 97%;
+    display: block;
+    min-height: 175px;
+}
+
+/*分页*/
+.pagination{
+    position: absolute;
+    bottom: 15px;
+    right: 260px;
+    margin:  0;
+}

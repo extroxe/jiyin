@@ -1,0 +1,189 @@
+/*header*/
+header #logo{
+    margin-left: 70px
+}
+header #logo img{
+
+}
+header .input_search{
+    width: 672px;margin: 16px 0 0 36px
+}
+header #search-btn{
+    border-radius: 0;position: absolute;
+}
+
+/*body*/
+.body{
+    border: 1px solid #ddd;
+    width: 1140px;
+    background-color: #f9f9f9;
+}
+.body .header{
+    background-color: #fff;
+    padding: 20px 0;
+}
+.body .head_img{display: inline-block}
+.body .head_img img{
+    width: 55px;
+    padding: 2px;
+    border: 1px solid #ccc;
+}
+
+.body .post_name{
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 20px;
+}
+.body .focus{
+    display: inline-block;
+    margin-left: 20px;
+    background-color: #d9534f;
+    color: #fff;
+    border-radius: 3px;
+}
+.body .focus_num,
+.body .post_num{
+    margin-left: 20px;
+    font-size: 13px;
+
+}
+.body .focus_num span,
+.body .post_num span{
+    color: #d9534f;
+}
+
+/*文章详情*/
+.body .post_detail{
+    border: solid #ddd;
+    border-width: 1px 0;
+}
+.body .post_detail .title_line a{
+    margin-left: -19px;
+    margin-top: -4px;
+    border: 1px solid;
+    padding: 0px 10px;
+    border-radius: 3px;
+}
+.body .post_detail .land_host,
+.check_user{
+    cursor: pointer;
+}
+.body .post_detail .land_host{
+    height: 100px;
+}
+
+.body .post_detail .post_detail_name:hover,
+.check_user:hover{
+    color: #117D94;
+    cursor: pointer;
+}
+.body .post_detail .landower{
+    border: none;
+    position: absolute;
+    top: -2px;
+    margin-left: 76px;
+}
+table{width: 100%}
+tr{border-top: 1px solid #ddd}
+tr td:first-child{
+    vertical-align: text-bottom;
+    text-align: center;
+    /* padding: 20px; */
+    padding: 20px 0;
+}
+tr td:first-child img{
+    padding: 2px;
+    border: 1px solid #ccc;
+}
+tr td:first-child span{
+    display: block;
+    margin-top: 10px;
+}
+tr td:last-child {
+    padding-top: 20px;
+    text-align: left;
+    padding-left: 42px;
+    background-color: #fff;
+}
+
+tr td:last-child .land_footer{
+    padding: 20px 0;
+    text-align: right;
+    font-size: 14px;
+}
+.post_detail .post_title{
+    background-color: #fff;
+    height: 20px;
+    padding: 20px 30px;
+    font-family: '微软雅黑';
+    font-weight: normal;
+    font-size: 17px;
+}
+/*发表评论*/
+.publish_comment{
+    width: 1010px;
+    margin: 0 auto;
+    min-height: 90px;
+}
+/*已被删除的评论*/
+.delt_comment{
+    padding: 50px 400px;
+    font-size: 25px;
+    color: #d9534f;
+    display: none;
+}
+/*已被删除的回复*/
+.replay_content_del{
+    color: #aaa;
+    border: 1px dashed red;
+    padding: 10px;
+    text-align: left;
+}
+/*评论回复*/
+.collapseOne{
+    text-align: left;
+    background-color: #f9f9f9;
+}
+.collapseOne .accordion-inner{
+    text-align: left;
+}
+.collapseOne .accordion-inner li{
+    padding: 10px;
+    border-bottom: 1px dashed #ccc;
+}
+.collapseOne .accordion-inner li img{width: 37px;  }
+.collapseOne .accordion-inner li .user_name{padding-right: 0;}
+.collapseOne .accordion-inner li .replay_content{display: inline-block;}
+.replay{text-align: right}
+.replay a{padding-top: 0}
+
+.my_say{
+    float: right;
+    border: 1px solid #0076cc;
+    border-radius: 3px;
+}
+textarea{
+    display: block;
+    width: 98%;
+    margin-top: 15px;
+}
+.publish_replay{float: right}
+
+li#collapseThree{
+
+}
+
+
+/*分页*/
+.pagination ul{box-shadow: none}
+.pagination ul > li > a, .pagination ul > li > span{
+    float: none;
+    border:none;
+    text-decoration: underline;
+}
+#page_num{
+    width: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+

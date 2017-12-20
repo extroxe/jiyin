@@ -1,0 +1,1 @@
+app.controller("ToasterDemoCtrl",["$scope","toaster",function(t,e){t.toaster={type:"success",title:"Title",text:"Message"},t.pop=function(){e.pop(t.toaster.type,t.toaster.title,t.toaster.text)}}]);

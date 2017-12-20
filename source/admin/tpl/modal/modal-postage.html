@@ -1,0 +1,125 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body">
+    <form id="disForm" name="disForm" class="form-horizontal" method="POST">
+        <div class="form-group">
+            <label class="col-xs-2 control-label redstar">名称</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" ng-model="infoList.name" placeholder="名称" ng-required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2 control-label redstar">角色</label>
+            <div class="col-xs-4">
+                <select class="form-control" ng-model="infoList.role_id" ng-options="data.value as data.name for data in roleList" required>
+                    <option value="">--请选择--</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2 control-label redstar">券类型</label>
+            <div class="col-xs-6" style="padding-top: 7px">
+                <label class="i-checks i-checks-sm" style="margin-right: 5px">
+                    <input type="radio" class="single-check1" ng-model="infoList.type" name="couponType" value="1"><i style="margin-right: 0"></i>
+                    满金额包邮
+                </label>
+                <label class="i-checks i-checks-sm">
+                    <input type="radio" class="single-check1" ng-model="infoList.type" name="couponType" value="2"><i style="margin-right: 0"></i>
+                    满数量包邮
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2 control-label redstar">设置规则</label>
+            <div class="col-xs-10">
+                <span ng-if="infoList.type == '1'">满 <input type="text" ng-model="infoList.order_cost" class="form-control input-sm w-xs inline m-r" style="margin-right: 0">元</span>
+                <span ng-if="infoList.type == '2'">满 <input type="text" ng-model="infoList.order_commodity_amount" class="form-control input-sm w-xs inline m-r" style="margin-right: 0">件</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2 control-label redstar">可使用商品</label>
+            <div class="col-xs-10" style="padding-top: 7px">
+                <label class="i-checks i-checks-sm" style="margin-right: 5px">
+                    <input type="radio" class="single-check1" name="couponCommodity" value="1" ng-model="infoList.commodity_scope"><i style="margin-right: 0"></i>
+                    全部货品
+                </label>
+                <label class="i-checks i-checks-sm" style="margin-right: 5px">
+                    <input type="radio" class="single-check1" name="couponCommodity" value="2" ng-model="infoList.commodity_scope"><i style="margin-right: 0"></i>
+                    按分类
+                </label>
+                <label class="i-checks i-checks-sm">
+                    <input type="radio" class="single-check1" name="couponCommodity" value="3" ng-model="infoList.commodity_scope"><i style="margin-right: 0"></i>
+                    自定义选择
+                </label>
+            </div>
+        </div>
+        <div class="form-group" ng-if="infoList.commodity_scope == '2'">
+            <label class="col-xs-2 control-label redstar">选择商品分类</label>
+            <div class="col-xs-4">
+                <select id="category" class="form-control" ng-model="infoList.category_id" required>
+                    <option value="0" ng-selected="infoList.category_id == undefined ? 'selected' : null">--选择商品分类--</option>
+                    <optgroup ng-repeat="data in cateList" label="{{data.name}}">
+                        <option ng-repeat="datas in data.cate.data" value="{{datas.id}}" ng-selected="infoList.category_id == datas.id ? 'selected' : null">{{datas.name}}</option>
+                    </optgroup>
+                </select>
+            </div>
+            <button type="button" class="btn btn-info" ng-click="add_commodity_by_category()">添加分类</button>
+        </div>
+        <div class="form-group" ng-if="infoList.commodity_scope == '3'">
+            <label class="col-xs-2 control-label redstar">选择商品</label>
+            <div class="col-xs-4">
+                <button type="button" class="btn btn-info" ng-click="add_commodity()">添加商品</button>
+            </div>
+        </div>
+        <div class="form-group" ng-if="infoList.commodity_scope != 2">
+            <label class="col-xs-2 control-label redstar">已选货品</label>
+            <div class="col-xs-10" ng-style="{'padding-top':(couponCommodity == 0) ? '7px' : ''}">
+                <span style="min-height: 200px;" class="form-control"  ng-if="infoList.commodity_scope == 3">
+                    <span class="btn m-b-xs btn-sm btn-success btn-addon" style="margin-right: 5px" ng-repeat="commodity in selecteCommodityList track by $index">{{commodity.commodity_name || commodity.option_name}} {{commodity.commodity_center_name || commodity.commodity_specification_name}}<i class="fa fa-times pull-right" ng-click="cancelCommodity($index, commodity)"></i></span>
+                </span>
+                <span ng-if="infoList.commodity_scope == 1" class="badge bg-success" style="margin-right: 5px">全部货品</span>
+            </div>
+        </div>
+        <div class="form-group"  ng-if="infoList.commodity_scope == 2">
+            <label class="col-xs-2 control-label redstar">已选分类</label>
+            <div class="col-xs-10">
+                <span style="min-height: 200px;" class="form-control">
+                    <button class="btn m-b-xs btn-sm btn-success btn-addon" style="margin-right: 5px" ng-repeat="commodity in selecteCommodityListByCategory">{{commodity.name}}<i class="fa fa-times pull-right" ng-click="deleteCategory($index)"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2 control-label redstar">参加会员</label>
+            <div class="col-xs-10" style="padding-top: 7px">
+                <label class="i-checks i-checks-sm" style="margin-right: 5px">
+                    <input type="checkbox" class="single-check1" ng-model="allLevelChecked" ng-click="selectAllLevel()"><i style="margin-right: 0"></i>
+                    全选
+                </label>
+                <label class="i-checks i-checks-sm" ng-repeat="level in levelList" style="margin-right: 5px">
+                    <input type="checkbox" class="single-check1" ng-model="level.checked" ng-click="selectLevel(level)"><i style="margin-right: 0"></i>
+                    {{level.name}}
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2 control-label redstar">参加终端</label>
+            <div class="col-xs-10 terminal" style="padding-top: 7px">
+                <label class="i-checks i-checks-sm" style="margin-right: 5px">
+                    <input type="checkbox" class="single-check1 terminalAll" ng-model="allTerminalChecked" ng-click="selectAllTerminal()"><i style="margin-right: 0"></i>
+                    全选
+                </label>
+                <label ng-repeat="terminal in setTerminalList" class="i-checks i-checks-sm" style="margin-right: 5px">
+                    <input type="checkbox" class="single-check1 terminalSingle" ng-model="terminal.checked" ng-click="selectTerminal(terminal)"><i style="margin-right: 0"></i>
+                    {{terminal.name}}
+                </label>
+            </div>
+        </div>
+        <br>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+    <button type="button" class="btn btn-primary" ng-click="ok()">保存</button>
+</div>

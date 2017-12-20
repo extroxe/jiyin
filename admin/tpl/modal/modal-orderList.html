@@ -1,0 +1,114 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body">
+    <form id="orderForm" name="orderForm" class="form-horizontal" method="POST">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">订单编号</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="infoList.number" placeholder="订单编号" ng-required="true" ng-disabled="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">优惠券</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="infoList.discount_coupon_name" placeholder="优惠券" ng-required="true" ng-disabled="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">用户名</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="infoList.user_name" placeholder="用户名" ng-required="true" ng-disabled="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">收货地址</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="infoList.address.province+infoList.address.city+infoList.address.district+infoList.address.address" placeholder="收货地址" ng-required="true" ng-disabled="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">收货人</label>
+            <div class="col-lg-4" >
+                <input type="text" class="form-control" ng-model="infoList.address.name" placeholder="收货人" ng-required="true" ng-disabled="true">
+            </div>
+            <label class="col-lg-2 control-label">收货人电话</label>
+            <div class="col-lg-4" >
+                <input type="text" class="form-control" ng-model="infoList.address.phone" placeholder="收货人电话" ng-required="true" ng-disabled="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label" ng-if="is_point == false">订单总价</label>
+            <div class="col-lg-4" ng-if="is_point == false">
+                <input type="text" class="form-control" ng-model="infoList.total_price" placeholder="订单总价" ng-required="true" ng-disabled="true">
+            </div>
+            <label class="col-lg-2 control-label" ng-if="is_point == true">使用积分</label>
+            <div class="col-lg-4" ng-if="is_point == true">
+                <input type="text" class="form-control" ng-model="infoList.total_price" placeholder="使用积分" ng-required="true" ng-disabled="true">
+            </div>
+            <label class="col-lg-2 control-label" ng-if="is_point == false">实际支付金额</label>
+            <div class="col-lg-4" ng-if="is_point == false">
+                <input type="text" class="form-control" ng-model="infoList.payment_amount" placeholder="实际支付金额" ng-required="true" ng-disabled="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">支付方式</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" ng-model="infoList.payment_id" ng-options="data.value as data.name for data in payList" required ng-disabled="true">
+                    <option value="">--请选择--</option>
+                </select>
+            </div>
+            <label class="col-lg-2 control-label">支付单号</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.payment_order" placeholder="支付单号" ng-disabled="true" ng-required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">终端类型</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" ng-model="infoList.terminal_type" ng-options="data.value as data.name for data in terminalList" required>
+                    <option value="">--请选择--</option>
+                </select>
+            </div>
+            <label class="col-lg-2 control-label redstar">订单状态</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" ng-model="infoList.status_id" ng-options="data.value as data.name for data in statusList" required>
+                    <option value="">--请选择--</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">快递公司</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" ng-model="infoList.express_company_id" ng-options="data.id as data.name for data in expressList" ng-disabled="infoList.status_id != 30 " required>
+                    <option value="">--请选择--</option>
+                </select>
+            </div>
+            <label class="col-lg-2 control-label">快递单号</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.express_number" placeholder="快递单号" ng-required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">预计完成时间</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control"ng-model="infoList.predict_complete_time" ui-datetime="datetime" placeholder="预计完成时间" ng-required="true"/>
+            </div>
+            <label class="col-lg-2 control-label">支付时间</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control"ng-model="infoList.payment_time" ui-datetime="datetime" placeholder="支付时间" ng-required="true" ng-disabled="true"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">买家留言</label>
+            <div class="col-lg-10">
+                <textarea type="text" class="form-control" ng-model="infoList.message" ng-disabled="true"/>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+    <button type="button" class="btn btn-primary" ng-click="ok()">保存</button>
+</div>

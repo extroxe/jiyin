@@ -1,0 +1,140 @@
+<div ng-controller="prizeCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">积分抽奖奖品</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                积分抽奖奖品管理表
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-primary" ng-click="addInfo()"><i class="fa fa-plus"></i> 增加</button>
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th>
+                            活动名称
+                        </th>
+                        <th>
+                            奖品名称
+                        </th>
+                        <th>
+                            奖品包装
+                        </th>
+                        <th>
+                            奖品积分
+                        </th>
+                        <th>
+                            奖品数量
+                        </th>
+                        <th>
+                            积分规则
+                        </th>
+                        <th>
+                            消费金额规则
+                        </th>
+                        <th>
+                            注册时间起止
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in prizeList">
+                        <td>{{data.sweepstakes_name}}</td>
+                        <td>{{data.commodity_name}} {{ data.commodity_center_name != null ? data.commodity_center_name : data.commodity_specification_name}}</td>
+                        <td>{{data.package_type_name}}</td>
+                        <td>{{data.point}}</td>
+                        <td>{{data.total_number}}</td>
+                        <td>{{data.user_total_point}}</td>
+                        <td>{{data.user_expenditure}}</td>
+                        <td>{{data.register_end_time}} - {{data.register_start_time}}</td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="editList(data)">编辑</button>
+                            <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="deleteData(data)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="modal fade" id="partyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="partyForm" name="partyForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">抽奖活动</label>
+                            <div class="col-lg-4">
+                                <select class="form-control m-b" ng-model="list.sweepstakes_id" ng-options="data.id as data.name for data in partyList" required>
+                                    <option value="">请选择抽奖活动</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">奖品总数</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="list.total_number" placeholder="奖品总数" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">选择商品(选填)</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="list.commodity_name" placeholder="设置商品作为奖品时，请选择商品" ng-focus="selectCommodity()" ng-disabled="ael == 'edit'">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">奖品积分(选填)</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="list.point" placeholder="设置积分作为奖品时，请输入积分" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">积分中奖规则</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="list.user_total_point" placeholder="积分中奖规则" required>
+                            </div>
+                            <label class="col-lg-2 control-label">消费总额中奖规则</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="list.user_expenditure" placeholder="消费总额中奖规则" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">注册时间段起点规则</label>
+                            <div class="col-lg-4">
+                                <input type="text" ui-datetime class="form-control" ng-model="list.register_start_time" placeholder="注册时间段起点" required>
+                            </div>
+                            <label class="col-lg-2 control-label">注册时间段终点规则</label>
+                            <div class="col-lg-4">
+                                <input type="text" ui-datetime class="form-control" ng-model="list.register_end_time" placeholder="注册时间段终点" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

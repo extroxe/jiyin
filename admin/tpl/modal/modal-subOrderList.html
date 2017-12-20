@@ -1,0 +1,87 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body">
+    <form id="subOrderForm" name="subOrderForm" class="form-horizontal" method="POST">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">订单编号</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="infoList.number" placeholder="订单编号" ng-required="true" ng-disabled="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">商品名称</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" ng-model="infoList.commodity_name" placeholder="订单编号" ng-required="true" ng-disabled="true">
+                <!--<select class="form-control m-b" ng-model="infoList.commodity_id" ng-options="data.id as data.name for data in commoList" ng-disabled="true" required>
+                    <option value="">&#45;&#45;请选择&#45;&#45;</option>
+                </select>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">商品单价</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.price" placeholder="商品单价" ng-required="true" ng-disabled="true">
+            </div>
+            <label class="col-lg-2 control-label">商品数量</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.amount" placeholder="商品数量" ng-required="true" ng-disabled="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">订单总价</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.total_price" placeholder="订单总价" ng-required="true">
+            </div>
+            <label class="col-lg-2 control-label redstar">订单获取积分</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.points" placeholder="订单获取积分" ng-required="true">
+            </div>
+        </div>
+        <!--<div class="form-group">
+            <label class="col-lg-2 control-label redstar">被检测人姓名</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.name" placeholder="被检测人姓名" ng-required="true">
+            </div>
+            <label class="col-lg-2 control-label redstar">被检测人性别</label>
+            <div class="col-lg-4">
+                <select class="form-control" ng-model="infoList.gender">
+                    <option value="">&#45;&#45;请选择&#45;&#45;</option>
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">被检测人年龄</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.age" placeholder="被检测人年龄" ng-required="true">
+            </div>
+            <label class="col-lg-2 control-label redstar">被检测人身份证号</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.identity_card" placeholder="被检测人身份证号" ng-required="true">
+            </div>
+        </div>-->
+        <div class="form-group">
+            <label class="col-lg-2 control-label">快递公司</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" ng-model="infoList.express_company_id" ng-options="data.id as data.name for data in expressList" required>
+                    <option value="">--请选择--</option>
+                </select>
+            </div>
+            <label class="col-lg-2 control-label">快递单号</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.express_number" placeholder="快递单号" ng-required="true">
+            </div>
+        </div>
+        <!--<div class="form-group" ng-controller="FileUploadCtrl" uploader="uploader" filters="queueLimit, customFilter">
+            <label for="name" class="col-sm-2 control-label no-padding-right must">上传报告(可选)</label>
+            <div data-ng-include=" '/source/admin/tpl/uploader.html' "></div>
+        </div>-->
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+    <button type="button" class="btn btn-primary" ng-click="ok()">保存</button>
+</div>

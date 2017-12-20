@@ -1,0 +1,82 @@
+<div ng-controller="packagesCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">代理商商品主页管理</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                代理商商品主页管理表 <span ng-if="total_num">(共 <strong style="color: red">{{total_num}}</strong> 条)</span>
+            </div>
+            <div class="panel-body b-b b-light">
+                <div class="col-lg-2 pull-left">
+                    <button class="btn m-b-xs  btn-primary" ng-if="is_admin" ng-click="add()"><i class="fa fa-plus"></i>添加</button>
+                </div>    
+                <div class="col-lg-10 pull-left ">
+                    <!--<div class="col-xs-3">-->
+                       <!--<div class="form-group" ng-if="role_id == 20">-->
+                           <!--<label class="col-xs-4 control-label" style="line-height: 34px">代理商：</label>-->
+                           <!--<div class="col-xs-8">-->
+                               <!--<input type="text" class="form-control" ng-model="agentName" placeholder="-&#45;&#45;请点击选择代理商-&#45;&#45;" ng-focus="getAgent()">-->
+                           <!--</div>-->
+                       <!--</div>-->
+                    <!--</div>-->
+                    <span style="margin-top: 4px; display: inline-block" ng-if="role_id == 20">
+                        代理商：<input type="text" class="form-control input-sm w-sm inline m-r" ng-model="agentName" placeholder="---请点击选择代理商---" ng-focus="getAgent()">
+                    </span>
+                    <span class="pull-right">
+                       起止时间：<input type="text" ui-datetime="" class="form-control input-sm w-sm inline m-r ng-pristine ng-touched ng-valid ng-valid-required" ng-model="register_start_time" placeholder="开始时间" required="">
+                       <input type="text" ui-datetime="" class="form-control input-sm w-sm inline m-r ng-pristine ng-touched ng-valid ng-valid-required" ng-model="register_end_time" placeholder="结束时间" required="">
+                       &nbsp;&nbsp;Search: <input id="search" type="text" ng-model="keyword" placeholder="主页名称" class="form-control input-sm w-sm inline m-r"/>
+                       <button class="btn m-b-xs  btn-success" ng-click="search()"><i class="fa fa-search"></i> 搜索</button>
+                    </span>
+                </div>
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th>
+                            代理商名称
+                        </th>
+                        <th>
+                            主页名称
+                        </th>
+                        <th>
+                            主页配色
+                        </th>
+                        <th>
+                            修改时间
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in packagesList">
+                        <td>{{data.agent_name}}</td>
+                        <td>{{data.index_name}}</td>
+                        <td>{{data.color}}</td>
+                        <td>{{data.update_time}}</td>
+                        <td>{{data.agent_id}}</td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="view_detail(data)">编辑</button>
+                            <!-- <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-if="data.flag==1" ng-click="view_detail(data.id)">查看</button> -->
+                            <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-if="is_admin" ng-click="deleteData(data.id)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <nav ng-if="totalPage > 0">
+            <ul class="pager">
+                <li><a ng-click="firstPage()">第一页</a></li>
+                <li><a ng-click="previousPage()">上一页</a></li>
+                <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 <span ng-if="total_num">(共 <strong style="color: red">{{total_num}}</strong> 条)</span> </li>
+                <li><a ng-click="nextPage()">下一页</a></li>
+                <li><a ng-click="lastPage()">最后一页</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

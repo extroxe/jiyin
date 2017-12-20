@@ -1,0 +1,10 @@
+diff a/.gitignore b/.gitignore	(rejected hunks)
+@@ -23,6 +23,8 @@
+ 
+ #source
+ source/application/*
++source/admin/vendor/*
++source/source/*
+ 
+ 
+ # IDE Files

@@ -1,0 +1,25 @@
+.post_bar .title{text-align: center;color: #fff;padding-right: 42px;}
+.group{
+    padding: 10px;
+    margin-top: 0;
+}
+.replay{
+    padding-bottom: 50px;
+}
+.replay .content{
+    min-height: 100px;
+    width: 94%;
+    border-color: #eee;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 0 auto;
+    display: block;
+}
+.replay .publish_replay{
+    border: 1px solid;
+    padding: 3px 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+    position: absolute;
+    right: 10px;
+}

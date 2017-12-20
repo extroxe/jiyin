@@ -1,0 +1,61 @@
+.post-wrapper {
+    position: relative;
+    display: inline-block;
+    flex: 1;
+    margin: 20px 20px 0 20px;
+    padding-bottom: 80px;
+}
+
+.post-wrapper .post-item {
+    padding: 10px 5px;
+    font-size: 15px;
+    line-height: 20px;
+    border-bottom: 1px dotted rgba(7, 17, 27, 0.2);
+}
+
+.post-wrapper .post-item a {
+    margin: 0 2px;
+    color: #117d94;
+}
+
+.post-wrapper .post-item .item-date {
+    float: right;
+    font-size: 12px;
+    color: rgba(7, 17, 27, 0.4);
+}
+
+.post-wrapper .post-item .post-status-draft,
+.post-wrapper .post-item .post-status-published {
+    float: right;
+    margin-right: 10px;
+    line-height: 20px;
+    font-size: 13px;
+}
+
+.post-wrapper .post-item .post-status-draft {
+    color: rgb(240, 20, 20);
+}
+
+.post-wrapper .post-page {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    bottom: 20px;
+}
+
+.post-wrapper .post-page .page-wrapper {
+    margin: 0 auto;
+}
+
+.post-wrapper .post-page .page-wrapper div {
+    display: inline-block;
+    line-height: 20px;
+    font-size: 15px;
+    padding: 2px 8px;
+    border: 1px solid rgba(7, 17, 27, 0.1);
+    border-radius: 2px;
+}
+
+.post-wrapper .post-page .page-wrapper div:hover {
+    background: rgba(7, 17, 27, 0.1);
+}

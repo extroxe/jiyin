@@ -1,0 +1,9 @@
+.health_article .title{text-align: center;color: #fff;padding-right: 42px;}
+.health_article .article{margin-top: 0; padding: 10px}
+.health_article .article_title{text-align: center;margin-bottom: 15px; margin-top: 10px;font-size: 24px;}
+.health_article .date{  position: absolute;  right: 14px;  color: #888;  }
+.health_article article{  margin-top: 45px;  font-size: 15px;  line-height: 25px; text-indent:2em;  }
+
+.group:before, .group:after{
+    height: 0px;
+}

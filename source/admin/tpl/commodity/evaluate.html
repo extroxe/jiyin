@@ -1,0 +1,72 @@
+<div ng-controller="evaluateCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">商品评价</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="row">
+            <div class="col-md-2">
+                <div>
+                    <a class="btn m-b-xs btn-sm btn-success btn-addon" style="margin-left: 35px;width: 140px" ng-if="flag == true && !specification_eva" href="#/app/commodityClass"><i class="fa fa-angle-double-left"></i>返回商品页</a>
+                    <a class="btn m-b-xs btn-sm btn-success btn-addon" style="margin-left: 35px;width: 140px" ng-if="flag == false" href="#/app/integralCommodity"><i class="fa fa-angle-double-left"></i>返回商品页</a>
+                    <a class="btn m-b-xs btn-sm btn-success btn-addon" style="margin-left: 35px;width: 140px" ng-if="flag && specification_eva" ng-click="goBack()"><i class="fa fa-angle-double-left"></i>返回商品页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="padder">
+        <div class="streamline b-l b-info m-l-lg m-b padder-v">
+            <div ng-repeat="data in evaluateList">
+                <a class="pull-left thumb-sm avatar m-l-n-md">
+                    <img ng-src="/{{data.user_avatar_path}}" alt="...">
+                </a>
+                <div class="m-l-lg panel b-a">
+                    <div class="panel-heading pos-rlt b-b b-light">
+                        <span class="arrow left"></span>
+                        <div class="form-group" >
+                            商品规格名称：<span style="color: #23ad44" ng-if="data.commodity_center_name != null">{{data.commodity_center_name}}</span>
+                            <span style="color: #23ad44" ng-if="data.commodity_center_name == null">{{data.commodity_specification_name}}</span>
+                        </div>
+                        <hr>
+                        <a href>{{data.user_username}}</a>&nbsp;&nbsp;
+                        <label class="label bg-light m-l-xs">{{data.level_name}}</label>&nbsp;&nbsp;
+                        <label>
+                            <div class="m-b text-lg">
+                                <rating ng-model="data.score" max="5" state-on="'fa fa-star text-warning'" state-off="'fa fa-star-o'" readonly="true"></rating><b>{{data.score}}星</b>
+                            </div>
+                        </label>
+                        <span class="pull-right">
+                            <span class="text-muted m-l-sm" style="display: block">
+                        评论时间：{{data.create_time}}
+                    </span>
+                        <span class="text-muted m-l-sm" style="display: block">
+                        回复时间：{{data.reply_time}}
+                    </span>
+                        </span>
+                        <button class="btn m-b-xs btn-sm btn-danger pull-right btn-addon" style="margin-top: 5px" ng-click="delete_evaluate(data.id)" >删除</button>
+                        <button class="btn m-b-xs m-r-xs btn-sm btn-info pull-right btn-addon" style="margin-top: 5px" ng-click="review_evaluate(data.id)" ng-if="data.status != 1">审核</button>
+                        <button class="btn m-b-xs m-r-xs btn-sm btn-warning pull-right btn-addon" style="margin-top: 5px" disabled ng-click="review_evaluate(data.id)" ng-if="data.status == 1">已审核</button>
+                    </div>
+                    <div class="panel-body">
+                        <div>用户评论：{{data.content}}</div>
+                        <label ng-repeat="pics in data.evaluation_pic" style="margin-right: 10px; margin-top: 5px">
+                            <img ng-src="/{{pics.path}}" style="width: 100px; height: 100px;padding: 0" class="b b-a wrapper-xs bg-white img-responsive" >
+                        </label>
+                    </div>
+                    <div class="panel-body" style="border-top:1px #eee solid ; color: #995300;">
+                        <div>回复内容：{{data.reply_content}}</div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul class="pager">
+                <li><a ng-click="firstPage()">第一页</a></li>
+                <li><a ng-click="previousPage()">上一页</a></li>
+                <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                <li><a ng-click="nextPage()">下一页</a></li>
+                <li><a ng-click="lastPage()">最后一页</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

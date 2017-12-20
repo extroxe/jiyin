@@ -1,0 +1,68 @@
+body{background-color: #fff}
+
+/*顶部*/
+.top_title{background-color: #117d94;position: absolute;top: 0; width: 100%}
+.top_title h1{text-align: center; color: #fff}
+
+/*热门推荐*/
+.underline:after{height: 0}
+.group:before, .group:after{height: 0}
+.discount .sliver{border: solid #eee;border-width: 1px 0;margin-top: 15px}
+.discount .sliver img{
+    width: 27px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.hot li{padding: 4px;margin: 5px 0}
+.hot .product_desc{position: relative}
+.hot .grid[data-col="2"] li{
+    width: 50%;}
+
+.hot .product_desc img{width: 100%; height: 152px;}
+.hot .product_desc p{
+    text-align: left;
+    height: 35px;
+    padding: 0 4px;
+    text-overflow: ellipsis;
+    max-width: 195px;
+    overflow: hidden;
+    font-size: 14px;
+    margin: 10px 0;
+    color: #444;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+.hot .product_desc span.integral_change{
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    color: #444;
+    margin-left: 3px;
+}
+.hot .product_desc span.price{
+    text-align: left;
+    margin-left: 5px;
+    margin-top: -4px;
+    color: #f6bf00;
+}
+.hot .product_desc span.sale{
+    position: absolute;
+    font-size: 13px;
+    margin-top: -16px; right: 3px;
+    color: #aaa;
+}
+
+/*夺宝抽奖*/
+.activity a{
+   border-radius: 50%;
+    /*border:1px solid #aaa;*/
+    /*background-color: #fff;*/
+}
+.activity img{
+    width: 36px;
+    height: 36px;
+}

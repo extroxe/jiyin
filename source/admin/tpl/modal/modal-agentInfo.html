@@ -1,0 +1,74 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body">
+    <form id="userForm" name="userForm" class="form-horizontal" method="POST">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">用户微信openid</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.openId" placeholder="用户微信openid" ng-required="true" disabled>
+            </div>
+            <label class="col-lg-2 control-label">代理商配色</label>
+            <div class="col-lg-4">
+                <input class="form-control" type="text" id="color" ng-model="infoList.color" name="color" value="#fff" />
+                <div id="colorpicker" style="display: none; position:absolute;z-index: 10; background: #fff; border: 1px solid #ccc"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">用户名</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.username" placeholder="用户名" ng-required="true">
+            </div>
+            <label class="col-lg-2 control-label">性别</label>
+            <div class="col-lg-4">
+                <select class="form-control" ng-model="infoList.gender" disabled>
+                    <option value="">--请选择--</option>
+                    <option value="1">男</option>
+                    <option value="0">女</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">姓名</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.name" placeholder="姓名" ng-required="true" disabled>
+            </div>
+            <label class="col-lg-2 control-label redstar">手机号</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.phone" placeholder="手机号" ng-required="true" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">邮箱</label>
+            <div class="col-lg-4">
+                <input type="email" class="form-control" ng-model="infoList.email" placeholder="邮箱" ng-required="true">
+            </div>
+            <label class="col-lg-2 control-label redstar">角色</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" ng-model="infoList.role" placeholder="角色" ng-required="true" disabled>
+            </div>
+        </div>
+        <!-- <div class="form-group" ng-controller="FileUploadCtrl" uploader="uploader" filters="queueLimit, customFilter">
+            <label for="name" class="col-sm-2 control-label no-padding-right must">上传头像(可选)</label>
+            <div data-ng-include=" '/source/admin/tpl/uploader.html' "></div>
+        </div> -->
+       <!-- <div class="form-group">
+            <label class="col-lg-2 control-label">是否显示</label>
+            <div class="col-lg-10">
+                <label class="i-switch m-t-xs m-r">
+                    <input type="checkbox" ng-model="infoList.is_show" value="{{showFlag}}">
+                    <i></i>
+                </label>
+            </div>
+        </div>-->
+        <!-- <div class="form-group" ng-controller="FileUploadCtrl" uploader="uploader" filters="queueLimit, customFilter">
+            <label for="name" class="col-sm-2 control-label no-padding-right must">上传头像(可选)</label>
+            <div data-ng-include=" '/source/admin/tpl/uploader.html' "></div>
+        </div> -->
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+    <button type="button" class="btn btn-primary" ng-if="is_admin" ng-click="ok()">保存</button>
+</div>

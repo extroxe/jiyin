@@ -1,0 +1,99 @@
+ #operation{border-bottom: 1px solid #ccc; margin: 20px 0; padding: 10px 0px 0px}
+ #operation li{display: inline-block; width: 100px;  padding: 10px 0; text-align: center}
+ #operation li.active{border-bottom:2px solid #117d94;}
+ #operation li.active a{color: #117d94}
+ #operation li a span{color: #d9534f;}
+
+ .cart_title td{ text-align: left; vertical-align: middle}
+
+ .cart_table th{font-family: "微软雅黑"; font-weight: normal; font-size: 16px;}
+
+ .cart_table tbody tr{border-bottom: 1px dashed #117d94}
+ /*.cart_table tbody tr:hover{border-color: red}*/
+ .cart_table td{ text-align: center; vertical-align: middle; border-color: #aaa; border-width: 0px 1px}
+ .cart_table td:nth-child(1){text-align: left}
+ .cart_table .operation .delt, .cart_table .operation .add{cursor: pointer}
+ .cart_table .operation .delt{opacity: 0.5; cursor: default}
+
+ #order_list_box .title{background-color: #f5f5f5;text-align: center;border: solid #ccc;border-width: 1px 0;font-weight: bold;padding: 10px 0;position: relative;color: #666;}
+
+ .cart_img{display: inline-block; width: 60px;height: 60px;background: white;margin: 4px;margin-left: 0;margin: 15px 0;}
+ .cart_img img{width: 60px; height:60px}
+
+ table {border-collapse: collapse;}
+ table tbody {border: 1px solid #117d94; margin-bottom: 50px}
+ table tbody tr:first-child td{height: 45px; padding: 0; background-color: #117d94}
+ table .order_success tr:nth-child(1) td{height: 50px; padding: 0; background-color: #ddd}
+
+
+ /*查看物流下拉框*/
+ .item_list .check_logistics_box{margin: 0; font-size: 13px; height: 41px; font-family: '微软雅黑'; width: 60px; margin: 0 auto}
+ .item_list .check_logistics_box .check_logistics_detail ul li p{
+  margin: 0;
+  text-align: left;
+  max-height: 35px;
+  padding: 0 4px;
+  word-wrap: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+ }
+ .item_list .check_logistics_box .check_logistics_detail ul li p:before{
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  margin-left: -14px;
+  background-color: #000000;
+  border-radius: 50%;
+  margin-top: 8px;
+ }
+ .item_list .check_logistics_box .check_logistics_detail ul li:first-child p:before{
+  background-color: red;
+ }
+
+ .item_list ._up{width: 0;height: 0;border-left: 7px solid transparent;
+  border-right: 7px solid transparent;border-bottom: 7px solid #117d94; margin-left: 20px;
+  position: absolute;    margin-left: 144px;  margin-top: -7px;}
+ .check_logistics_box a{color: #117d94}
+ .check_logistics_box a:hover{color: red}
+ #empty_logist{display: none}
+ .check_logistics{width: 300px;  border: 1px solid #117d94;
+  text-align: left;position: absolute;
+  margin-left: -120px;margin-top: 5px;
+  background-color: #fff;
+  display: none;
+  max-height: 302px;}
+ .check_logistics p{ margin: 10px 10px 0 10px;}
+ .check_logistics>p{font-size: 15px}
+ .check_logistics ul{ padding: 10px 10px 10px 30px;}
+ .check_logistics ul li{list-style: inherit; font-size: 13px;margin: 10px 0; text-align: left}
+ .check_logistics ul li:first-child{ color: red; }
+ .check_logistics ul li a{color: #117d94}
+ .check_logistics ul li a:hover{color: red}
+
+ .pagination ul{box-shadow: none}
+ .pagination ul > li > a, .pagination ul > li > span{
+  float: none;
+  border:none;
+  text-decoration: underline;
+ }
+ #page_num{
+  width: 20px;
+  margin-bottom: 5px;
+  text-align: center;
+ }
+
+ #empty_order{
+  text-align: center;
+  padding: 50px 0;
+  color: #117d94;
+  display: none;
+ }
+
+ .fa-truck{
+  font-size: 40px;
+  margin-top: 76px;
+  margin-right: 20px;
+  color: #117d94;
+ }

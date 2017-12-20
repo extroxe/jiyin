@@ -1,0 +1,1 @@
+"use strict";app.controller("modalAgentCtrl",["$scope","$modalInstance","_jiyin","params","FileUploader","dataToURL",function(i,t,n,o){i.infoList=o.infoList,i.title=o.title,i.ael=o.ael,i.cancel=function(){t.dismiss("cancel")},i.ok=function(){t.close(i.infoList)}}]);

@@ -1,0 +1,113 @@
+.post_bar .title{text-align: center;color: #fff;padding-right: 42px;}
+
+/*body{
+    background-color: #fff;
+}*/
+/*顶部导航*/
+.group{
+    margin-top: 0;
+}
+.group:before, .group:after{
+    height: 0;
+}
+.tabbar .tab{
+    height: 45px;
+    line-height: 45px;
+    background-color: #fff;
+}
+.tabbar-line .tab:after{
+    height: 3px;
+}
+/*搜索框*/
+.search-form {border: 1px solid #e5e5e5;}
+.search-form .icon{
+    font-size: 22px;
+}
+.search-form .input-text{padding: 7px 12px;}
+
+/*关注的吧编辑栏*/
+.focus_bar .edit{
+    padding: 7px 8px;
+    background-color: #eee;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+.focus_bar .edit span{
+    font-size: 13px;
+    color: #888;
+}
+.focus_bar .edit a{
+    font-size: 13px;
+    position: absolute;
+    margin-top: 2px;
+    right: 8px;
+}
+.focus_bar .focus_bar_list{
+    padding: 8px;
+    background-color: #f9f9f9;
+}
+
+.focus_bar .focus_bar_list li{
+    display: inline-block;
+    width: 49%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px 8px;
+    vertical-align: text-bottom;
+    background-color: #e2e2ee;
+    margin: 5px 0;
+    font-size: 16px;
+    font-family: '宋体';
+}
+
+/*推荐的吧*/
+.recommend_bar_lists{padding: 0 8px;}
+
+.recommend_bar_lists li{
+    border-top: 1px solid #eee;
+    padding: 8px 0;
+}
+.recommend_bar_lists li .post_bar_portrait{
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    float: left;
+}
+.recommend_bar_lists li .post_info{
+    float: left;
+    line-height: 22px;
+    margin-left: 10px;
+}
+.recommend_bar_lists li .post_info .post_bar_name{
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0;
+    font-size: 15px;
+    font-weight: 400;
+    color: #262626;
+}
+.recommend_bar_lists li .post_info .focus_post_num{
+    display: block;
+    font-size: 13px;
+    color: #7a7c80;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.recommend_bar_lists li .post_info .recently_hot{
+    display: block;
+    color: #ccc;
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.recommend_bar_lists li .focus_btn{
+    position: absolute;
+    margin-top: 20px;
+    right: 8px;
+    padding: 0 15px;
+    height: 26px;
+}

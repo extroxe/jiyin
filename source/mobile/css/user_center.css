@@ -1,0 +1,105 @@
+article > div {
+    padding: 10px 15px;
+    background-color: #FFFFFF;
+}
+
+article a {
+    color: #333333;
+}
+
+.avatar-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.level-icon {
+    width: 20px;
+    height: 20px;
+    left: 68px;
+    margin-top: 50px;
+    position: absolute;
+}
+
+.item-info {
+    padding: 20px 10px;
+}
+
+.level-flag {
+    color: #F6BF00;
+    padding: 0 2px;
+    margin-left: 2px;
+    border: 1px solid #F6BF00;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.item-info > p:nth-child(2) {
+    margin-top: 5px;
+    color: #999999;
+}
+
+.right-arraow {
+    position: absolute;
+    right: 15px;
+    margin: 30px 0;
+}
+
+.item-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+
+article > div > span:nth-child(3) {
+    margin-top: 5px;
+}
+
+article hr {
+    width: 84%;
+    float: right;
+}
+
+@media only screen and (max-width: 320px){
+    article {
+        font-size: 13px;
+    }
+
+    article > div {
+        padding: 8px 12px;
+    }
+
+    .avatar-img {
+        width: 50px;
+        height: 50px;
+        padding: 8px;
+    }
+
+    .level-icon {
+        width: 18px;
+        height: 18px;
+        left: 58px;
+        margin-top: 40px;
+    }
+
+    .item-info {
+        padding: 15px 10px;
+    }
+
+    .item-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 15px;
+    }
+
+    article > div > span:nth-child(3) {
+        margin-top: 3px;
+    }
+
+    article > div > span:nth-child(3) i {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+    }
+}

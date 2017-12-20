@@ -1,0 +1,239 @@
+body{background-color: #fff}
+/*头部*/
+.titlebar{background-color: #117d94!important;}
+.titlebar h1{
+    color: #eee;
+    text-align: center;
+    padding-right: 32px;
+}
+
+/*导航*/
+.tabbar .tab{
+    height: 45px;
+    padding :5px;
+    line-height: 45px;
+}
+
+.tab{background-color: #fff}
+.group{
+    background-color: #f9f9f9;
+    padding-bottom: 15px;
+    margin: 0;
+}
+
+.tab span{
+    color: #d9534f;
+    font-size: 13px;
+}
+
+
+/*商品列表*/
+
+.card:last-child{
+    padding-bottom: 0;
+    /*border-bottom: 1px solid #eee;*/
+}
+.group:before, .group:after{height: 0}
+
+/*商品图片信息*/
+.not_paid{color:#d9534f}
+.paid{color: #20aeff}
+
+.card .inputbox {
+    display: flex;
+    border: #eee solid;
+    border-width: 1px 0;
+    padding: 15px 20px;
+}
+
+.card .order_number,
+.card .info-box > div {
+    padding: 10px 20px;
+    color: #666666;
+}
+.card .order_number{background-color: #fff}
+.card .order_number span:nth-child(3){
+    position: absolute;
+    right: 20px;
+    color: #20aeff;
+}
+.card .commodity_info{
+    border-top: 0;    border-top: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 10px 20px;
+    text-align: right;
+}
+.card .commodity_info label{margin-right: 5px}
+.card .info-box .info-title {
+    color: #333333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding-bottom: 0;
+    height: 50px;
+    width: 100%;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+
+.card img {
+    width: 100px;
+    height: 100px;
+}
+
+.card .inputbox:last-child .info-box{
+    border: none;
+}
+.card .inputbox:last-child .item-num{
+    bottom:10px;
+}
+
+.card .item-num {
+    position: absolute;
+    right: 25px;
+    bottom: 33px;
+}
+.card .apply-refund{
+    position: absolute;
+    bottom: 5px;
+    right: 21px;
+    color: #35b558;
+    border: 1px solid #35b558;
+    height: 25px;
+}
+
+.card .inputbox .input-text{
+    padding: 8px 12px;
+}
+
+.card .inputbox.message {
+    padding: 10px 20px;
+}
+
+.card .item-span-right {
+    position: absolute;
+    right: 20px;
+    top: 18px;
+}
+
+/*按钮*/
+.button_footer{
+    padding: 12px 20px;
+    background-color: #fff;
+    margin: 0; text-align: right;
+}
+.button{
+    background-color: #fff;
+    height: 35px;
+    border-radius: 2px;
+}
+.button_footer .review{
+    color: #777;
+    border: 1px solid #ddd;
+}
+.button_footer .buy_again{
+    margin-left: 20px;
+    color: #20aeff;
+    border: 1px solid #20aeff;
+}
+
+.dropload-load .loading{
+    border: none;
+    height: 16px;
+    width: 16px;
+}
+
+/*退款*/
+/*选择规格*/
+#page_2{
+    position: fixed;
+}
+#page_2 article{
+    padding: 8px 12px 100px;
+    top: initial;
+    overflow: visible;
+}
+#page_2 article .commodity-detail{
+    display: flex;
+    position: relative;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+#page_2 article .commodity-detail .img{
+    width: 80px!important;
+    height: 80px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    margin-top: -26px;
+}
+#page_2 article .commodity-detail .info{
+    margin-left: 10px;
+    font-size: 13px;
+    color: #666;
+    position: relative;
+    width: 65%;
+}
+#page_2 article .commodity-detail .info span:first-child{
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 2px;
+}
+#page_2 article .commodity-detail .close{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#page_2 .confirm{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background: #117d94;
+    color: #fff;
+    padding: 10px;
+}
+#page_2 .close{
+    background-color: #eee;
+    color: #999;
+}
+
+#page_2 .group{
+    padding-bottom: 0!important;
+}
+#page_2 .group input{
+    text-align: right;
+}
+ul.scrollpicker-slot li, .scrollpicker-slot ul li{
+    text-align: center;
+}
+
+
+@media(max-width: 320px){
+    .tab{padding: 0}
+    .tab-label {font-size: 14px}
+    .tab span{font-size: 12px}
+}
+
+.loading:before, .loading:after{width: 0; height: 0}
+
+.load_done{
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+.dropload-up, .dropload-down{
+    font-size: 14px;
+}
+
+

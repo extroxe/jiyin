@@ -1,0 +1,5 @@
+#page-content .pay li{ margin: 10px 10px;padding-left: 10px; line-height: 50px; border:2px dotted rgba(17,125,148,0);}
+/*#page-content .pay li{ }*/
+#page-content .pay li:hover{ border:2px dotted rgba(17,125,148,0.4);}
+#page-content .pay li.active{ border:2px dotted #117d94;}
+#page-content .pay li input{ margin:-3px 10px 0 0}

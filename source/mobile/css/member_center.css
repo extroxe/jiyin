@@ -1,0 +1,28 @@
+.table-box table {
+    border:none;
+}
+
+.table-box table thead {
+    border:none;
+    color: #666666;
+}
+
+.table-box table tbody {
+    border:none;
+    color: #333333;;
+}
+
+.table-box tr {
+    border-style: solid none;
+    border-color: #dadada;
+    border-width: 1px;
+}
+.table-box table thead tr {
+    border-style: none;
+}
+.table-box th {
+    border-style: none;
+    border-color: #dadada;
+    border-width: 1px;
+    text-align: center;
+}

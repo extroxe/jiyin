@@ -1,0 +1,104 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body">
+    <form id="disForm" name="disForm" class="form-horizontal" method="POST">
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">名称</label>
+            <div class="col-lg-10">
+                <input type="text" readonly class="form-control" ng-model="infoList.name" placeholder="名称" ng-required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">角色</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" readonly ng-model="infoList.role_id" ng-options="data.value as data.name for data in roleList" required>
+                    <option value="">--请选择--</option>
+                </select>
+            </div>
+            <label class="col-lg-2 control-label">使用规则</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" readonly ng-model="infoList.role_rule" required>
+                    <option value="1">同时满足（AND）</option>
+                    <option value="0">任意满足（OR）</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">订单金额</label>
+            <div class="col-lg-4">
+                <input type="text" readonly class="form-control" ng-model="infoList.total_cost" placeholder="订单金额" ng-required="true">
+            </div>
+            <label class="col-lg-2 control-label">使用规则</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" readonly ng-model="infoList.total_cost_rule" required>
+                    <option selected value="1">同时满足（AND）</option>
+                    <option value="0">任意满足（OR）</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">订单商品数量</label>
+            <div class="col-lg-4">
+                <input type="text" readonly class="form-control" ng-model="infoList.commodities_count" placeholder="订单商品数量" ng-required="true">
+            </div>
+            <label class="col-lg-2 control-label">使用规则</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" readonly ng-model="infoList.commodities_count_rule" required>
+                    <option selected value="1">同时满足（AND）</option>
+                    <option value="0">任意满足（OR）</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">会员等级</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" readonly ng-model="infoList.member_level_id" ng-options="data.id as data.name for data in levelList" required>
+                    <option value="">--请选择--</option>
+                </select>
+            </div>
+            <label class="col-lg-2 control-label">使用规则</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" readonly ng-model="infoList.member_level_id_rule" required>
+                    <option  value="1">同时满足（AND）</option>
+                    <option value="0">任意满足（OR）</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">下单终端</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" readonly ng-model="infoList.client_id" required>
+                    <option selected="selected" value="0">全部</option>
+                    <option value="1">网站</option>
+                    <option value="2">微信</option>
+                    <option value="3">APP</option>
+                </select>
+            </div>
+            <label class="col-lg-2 control-label">使用规则</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" readonly ng-model="infoList.client_rule" required>
+                    <option value="1">同时满足（AND）</option>
+                    <option value="0">任意满足（OR）</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label redstar">单件商品邮费</label>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" readonly ng-model="infoList.single_postage" placeholder="单件商品邮费" ng-required="true">
+            </div>
+            <label class="col-lg-2 control-label">使用规则</label>
+            <div class="col-lg-4">
+                <select class="form-control m-b" readonly ng-model="infoList.single_postage_rule" required>
+                    <option value="1">同时满足（AND）</option>
+                    <option value="0">任意满足（OR）</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+</div>

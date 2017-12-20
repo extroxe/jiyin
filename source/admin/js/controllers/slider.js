@@ -1,0 +1,1 @@
+app.controller("SliderCtrl",function(n){n.cost=40,n.range={min:30,max:60},n.currencyFormatting=function(n){return"$"+n.toString()}});

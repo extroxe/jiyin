@@ -1,0 +1,127 @@
+<style>
+    .commodity-detail{
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #1797be;
+    }
+    .areaList .province,
+    .areaList .city,
+    .areaList .district{
+        max-height: 600px;
+        overflow-y: auto;
+    }
+    .areaList,
+    .areaList .province,
+    .areaList .city,
+    .areaList .district,
+    .areaList .city .col-md-2,
+    .areaList .col-xs-2,
+    .areaList .col-xs-8
+    {
+        padding: 0;
+    }
+    .province-title,
+    .city-title,
+    .district-title,
+    .condition,
+    .freight{
+        padding: 10px 13px;
+        border: 1px solid #eee;
+        background-color: #6e8392;
+        color: #fff;
+    }
+</style>
+
+
+<div ng-controller="freightCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">运费管理</h1>
+    </div>
+    <div class="wrapper-md" sw-auth="get_all_postage">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                运费管理表
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-success" sw-auth="set_postage" ng-click="submitPostageRule()">保存</button>
+            </div>
+            <div class="panel-body b-b b-light">
+                <div class="row">
+                    <div class="col-xs-12 areaList">
+                        <div class="col-xs-2">
+                            <div class="province-title">
+                                省
+                            </div>
+                            <div class="province">
+                                <table class="table table-bordered table-striped table-hover b-t b-light">
+                                    <tbody>
+                                    <tr class="province-tr" data-code="{{province.adcode}}" ng-repeat="province in provinceList" repeat-finish>
+                                        <td ng-click="getCity(province.name, province.adcode, $event)">
+                                            {{province.name}}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="city-title">
+                                市
+                            </div>
+                            <div class="city" id="city">
+
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="district-title" style="padding: 10px 13px">
+                                <span class="col-xs-6">区</span>
+                                <!-- <span class="col-xs-4">减免条件</span> -->
+                                <span>邮费</span>
+                            </div>
+                            <div class="district">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="city_tpl">
+    <table class="table table-bordered table-striped table-hover b-t b-light">
+        <tbody>
+        <% for (var i = 0; i < data.length; i++) {%>
+        <tr>
+            <td class="cityTr" data-city-code="<%:= data[i].adcode %>" data-city-name="<%:= data[i].name %>" ng-click="getDistrict(city.name,city.adcode, $event)"> <%:= data[i].name %></td>
+        </tr>
+        <%}%>
+        </tbody>
+    </table>
+</script>
+
+<script type="text/html" id="district_tpl">
+    <table class="table table-bordered table-striped table-hover b-t b-light">
+        <tbody>
+        <% for (var i = 0; i < data.length; i++) {%>
+        <tr>
+            <td>
+                <div class="col-xs-4 district-name" ><%:= data[i].name ? data[i].name : data[i].district %></div>
+                <!-- <div class="col-xs-4">
+                    <input data-district-code="<%:= data[i].adcode%>" data-city-code="<%:= data[i].city_code%>" value="<%:= data[i].condition %>" class="form-control postage-condition input-sm w-xs inline s-r ng-pristine ng-untouched ng-valid" type="text"/>
+                    元
+                </div> -->
+                <div class="col-xs-4">
+                    <input data-district-code="<%:= data[i].adcode ? data[i].adcode : data[i].district_code%>" data-city-code="<%:= data[i].city_code%>" value="<%:= data[i].price %>" class="form-control postage-price input-sm w-xs inline s-r ng-pristine ng-untouched ng-valid" type="text"/>
+                    元
+                </div>
+            </td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+</script>

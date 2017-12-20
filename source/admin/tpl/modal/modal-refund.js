@@ -1,0 +1,1 @@
+"use strict";app.controller("modalRefundCtrl",["$scope","$modalInstance","_jiyin","params",function(s,i,n,t){s.infoList=t.infoList,s.title=t.title,s.ael=t.ael,s.infoList.address=s.infoList.address.province+s.infoList.address.city+s.infoList.address.district+s.infoList.address.address,s.cancel=function(){i.dismiss("cancel")},s.ok=function(){i.dismiss("cancel")}}]);

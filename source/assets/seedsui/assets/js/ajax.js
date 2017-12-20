@@ -1,0 +1,143 @@
+//Ajax
+(function(window,document,undefined){
+	window.Ajax=function(params){
+		/*================
+		Model
+		================*/
+		var defaults={
+			url:null,
+			type:"get",
+			async:true,
+			dataType:null,
+			context:null,
+			contentType:"application/x-www-form-urlencoded",
+			timeout:5000,
+			/*
+            Callbacks:
+            onSuccess:function(text)
+			onFail:function(Event)
+			onProgress:function(position,totalSize)
+			onTimeout:function(Event);
+			*/
+		}
+		params=params||{};
+		for(var def in defaults){
+			if(params[def]==undefined){
+				params[def]=defaults[def];
+			}
+		}
+		var s=this;
+		s.params=params;
+		s.xhr=new XMLHttpRequest();
+		s.formData=new FormData();
+		
+		/*================
+		Method
+		================*/
+		Ajax.jsonpCallback=function(data){
+			if(s.params.onSuccess)s.params.onSuccess(data);
+		}
+		s.setUrl=function(url){
+			s.params.url=url;
+		}
+		s.setType=function(type){
+			s.params.type=type;
+		}
+		s.setOnSuccess=function(fn){
+			s.params.onSuccess=fn;
+		}
+		s.setOnFail=function(fn){
+			s.params.onFail=fn;
+		}
+		s.addGetParam=function(name,value){//为get请求添加参数
+			var url=s.params.url;
+			url+=(url.indexOf("?")==-1?"?":"&");
+			url+=encodeURIComponent(name)+"="+encodeURIComponent(value);
+			s.params.url=url;
+		}
+		s.addPostParam=function(name,value){//为post请求添加参数
+			s.formData.append(name,value);
+		}
+		s.connect=function(){
+			if(!s.params.url)return;
+			if(s.params.dataType==="jsonp"){//Jsonp
+				var url=s.params.url;
+				url+=(url.indexOf("?")==-1?"?":"&");
+				if(s.script){
+					document.body.removeChild(s.script);
+					s.script=null;
+				}
+				s.script=document.createElement("script");
+				s.script.src=url+"callback=Ajax.jsonpCallback";
+				s.script.onerror=s.onScriptError;
+				document.body.insertBefore(s.script,document.body.firstChild);
+			}else{//非Jsonp
+				s.xhr.timeout=s.params.timeout;
+				s.xhr.open(s.params.type,s.params.url,s.params.async);
+				s.xhr.setRequestHeader("Content-Type",s.params.contentType);
+	            s.xhr.send(s.formData);
+			}
+		}
+		s.abort=function(){
+			s.xhr.abort();
+		}
+		/*================
+		Control
+		================*/
+		s.onScriptError=function(){
+			if(s.params.onFail)s.params.onFail(e);
+		}
+        s.events=function(detach){
+            var target=s.xhr;
+            var action=detach?"removeEventListener":"addEventListener";
+            //target[action]("readystatechange",s.onReadystateChange,false);
+            target[action]("load",s.onLoad,false);
+            target[action]("progress",s.onProgress,false);
+            target[action]("timeout",s.onTimeout,false);
+        }
+        //attach、dettach事件
+        s.attach=function(event){
+            s.events();
+        }
+        s.detach=function(event){
+            s.events(true);
+        }
+		/*s.onReadystateChange=function(e){
+			console.log("readyState:"+s.xhr.readyState+
+                    ";status:"+s.xhr.status+
+                    ";statusText:"+s.xhr.statusText+
+                    ";responseText:"+s.xhr.responseText+
+                    ";responseXML:"+s.xhr.readyState);
+			if(s.xhr.readyState==4){
+				if((s.xhr.status>=200 && s.xhr.status<300) || s.xhr.status==304){
+	            	if(s.params.onSuccess)s.params.onSuccess(s.xhr.responseText);
+	            }else{
+	            	if(s.params.onFail)s.params.onFail(e);
+	            }
+			}
+		}*/
+		s.onLoad=function(e){
+			if((s.xhr.status>=200 && s.xhr.status<300) || s.xhr.status==304){
+            	if(s.params.onSuccess)s.params.onSuccess(s.xhr.responseText);
+            }else{
+            	if(s.params.onFail)s.params.onFail(e);
+            }
+		}
+		s.onProgress=function(e){
+			if(s.params.onProgress)s.params.onProgress(e.position,e.totalSize);
+		}
+		s.onTimeout=function(e){
+			if(e.lengthComputable){
+				if(s.params.onTimeout)s.params.onTimeout(e);
+			}
+		}
+		/*================
+		Init
+		================*/
+		s.init=function(){
+			s.attach();
+			s.connect();
+		}
+		s.init();
+	}
+})(window,document,undefined);

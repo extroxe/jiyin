@@ -1,0 +1,100 @@
+/*订单详情 ul*/
+#page-content .title{padding:20px 0 10px 10px; margin: 10px auto 20px auto;}
+#page-content .title{padding-bottom: 0;border-bottom: 1px solid #eee;padding-bottom: 0}
+#page-content .title li{color:#117d94;margin-left: -10px; padding-bottom: 10px;width:85px; text-align:center;border-bottom: 1px solid #117d94}
+
+/*进度条 ul*/
+#page-content #progress_bar{margin: 10px 0}
+#page-content #progress_bar ul li{width: 250px; text-align: center; display: inline-block; border: 1px solid #fff; vertical-align: top}
+#page-content #progress_bar li {margin: 20px 0; font-size: 15px}
+#page-content #progress_bar li>div p{margin-bottom: 0; font-size: 10px}
+#page-content #progress_bar li>div p:nth-child(1){font-size: 15px}
+#page-content #progress_bar li div:nth-child(2) span{line-height: 100px}
+#page-content #progress_bar li span{font-size: 10px}
+#page-content #progress_bar li span.operate_img{font-size: 30px; color: #bbb; margin: 20px 0}
+#page-content #progress_bar li span.active{color: #117d94}
+
+
+/*收货信息*/
+#page-content #receving_info div.recving_info_list{border: 1px solid #7AC5CD; padding: 20px 10px; background-color: #f2f7ff}
+#receving_info .recving_info_list li{width: 250px; height: 222px; border-right: 1px solid #eee; display: inline-block; margin:0 11px; vertical-align: top}
+#receving_info .recving_info_list li label{width: 90px; font-size: 14px; display: inline-block;}
+#receving_info .recving_info_list li .add label{float: left; line-height: 40px}
+#receving_info .recving_info_list li .add p{width: 115px; font-size: 12px; display: inline-block;margin: 10px 0 0}
+#receving_info .recving_info_list li span{font-size: 13px}
+#receving_info .recving_info_list li p{font-size: 13px; display: inline-block}
+#receving_info .recving_info_list li>p{font-size: 16px; display: block}
+
+/*商品详情*/
+#page-content table.cart_title{margin: 30px 0}
+#page-content .cart_title td{ text-align: left; vertical-align: middle}
+#page-content .cart_table th{font-family: "微软雅黑"; font-weight: normal; font-size: 16px;}
+#page-content .cart_table tbody tr{border-bottom: 1px dashed #7AC5CD}
+/*#page-content .cart_table tbody tr:hover{border-color: red}*/
+#page-content .cart_table td{ text-align: center; vertical-align: middle; border-color: #aaa; border-width: 0px 1px}
+#page-content .cart_table td:nth-child(1){text-align: left}
+#page-content .cart_table .operation .delt, .cart_table .operation .add{cursor: pointer}
+#page-content .cart_table .operation .delt{opacity: 0.5; cursor: default}
+.commodity-name{
+    font-family: '微软雅黑';
+    font-size: 13px;
+    max-width: 287px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+}
+
+#order_list_box .title{background-color: #f5f5f5;text-align: center;border: solid #ccc;border-width: 1px 0;font-weight: bold;padding: 10px 0;position: relative;color: #666;}
+
+.cart_img{display: inline-block; width: 90px;height: 60px;background: white; margin: 15px 0 15px 10px;}
+.cart_img input{display: inline-block; margin: 0 10px 0 0px }
+.cart_img img{width: 60px; height:60px}
+
+#page-content table {border-collapse: collapse;}
+#page-content table tbody {border-top: 15px solid white;}
+#page-content table tbody tr:nth-child(1) td{height: 50px; padding: 0; background-color: #f2f7ff}
+#page-content table .order_success tr:nth-child(1) td{height: 50px; padding: 0; background-color: #ddd}
+
+/* 金额 */
+#page-content #bottom_box{ width: 300px; text-align: right; float: right; margin: 20px}
+#page-content #bottom_box label{display: inline-block; width: 80px; text-align: left}
+#page-content #bottom_box p{display: inline-block; width: 70px; margin: 0; font-size: 13px}
+
+/* 寄回信息模态框*/
+#send_back_modal .modal-header{padding:20px}
+.model_box{
+    margin-left: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+.model_box label{
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+    margin-right: 20px;
+    color:#117d94;
+}
+h4.modal-title{
+    font-family: '微软雅黑';
+    font-weight: normal;
+    font-size: 25px;
+    color: #444;
+}
+
+/*立即支付*/
+.pay-directly{
+    background-color: #f2f7ff;
+    color: #000;
+    margin-top: 11px;
+    border: 1px solid #117d94;
+    border-radius: 0px;
+    text-shadow: none;
+}
+.pay-directly:hover{
+    background-color: #117D94;
+    color: #fff;
+    text-decoration: none;
+}

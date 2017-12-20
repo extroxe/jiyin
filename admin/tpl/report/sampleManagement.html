@@ -1,0 +1,164 @@
+<div ng-controller="sampleManagementCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">样本管理
+            <span style="font-size: 14px; font-weight: bold; color: #0a1015;"> （共 {{totalNum}} 条，{{totalPage}}页）</span>
+        </h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                样本管理表
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-primary" ng-click="downloadSamples()"> 下载到Excel</button>
+                <button class="btn m-b-xs  btn-primary" ng-click="downloadSamplesForCSV()"> 下载到CSV</button>
+                <button class="btn m-b-xs  btn-primary" ng-click="inputToExport()"> 检测码导出</button>
+                <span class="pull-right">
+                         起止时间：<input type="text" ui-datetime=""
+                                     class="form-control input-sm w-sm inline m-r ng-pristine ng-touched ng-valid ng-valid-required"
+                                     ng-model="register_start_time" placeholder="起始日期" required="">
+                         <input type="text" ui-datetime=""
+                                class="form-control input-sm w-sm inline m-r ng-pristine ng-touched ng-valid ng-valid-required"
+                                ng-model="register_end_time" placeholder="结束日期" required="">
+                         是否已填写用户信息：<div class="btn-group dropdown" dropdown>
+                            <button class="btn btn-success " dropdown-toggle>{{checkState[0]}} <span
+                                    class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href ng-click="stateFlagSub()">{{checkState[1]}}</a></li>
+                                <li><a href ng-click="stateFlagNsub()">{{checkState[2]}}</a></li>
+                                <li><a href ng-click="stateFlagReset()">{{checkState[3]}}</a></li>
+                            </ul>
+                         </div>
+                         Search: <input auto-focus id="filter" type="text" ng-model="keyword"
+                                        class="form-control input-sm w-sm inline m-r"/>
+                         <button class="btn m-b-xs  btn-success" ng-click="search()"><i
+                                 class="fa fa-search"></i> 搜索</button>
+                </span>
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <input style="position:absolute; margin: 16px 0 0 15px" type="checkbox" name="chickenEgg"
+                               ng-model="select_all" ng-change="selectAll()">
+                        <th style="visibility: hidden">
+                        </th>
+                        <th>
+                            检测码
+                        </th>
+                        <th>
+                            检测人
+                        </th>
+                        <th>
+                            联系方式
+                        </th>
+                        <th>
+                            联系地址
+                        </th>
+                        <!--<th>-->
+                        <!--血缘关系-->
+                        <!--</th>-->
+                        <th>
+                            上传时间
+                        </th>
+                        <th>
+                            商品(规格)名称
+                        </th>
+                        <th>
+                            项目
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in reportList">
+                        <td>
+                            <input type="checkbox" name="chickenEgg" value="chicken" ng-model="data.checked"
+                                   ng-change="selectOne()">
+                        </td>
+                        <td>{{data.number}}</td>
+                        <td>{{data.name}}</td>
+                        <td>{{data.phone}}</td>
+                        <td>{{data.province + data.city + data.district}}</td>
+                        <!--<td ng-if="data.blood_relationship == 10">父亲</td>-->
+                        <!--<td ng-if="data.blood_relationship == 20">母亲</td>-->
+                        <!--<td ng-if="data.blood_relationship == 30">哥哥</td>-->
+                        <!--<td ng-if="data.blood_relationship == 40">弟弟</td>-->
+                        <!--<td ng-if="data.blood_relationship == 50">姐姐</td>-->
+                        <!--<td ng-if="data.blood_relationship == 60">妹妹</td>-->
+                        <!--<td ng-if="data.blood_relationship == 70">爷爷</td>-->
+                        <!--<td ng-if="data.blood_relationship == 80">奶奶</td>-->
+                        <!--<td ng-if="data.blood_relationship == 90">舅舅</td>-->
+                        <!--<td ng-if="data.blood_relationship == 100">叔叔</td>-->
+                        <!--<td ng-if="data.blood_relationship == 110">阿姨</td>-->
+                        <!--<td ng-if="data.blood_relationship == 120">姑姑</td>-->
+                        <!--<td ng-if="data.blood_relationship == 130">本人</td>-->
+                        <!--<td ng-if="data.blood_relationship == 140">爱人</td>-->
+                        <!--<td ng-if="data.blood_relationship == 150">孩子</td>-->
+                        <!--<td ng-if="data.blood_relationship == 160">其他</td>-->
+                        <!--<td ng-if="data.blood_relationship == NULL"> </td>-->
+                        <td>{{data.update_time}}</td>
+                        <td>{{data.commodity_specification_name || data.erp_commodity_specification_name}}</td>
+                        <td>{{data.project}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="float: left; margin-top: 27px">
+                <ul class="pull-left" style="list-style:none;">
+                    <li style="float:left;">每页显示</li>
+                    <li style="float:left; margin-left: 10px"><select ng-model="pageSize" ng-change="search()">
+                        <option value=10>10</option>
+                        <option value=50>50</option>
+                        <option value=100>100</option>
+                        <option value=300>300</option>
+                        <option value=500>500</option>
+                    </select>&nbsp;&nbsp;条
+                    </li>
+                </ul>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center"
+                                      ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页
+                    </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="modal fade" id="reportExportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">录入检测码导出</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="reportInputForm" name="reportInputForm" class="form-horizontal" method="POST" action="/admin/report_admin/download_report_from_input/">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">检测码</label>
+                            <div class="col-lg-6">
+                                <textarea id="reportInputCode" rows="20" cols="100" name="number" placeholder="请输入需要导出的检测码" ng-model="inputNumber" wrap="hard"></textarea>
+                            </div>
+                            <input id="is_excel" type="hidden" ng-model="is_excel" name="is_excel">
+                            <input id="real_number" type="hidden" ng-model="is_excel" name="real_number">
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" ng-click="downloadSamplesFromInput(1)">导出到Excel</button>
+                        <button type="button" class="btn btn-primary" ng-click="downloadSamplesFromInput(0)">导出到CSV</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,132 @@
+header .titlebar h1 {
+    margin-right: 40px;
+}
+
+.address-item {
+    margin-top: 20px;
+}
+
+.address-item:nth-child(1) {
+    margin-top: 0;
+}
+
+.address-item .item {
+    padding: 15px;
+    background-color: #FFFFFF;
+}
+
+.address-item .item-title > span:nth-child(2) {
+    line-height: 25px;
+    float: right;
+}
+
+.address-item .item-info {
+    color: #666666;
+    font-size: 14px;
+    margin-top: 25px;
+}
+
+.address-item input[type=radio]:checked {
+    color: #117D94;
+}
+
+.address-item .item-operation > span:nth-child(2) {
+    margin-left: 10px;
+}
+
+.address-item .item-operation > span:nth-child(3),
+.address-item .item-operation > span:nth-child(4) {
+    float: right;
+}
+
+.address-item .item-operation > span:nth-child(4) {
+    margin-right: 5px;
+}
+
+.address-item .item-operation img {
+    width: 20px;
+    margin: 0 10px;
+}
+
+.item-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    background-color: #F9F9F9;
+}
+
+.item-footer button {
+    margin-top: 10px;
+    font-size: 18px;
+    padding: 0 100px;
+    border-radius: 3px;
+    background-color: #117D94;
+}
+
+#page_modify article > div {
+    padding: 0 15px;
+}
+
+#page_modify article > div input {
+    text-align: right;
+    padding-right: 0;
+}
+
+#page_modify article > div .switch.notext {
+    width: 60px;
+    height: 25px;
+    top: 1px;
+}
+
+#page_modify article > div .switch-handle {
+    width: 22px;
+    height: 22px;
+}
+
+#page_modify article > div .switch.active {
+    border-color: #117D94;
+}
+
+#page_modify article > div .switch.active .switch-handle {
+    background: #117D94;
+}
+
+#page_modify article > div .notext.switch.active .switch-handle {
+    -webkit-transform: translate(35px, -50%);
+}
+
+#page_modify article .sub-btn {
+    text-align: center;
+    background-color: #F9F9F9;
+}
+
+#page_modify article .sub-btn button {
+    margin-top: 80px;
+    font-size: 18px;
+    padding: 0 100px;
+    border-radius: 3px;
+    background-color: #117D94;
+}
+
+#page_modify article select {
+    width: 90px;
+    padding-left: 0;
+    direction: rtl;
+}
+
+@media only screen and (max-width: 320px) {
+    .address-item .item-operation {
+        font-size: 14px;
+    }
+
+    .address-item .item-operation img {
+        width: 20px;
+    }
+
+    .address-item .item-operation > span:nth-child(3),
+    .address-item .item-operation > span:nth-child(4) {
+        margin-top: 3px;
+    }
+}

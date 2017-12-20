@@ -1,0 +1,155 @@
+header .titlebar h1 {
+    margin-right: 40px;
+}
+
+.tabbar.tabbar-line.animate li {
+    background-color: #FFFFFF;
+}
+
+.tabbar-line .tab.active {
+    color: #F6BF00;
+}
+
+.tabbar-line .tab.active:after {
+    background-color: #F6BF00;
+    width: 30%;
+}
+
+.item-content .item {
+    display: flex;
+    height: 140px;
+    margin-left: 5%;
+    margin-top: 15px;
+}
+
+.item-content .receive {
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-image: url('../img/discount-coupon.png');
+}
+
+.item-content .received {
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-image: url('../img/discount-coupon-received.png');
+}
+
+.item .discount-privilege {
+    color: #FFFFFF;
+    margin: 25px 0 0 20px;
+    font-size: 26px;
+    font-weight: 700;
+    width: 140px;
+}
+
+.item .discount-privilege span {
+    font-size: 48px;
+    font-stretch: condensed;
+    vertical-align: baseline;
+}
+
+.item .discount-condition {
+    color: #FFFFFF;
+    margin-top: 28px;
+    font-size: 15px;
+    text-align: center;
+    width: 80px;
+}
+
+.item .discount-condition p:nth-child(2) {
+font-size: 22px;
+    font-weight: 700;
+}
+
+.item .discount-btn {
+    margin: 35px 0 0 30px;
+}
+
+.item .discount-btn button {
+    height: 32px;
+    color: #FFFFFF;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #FFFFFF;
+    background-color: transparent;
+}
+
+.item .discount-bottom {
+    position: absolute;
+    margin-top: 102px;
+    margin-left: 20px;
+    color: #999999;
+    left: 20px;
+}
+
+@media only screen and (max-width: 375px) {
+    .item .discount-privilege {
+        width: 130px;
+        margin: 23px 0 0 20px;
+    }
+
+    .item .discount-privilege span {
+        font-size: 43px;
+    }
+
+    .item .discount-condition {
+        font-size: 14px;
+        margin-top: 25px;
+        width: 80px;
+    }
+
+    .item .discount-condition p:nth-child(2) {
+        font-size: 20px;
+    }
+
+    .item .discount-btn {
+        margin: 35px 0 0 0;
+    }
+
+    .item .discount-btn button {
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .item .discount-bottom {
+        margin-top: 92px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .item .discount-privilege {
+        margin: 20px 0 0 20px;
+        font-size: 20px;
+        width: 115px;
+    }
+
+    .item .discount-privilege span {
+        font-size: 37px;
+    }
+
+    .item .discount-condition {
+        font-size: 13px;
+        margin-top: 20px;
+        width: 75px;
+    }
+
+    .item .discount-condition p:nth-child(2) {
+        font-size: 18px;
+    }
+
+    .item .discount-btn {
+        margin: 30px 0 0 0;
+    }
+
+    .item .discount-btn button {
+        height: 25px;
+        font-size: 13px;
+    }
+
+    .item .discount-bottom {
+        margin-top: 77px;
+        font-size: 14px;
+    }
+}

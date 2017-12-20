@@ -1,0 +1,83 @@
+<div ng-controller="couponCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">优惠券管理</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                优惠券管理表
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-primary" ng-click="addList()"><i class="fa fa-plus"></i> 增加</button>
+                <!--<span class="pull-right">-->
+                    <!--Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>-->
+                <!--</span>-->
+
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th>
+                            名称
+                        </th>
+                        <th>
+                            满足条件
+                        </th>
+                        <th>
+                            减免金额
+                        </th>
+                        <th>
+                            生效起始时间
+                        </th>
+                        <th>
+                            生效结束时间
+                        </th>
+                        <th>
+                            有效期
+                        </th>
+                        <th>
+                            状态
+                        </th>
+                        <th>
+                            创建时间
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in couponList">
+                        <td>{{data.name}}</td>
+                        <td>{{data.condition}}</td>
+                        <td>{{data.privilege}}</td>
+                        <td>{{data.start_time}}</td>
+                        <td>{{data.end_time}}</td>
+                        <td>{{data.useful_life}}</td>
+                        <td ng-if="data.status_id == 0"><span class="label bg-danger">已删除</span></td>
+                        <td ng-if="data.status_id == 1"><span class="label bg-success">已发布</span></td>
+                        <td ng-if="data.status_id == 2"><span class="label bg-info">未发布</span></td>
+                        <td>{{data.create_time}}</td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="grant(data)" ng-if="data.status_id == 2">发放</button>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="editList(data)">编辑</button>
+                            <button class="btn m-b-xs btn-sm btn-default btn-addon" ng-click="deleteData(data)" ng-if="data.status_id != 0">删除</button>
+                            <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="lookData(data)">查看</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

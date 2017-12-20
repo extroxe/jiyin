@@ -1,0 +1,137 @@
+body {
+    background-color: #F9F9FF;
+    display: flex;
+    display: -webkit-flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.head {
+    height: 60px;
+    line-height: 60px;
+    background-color: #393939;
+}
+
+.head img {
+    width: 100px;
+}
+
+.bg-img-wrapper {
+    height: 480px;
+    background-image: url("../img/sign_in_bg.jpg");
+}
+
+.article-wrapper {
+    width: 100%;
+    flex: 1;
+}
+
+.article-wrapper .title {
+    display: table;
+    width: 980px;
+    margin: 40px auto auto auto;
+}
+
+.article-wrapper .title span:nth-child(1) {
+    color: #F6C620;
+}
+
+.article-wrapper .title span:nth-child(3) {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 40px;
+    color: #117d94;
+}
+
+.article-wrapper .title hr {
+    margin: 0;
+    width: 55px;
+    border-color: #F6C620;
+}
+
+.article-wrapper .content {
+    min-height: 300px;
+    display: table;
+    width: 1080px;
+    margin: 20px auto 0 auto;
+}
+
+.article-wrapper .content .item {
+    display: inline-table;
+    width: 260px;
+    margin: 20px 50px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.article-wrapper .content .item img {
+    display: block;
+    width: 100%;
+    height: 300px;
+}
+
+.article-wrapper .content .item .item-title {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 0 10px;
+    margin: 10px 0 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.article-wrapper .content .item .item-description {
+    font-size: 14px;
+    height: 70px;
+    color: #696969;
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    width: 226px;
+}
+
+.article-wrapper .content .item .item-date {
+    float: right;
+    margin: 0 10px 10px 0;
+    color: #696969;
+}
+
+/*分页*/
+.pagination ul{box-shadow: none}
+.pagination ul > li > a, .pagination ul > li > span{
+    float: none;
+    border:none;
+    text-decoration: underline;
+    background-color: #f9f9ff;
+}
+#page_num{
+    width: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/*没有文章数据*/
+.no_data{
+    text-align: center;
+}
+.no_data span{
+    display: block;
+    position: absolute;
+    margin-top: -361px;
+    margin-left: 440px;
+    font-size: 30px;
+}
+
+/*加载中，加载完成*/
+.loading, .load_done{
+    text-align: center;
+    font-size: 17px;
+    display: block;
+    color: #aaa;
+    font-family: "宋体";
+}

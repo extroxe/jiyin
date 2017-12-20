@@ -1,0 +1,96 @@
+<div ng-controller="sampleMagnet2Ctrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">检测人信息导出</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                检测人信息导出
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-primary" ng-click="downloadSamples(1)"> 下载到Excel</button>
+                <button class="btn m-b-xs  btn-primary" ng-click="downloadSamples(0)"> 下载到CSV</button>
+                <span>未填写报告数：( <span class="not-fill " style="color: #f00; font-size: 15px; font-weight: bold;">{{not_fill_count}}</span> )</span>
+                <span style="margin-left: 10px">已填写报告数：( <span class="fill" style="color: #00a0e9; font-size: 15px; font-weight: bold;">{{fill_count}}</span> )</span>
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        </th>
+                        <th>
+                            检测码
+                        </th>
+                        <th>
+                            检测人
+                        </th>
+                        <th>
+                            联系方式
+                        </th>
+                        <th>
+                            身份证号
+                        </th>
+                        <th>
+                            联系地址
+                        </th>
+
+                        <th>
+                            上传时间
+                        </th>
+
+                        <th>
+                            模板名称
+                        </th>
+                        <th>
+                            备注
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat = 'data in dataList'>
+                        <td>
+                            <input class="sample-number form-control" type="text" value="{{data.number}}">
+                        </td>
+                        <td class="username">{{data.name}}</td>
+                        <td class="phone">{{data.phone}}</td>
+                        <td class="id-card">{{data.identity_card}}</td>
+                        <td class="address">{{data.province}} {{data.city}} {{data.district}} {{ data.address}} </td>
+                        <td class="submit-time">{{data.update_time}}</td>
+                        <td class="project">{{data.template_name}}</td>
+                        <td class="remark">
+                            <input class="sample-number form-control remark_input" data-number="{{data.number}}" type="text" placeholder="备注">
+                        </td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-if="is_admin" ng-click="delete(data)">删除</button>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td>
+                            <input class="sample-number form-control" type="text">
+                        </td>
+                        <td class="username"></td>
+                        <td class="phone"></td>
+                        <td class="id-card"></td>
+                        <td class="address"></td>
+                        <td class="submit-time"></td>
+                        <td class="project"></td>
+                        <td class="remark"></td>
+                        <td class="operate"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <form id="reportInputForm" name="reportInputForm" class="form-horizontal" method="POST" action="/admin/report_admin/download_report_from_input/">
+            <div class="form-group">
+                <input id="real_number" type="hidden" name="real_number">
+                <input id="is_excel" type="hidden" name="is_excel">
+            </div>
+        </form>
+    </div>
+</div>

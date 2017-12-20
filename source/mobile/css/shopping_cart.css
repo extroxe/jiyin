@@ -1,0 +1,86 @@
+body{background-color: #fff}
+
+img{width: 100px; height: 100px}
+
+.table-box th, .table-box td{border-width: 1px 0;padding: 20px 4px}
+
+#page-content .table-box .price{
+    font-size: 13px;
+    margin-top: 5px;
+    color: #f6bf00;
+    display: block;
+}
+
+.table-box{
+    padding-bottom: 0;
+}
+.table-box table{border-width: 0;}
+
+#page-content .pay_money{
+    text-align: right;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.detection{
+    padding: 10px;
+    margin: 30px 0 10px 0;
+    background-color: #fff;
+}
+.detection span{color: #117d94}
+
+.detection_detail li{border: 1px solid #eee; padding: 7px 10px}
+.detection_detail li:nth-child(odd){border: 1px solid #eee; padding-right: 5px}
+.detection_detail li:nth-child(even){border: 1px solid #eee; padding-left: 5px}
+.detection_detail li>div{background-color: #fff; padding: 15px 0}
+.detection_detail li>div>div{margin-bottom: 5px}
+.detection_detail li span{display: block}
+.detection_detail li>div .price2{font-size: 13px; color: #f23030; margin-top: 5px}
+
+/*购物车表格*/
+.table_lists table td:nth-child(1){width: 35%}
+.table_lists table .input_img{position:relative;}
+.table_lists table .input_img input{position: absolute;top: 38px;}
+.table_lists table img{margin-left: 25px}
+.table_lists table .commodity_name{
+    font-size: 13px;
+    min-width: 100px;
+    margin-bottom: 9px;
+    word-break: break-all;
+    height: 34px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.table_lists table .numbox{border-radius: 4px;   position: absolute;right: 0;margin-top: 0px;}
+.table-box th, .table-box td{border-color: #eee}
+.table-box tbody td:first-child{padding-left: 10px}
+.table-box tbody td:last-child{padding-right: 10px}
+.table-box tbody td .numbox{right: 10px;}
+.table-box tbody td .numbox > input {color:#999999;}
+.button{background-color:#FFFFFF}
+.active{color: #d1d1d1; background-color: #f5f5f5}
+
+
+/*购物车底部*/
+.cart_footer{height:50px;position: fixed; bottom: 0; background-color: #fff; width: 100%}
+.cart_footer ul{box-shadow: 0px 0px 8px rgba(190,190,190,.7);}
+.cart_footer li{padding: 0}
+.cart_footer li:nth-child(1) {width:20%; line-height: 50px; }
+.cart_footer li:nth-child(2) { font-size: 13px;width:55%; height: 50px; padding: 3px}
+.cart_footer li:nth-child(3) { width:25%; }
+.cart_footer li:nth-child(3) a{ line-height: 50px; height: 50px }
+
+/*删除*/
+#cancel_product .cancel_btn{
+    background-color: #a10;
+    line-height: 50px;
+    height: 50px;
+    width: 100px;
+    float: right;
+    font-size: 17px;
+}
+
+/*input checked*/
+.input-checkbox:checked, .input-radio:checked, .input-checkbox.active, .input-radio.active{color: #117d94}

@@ -1,0 +1,115 @@
+<div ng-controller="subOrderCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">子订单管理</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="row">
+            <div class="col-md-2">
+                <div>
+                    <a class="btn m-b-xs btn-sm btn-success btn-addon" style="margin-left: 35px;width: 140px" ng-if="flag == true" href="#/app/ordinaryList"><i class="fa fa-angle-double-left"></i>返回订单管理</a>
+                    <a class="btn m-b-xs btn-sm btn-success btn-addon" style="margin-left: 35px;width: 140px" ng-if="flag == false" href="#/app/integrationList"><i class="fa fa-angle-double-left"></i>返回订单管理</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="wrapper-md">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    普通订单子订单管理表
+                </div>
+                <div class="panel-body b-b b-light">
+                <span class="pull-right">
+                    Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
+                </span>
+                </div>
+                <div>
+                    <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                        <thead>
+                        <tr>
+                            <th>
+                                订单编号
+                            </th>
+                            <th>
+                                订单总价
+                            </th>
+                            <th>
+                                订单获取积分
+                            </th>
+                            <th>
+                                商品名称
+                            </th>
+                            <th>
+                                商品数量
+                            </th>
+                            <!--<th>
+                                被检测人姓名
+                            </th>-->
+                            <!--<th>
+                                报告
+                            </th>-->
+                            <th>
+                                创建时间
+                            </th>
+                            <th>
+                                操作
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="data in subOrderList">
+                            <td>{{data.number}}</td>
+                            <td>{{data.total_price}}</td>
+                            <td>{{data.points}}</td>
+                            <td>{{data.commodity_name}}</td>
+                            <td>{{data.amount}}</td>
+                            <!--<td>{{data.name}}
+                                <i class="icon-symbol-male" style="color: #00a8f3" ng-if="data.gender == 1"> </i>
+                                <i class="icon-symbol-female" style="color: #9289ca" ng-if="data.gender == 2"></i>
+                            </td>-->
+                            <!--<td>{{data.order_attachment_path}}</td>-->
+                            <td>{{data.create_time}}</td>
+                            <td>
+                                <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="editList(data)">编辑</button>
+                                <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="report(data)">订单报告</button>
+                                <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="exinfo(data)">物流信息</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">物流信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="articleForm" name="articleForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-1 control-label"></label>
+                            <div class="col-lg-11">
+                                <ul>
+                                    <li ng-repeat="data in exinfo">
+                                        {{data.AcceptStation}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="cancel()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

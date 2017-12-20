@@ -1,0 +1,9 @@
+/*底部*/
+.personal_info_footer {
+    line-height: 40px;
+    background-color: #ddd;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

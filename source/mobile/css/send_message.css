@@ -1,0 +1,39 @@
+.receive {
+    padding: 8px 10px;
+}
+
+.receive .title {
+    display: inline-block;
+    line-height: 24px;
+    font: 15px;
+    font-weight: 400;
+}
+
+.receive .name {
+    display: inline-block;
+    line-height: 24px;
+    font-size: 14px;
+    color: rgb(140, 153, 159);
+}
+
+.content {
+    padding: 0 5px;
+}
+
+.content textarea {
+    width: 100%;
+    border: 1px solid rgba(7, 17, 27, 0.1);
+}
+.send-message {
+    margin-top: 20px;
+    padding: 0 10px;
+    text-align: right;
+}
+
+.send-message .send-btn {
+    display: inline-block;
+    padding: 4px 15px;
+    border-radius: 3px;
+    color: #fff;
+    background: #117D94;
+}

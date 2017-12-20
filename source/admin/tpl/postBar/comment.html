@@ -1,0 +1,223 @@
+<div ng-controller="commentCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">评论管理</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="row">
+            <div class="col-md-2">
+                <div>
+                    <a class="btn m-b-xs btn-sm btn-success btn-addon" style="margin-left: 35px;width: 140px"  href="#/app/post"><i class="fa fa-angle-double-left"></i>返回帖子管理</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="wrapper-md">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    评论管理表
+                </div>
+                <div class="panel-body b-b b-light">
+                    <button class="btn m-b-xs  btn-primary" ng-click="show()"><i class="fa fa-plus"></i> 增加</button>
+                    <span class="pull-right">
+                        <!--Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>-->
+                        Search: <input id="search" type="text" ng-model="keyword" class="form-control input-sm w-sm inline m-r"/>
+                        <button class="btn m-b-xs  btn-success" ng-click="search()"><i class="fa fa-search"></i> 搜索</button>
+                    </span>
+                </div>
+                <div>
+                    <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                        <thead>
+                        <tr>
+                            <th>
+                                评论内容
+                            </th>
+                            <th>
+                                状态
+                            </th>
+                            <th>
+                                创建时间
+                            </th>
+                            <th>
+                                操作
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="data in commentList">
+                            <td class="more">{{data.content}}</td>
+                            <td ng-if="data.status_id == 1"><span class="label bg-success">{{data.status_name}}</span></td>
+                            <td ng-if="data.status_id == 2"><span class="label bg-info">{{data.status_name}}</span></td>
+                            <td ng-if="data.status_id == 3"><span class="label bg-primary">{{data.status_name}}</span></td>
+                            <td ng-if="data.status_id == 4"><span class="label bg-black">{{data.status_name}}</span></td>
+                            <td>{{data.create_time}}</td>
+                            <td>
+                                <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="reply(data)">添加回复</button>
+                                <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="edit(data)">编辑</button>
+                                <button class="btn m-b-xs btn-sm btn-default btn-addon" ng-click="delete(data)" ng-if="data.status_id == 1">删除</button>
+                                <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="look(data)">查看</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <nav>
+                    <ul class="pager">
+                        <li><a ng-click="firstPage()">第一页</a></li>
+                        <li><a ng-click="previousPage()">上一页</a></li>
+                        <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                        <li><a ng-click="nextPage()">下一页</a></li>
+                        <li><a ng-click="lastPage()">最后一页</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="comment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="commentForm" name="commentForm" class="form-horizontal" method="POST">
+                        <!--<div class="form-group">
+                            <label class="col-lg-2 control-label">帖子名称</label>
+                            <div class="col-lg-10">
+                                <select class="form-control m-b" ng-model="infoList.post_id" ng-options="data.id as data.title for data in postList" required ng-disabled="add != true">
+                                    <option value="">&#45;&#45;请选择&#45;&#45;</option>
+                                </select>
+                            </div>
+                        </div>-->
+                        <div class="form-group" ng-if="add == false">
+                            <label class="col-lg-2 control-label redstar">状态</label>
+                            <div class="col-lg-4">
+                                <select class="form-control m-b" ng-model="infoList.status_id" ng-options="data.value as data.name for data in statusList" required>
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </div>
+                            <label class="col-lg-2 control-label redstar">评论发表人</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="infoList.username" placeholder="评论发表人" required ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">评论内容</label>
+                            <div class="col-lg-10">
+                                <ui-editor id="abstract" ng-model="infoList.content" height="100px" ng-disabled="add != true"></ui-editor>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="add == false">
+                            <label class="col-lg-2 control-label redstar">被回复的评论</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="infoList.reply_to_content" placeholder="被回复的评论" required ng-disabled="true">
+                            </div>
+                            <label class="col-lg-2 control-label redstar">被回复人</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="infoList.to_user_username" placeholder="被回复人" required ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="add == false">
+                            <label class="col-lg-2 control-label redstar">发表时间</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="infoList.create_time" required ng-disabled="true">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="reply" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">回复</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="replyForm" name="replyForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">回复内容</label>
+                            <div class="col-lg-10">
+                                <ui-editor id="rep" ng-model="infoList.content" height="100px" ></ui-editor>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="replyOk()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="replyAll" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">回复</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="replyAllForm" name="replyAllForm" class="form-horizontal" method="POST">
+                        <table class="table table-striped m-b-none" ui-footable="footable">
+                            <thead>
+                            <tr>
+                                <th>
+                                    评论内容
+                                </th>
+                                <th>
+                                    评论人
+                                </th>
+                                <th>
+                                    被评论人
+                                </th>
+                                <th>
+                                    状态
+                                </th>
+                                <th>
+                                    创建时间
+                                </th>
+                                <th>
+                                    操作
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="data in replyList">
+                                <td class="more">{{data.content}}</td>
+                                <td>{{data.nickname}}</td>
+                                <td>{{data.to_user_nickname}}</td>
+                                <td ng-if="data.status_id == 1"><span class="label bg-success">{{data.status_name}}</span></td>
+                                <td ng-if="data.status_id == 2"><span class="label bg-info">{{data.status_name}}</span></td>
+                                <td ng-if="data.status_id == 3"><span class="label bg-primary">{{data.status_name}}</span></td>
+                                <td ng-if="data.status_id == 4"><span class="label bg-black">{{data.status_name}}</span></td>
+                                <td>{{data.create_time}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-info" ng-click="remove(data)" ng-if="data.status_id == 1">删除</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

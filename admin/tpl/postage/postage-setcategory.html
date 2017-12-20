@@ -1,0 +1,101 @@
+<div ng-controller="postageSetCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">关联商品类别免邮规则</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="row">
+            <div class="col-md-2">
+                <div>
+                    <a class="btn m-b-xs btn-sm btn-success btn-addon" style="margin-left: 3px;width: 140px"  href="#/app/postage"><i class="fa fa-angle-double-left"></i>返回免邮规则页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                分类列表
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-primary" ng-click="show()"><i class="fa fa-plus"></i> 增加</button>
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th>
+                           分类名称
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in categoryList" ng-show="dataShow == true">
+                        <td>{{data.name}}</td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-default btn-addon" ng-click="deleteData(data, true)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show="dataShow == false" style="text-align: center; margin-top: 20px">
+                <b>当前暂无数据</b>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="categoryInputPage" ng-change="selectPage(categoryInputPage)"> 页 / 共 {{categoryTotalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                商品列表
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-primary" ng-click="show()"><i class="fa fa-plus"></i> 增加</button>
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th>
+                            分类名称
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in commodityList">
+                        <td>{{data.name}} xxx</td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-default btn-addon" ng-click="deleteData(data)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show="dataShow == false" style="text-align: center; margin-top: 20px">
+                <b>当前暂无数据</b>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="commodityInputPage" ng-change="selectPage(commodityInputPage)"> 页 / 共 {{commodity.commodityTotalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

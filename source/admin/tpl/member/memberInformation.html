@@ -1,0 +1,130 @@
+<div ng-controller="memberCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">会员信息管理</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                会员信息管理表
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-primary" ng-click="addList()" ng-if="role_id != 30"><i class="fa fa-plus"></i> 增加</button>
+                <button class="btn m-b-xs  btn-primary" ng-click="upload()" ng-if="role_id != 30"><i class="fa fa-upload"></i> 批量导入</button>
+                <span class="pull-right">
+                    <!--Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>-->
+                     Search: <input id="search" type="text" ng-model="keyword" class="form-control input-sm w-sm inline m-r"/>
+                    <button class="btn m-b-xs  btn-success" ng-click="search()"><i class="fa fa-search"></i> 搜索</button>
+                </span>
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th>
+                            用户名
+                        </th>
+                        <th>
+                            用户头像
+                        </th>
+                        <th>
+                            手机号
+                        </th>
+                        <!--<th>
+                            用户邮箱
+                        </th>-->
+                        <th>
+                            角色
+                        </th>
+                        <th>
+                            当前积分
+                        </th>
+                        <th>
+                            总积分
+                        </th>
+                        <th>
+                            页面配色
+                        </th>
+                        <th>
+                            创建时间
+                        </th>
+                        <!--<th>
+                            更新时间
+                        </th>-->
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in memberList">
+                        <td ng-if="data.role_id==30">
+                            <i class="icon-symbol-male" style="color: #00a8f3" ng-if="data.gender == 1"> </i>
+                            <i class="icon-symbol-female" style="color: #9289ca" ng-if="data.gender == 0"></i>
+                            {{data.name}}
+                        </td>
+                        <td ng-if="data.role_id!=30">
+                            <i class="icon-symbol-male" style="color: #00a8f3" ng-if="data.gender == 1"> </i>
+                            <i class="icon-symbol-female" style="color: #9289ca" ng-if="data.gender == 0"></i>
+                            {{data.username}}
+                        </td>
+                        <td ng-if="data.path != null"><img ng-src="{{SITE_URL + data.path}}" style="width: 50px; height: 50px"></td>
+                        <td ng-if="data.path == null"><img ng-src="{{SITE_URL + 'source/admin/img/b1.jpg'}}" style="width: 50px; height: 50px"></td>
+                        <td>{{data.phone}}</td>
+                        <!--<td>{{data.email}}</td>-->
+                        <td>{{data.role}}</td>
+                        <td ng-if="data.role != 30">{{data.current_point}}</td>
+                        <td ng-if="data.role != 30">{{data.total_point}}</td>
+                        <td>{{data.color}}</td>
+                        <td>{{data.create_time}}</td>
+                        <!--<td>{{data.update_time}}</td>-->
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="editList(data)" ng-if="role_id != 30">编辑</button>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="editList(data)" ng-if="role_id == 30">查询</button>
+                            <button class="btn m-b-xs btn-sm btn-default btn-addon" ng-click="deleteData(data)" ng-if="role_id != 30">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="modal fade" id="upload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">上传文件</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="uploadForm" name="uploadForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">附件</label>
+                            <div class="col-lg-10">
+                                <a href="{{ SITE_URL + '/source/excel/user_data_template.xlsx' }}" style="color: #00A1DD">下载模板</a>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-controller="memberFileUploadCtrl" uploader="uploader" filters="queueLimit, customFilter">
+                            <label for="name" class="col-sm-2 control-label redstar no-padding-right must">上传文件</label>
+                            <div data-ng-include=" '/source/admin/tpl/uploader.html' "></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

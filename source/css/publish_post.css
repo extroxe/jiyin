@@ -1,0 +1,243 @@
+/*header*/
+header #logo{
+    margin-left: 70px
+}
+header #logo img{
+
+}
+header .input_search{
+    width: 672px;margin: 16px 0 0 36px
+}
+header #search-btn{
+    border-radius: 0;position: absolute;
+}
+
+#editor{
+    min-height: 300px;
+}
+textarea, input[type="text"]{
+    border-radius: 0;
+}
+
+/*header*/
+header #logo{
+    margin-left: 70px
+}
+header #logo img{
+
+}
+header .input_search{
+    width: 672px;margin: 16px 0 0 36px
+}
+header #search-btn{
+    border-radius: 0;position: absolute;
+}
+
+/*文章详情*/
+/*body*/
+.body{
+    border: 1px solid #ddd;
+    width: 1140px;
+    background-color: #f9f9f9;
+}
+.body .header{
+    background-color: #fff;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+.body .head_img{display: inline-block}
+.body .head_img img{
+    width: 55px;
+    padding: 2px;
+    border: 1px solid #ccc;
+}
+
+.body .post_name{
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 20px;
+}
+.body .focus{
+    display: inline-block;
+    margin-left: 20px;
+    background-color: #d9534f;
+    color: #fff;
+    border-radius: 3px;
+}
+.body .focus_num,
+.body .post_num{
+    margin-left: 20px;
+    font-size: 13px;
+
+}
+.body .focus_num span,
+.body .post_num span{
+    color: #d9534f;
+}
+
+/*个人信息*/
+.personal_info{
+    background-color: #f9f9f9;
+    height: 734px;
+    width: 223px;
+    display: inline-block;
+    float: left;
+    overflow: hidden;
+    zoom: 1;
+}
+.personal_info .personal_box span:first-child{
+    font-family: '黑体';
+    font-weight: bold;
+}
+.head_portrait img{
+    width: 80px;
+    height: 80px;
+    border: 1px solid #aaa;
+    padding: 3px;
+}
+
+/*游客*/
+.tourist{
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 13px;
+    color: #aaa;
+}
+.tourist .sign_in{
+    color: #117d94;
+    margin-left: 5px;
+}
+.tourist .sign_in:hover{
+    text-decoration: underline;
+}
+
+/*热门贴子*/
+.hot_post ul{padding: 5px 0;     max-height: 205px;}
+.hot_post ul li{
+    list-style: none;
+    padding: 5px 0;
+    margin-top: 8px;
+}
+.hot_post ul li span{
+    padding: 0 5px;
+}
+.hot_post ul li span.background{
+    background-color: #FF7F42;
+    color: #fff;
+}
+.hot_post ul li a{
+    border: 1px solid #ddd;
+    padding: 5px 20px;
+    border-radius: 3px;
+    margin-left: 6px;
+    background-color: #ffffff;
+    font-size: 14px;
+}
+.hot_post .exchange{
+    border: 1px solid #ddd;
+    margin-top: 15px;
+    background-color: #ffffff;
+    border-radius: 3px;
+    display: block;
+    font-size: 15px;
+    padding: 6px;
+}
+
+.post_list_box{
+    min-height: 500px;
+    width: 907px;
+    display: inline-block;
+    margin-left: 10px;
+    background-color: #fff;
+}
+
+/*帖子列表*/
+
+.breadcrumb{
+    padding: 8px 15px;
+    margin: 0 0 20px;
+    list-style: none;
+    background-color: rgb(229, 237, 242);
+    -moz-border-radius: 4px;
+    background-color: rgb(229, 237, 242);
+    border-style: solid;
+    border-color: rgb(194, 213, 227);
+    border-width: 1px 0px;
+}
+.post_list_box .announcement p{
+    padding: 20px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9
+}
+.post_list_box .publish_post{
+    border: 1px solid #117d94;
+    background-color: #C2D5E3;
+    color: #555;
+    text-shadow: none;
+    font-size: 16px;
+    padding: 5px 16px;
+}
+
+.post_list_box .post_content{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+table{
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+th{
+    padding: 10px 0;
+}
+td{padding: 10px 0}
+table tbody tr{    text-align: center;    border-bottom: 1px solid #ddd; background-color: #fff}
+table tbody tr:hover{ background-color: #f7f9fc}
+table tbody td:first-child span{
+    padding: 3px 6px;
+}
+table tbody td:first-child span{
+    background-color: #568de4;
+    color: #fff;
+    padding: 3px 7px;
+    border-radius: 2px;
+}
+table tbody td:nth-child(3){text-align: left}
+table tbody td:nth-child(3) a{display: block; color: #117d94}
+table tbody td:nth-child(3) span{display: block; }
+table tbody td:last-child span{color: #777}
+
+.post_list_box .empty-post{
+    border: solid #eee;
+    border-width: 0 1px 1px 1px;
+    padding: 50px 0;
+    text-align: center;
+    font-family: '黑体';
+    font-size: 20px;
+    display: none;
+}
+/*分页*/
+.pagination ul{box-shadow: none}
+.pagination ul > li > a, .pagination ul > li > span{
+    float: none;
+    border:none;
+    text-decoration: underline;
+}
+#page_num{
+    width: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+img{
+    max-width: 152px;
+    max-height: 107px;
+}

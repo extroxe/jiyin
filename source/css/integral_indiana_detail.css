@@ -1,0 +1,45 @@
+.progress{
+    padding: 1px;
+    margin-bottom: 10px;
+    background-image: linear-gradient(to bottom, #f2f2f2, #f2f2f2);
+}
+.progress-bar{
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+}
+.progressbox-content{
+    padding: 2px 0;
+}
+.progress-bar.theme-1{
+    border: none;
+}
+
+.bg-not-complete {
+    background-color: #117d94;
+}
+
+.bg-complete {
+    background-color: #c3c3c3;
+}
+
+.caption .state {
+    font-size: 14px;
+    color: rgba(7, 17, 27, 0.5);
+}
+
+.caption .state span {
+    font-size: 15px;
+    color: rgb(7, 17, 27);
+}
+
+.rule-wrapper {
+    margin-top: 90px;
+    margin-left: 5px;
+}
+
+.rule-wrapper p {
+    line-height: 15px;
+    font-size: 12px;
+    margin-bottom: 5px;
+}

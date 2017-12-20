@@ -1,0 +1,1 @@
+"use strict";app.controller("SigninFormController",["$scope","$http","$state",function(r,o,t){r.user={},r.authError=null,r.login=function(){r.authError=null,o.post("api/login",{email:r.user.email,password:r.user.password}).then(function(o){o.data.user?t.go("app.dashboard-v1"):r.authError="Email or Password not right"},function(){r.authError="Server Error"})}}]);

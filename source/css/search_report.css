@@ -1,0 +1,70 @@
+.condition-wrapper {
+    width: 1140px;
+    margin: 80px auto;
+}
+
+.condition {
+    display: flex;
+}
+
+.condition .item {
+    display: flex;
+    padding: 10px 15px;
+}
+
+.condition .item label {
+    line-height: 30px;
+    font-size: 15px;
+}
+
+.condition .item input {
+    border-radius: 0;
+}
+
+.condition .item button {
+    padding: 0 20px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    color: #fff;
+    background: #117d94;
+    border-radius: 0;
+}
+
+.condition .item.phone {
+    flex: 0 0 380px;
+}
+
+.condition .item.phone input {
+    width: 150px;
+}
+
+.condition .item.verification-code{
+    flex: 0 0 180px;
+}
+
+.condition .item.verification-code input {
+    width: 80px;
+}
+
+.list-wrapper {
+    width: 1140px;
+    margin: 0 auto;
+    min-height: 100px;
+}
+
+.glyphicon.icon-download-alt {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    vertical-align: bottom;
+}
+
+.img-wrapper {
+    text-align: center;
+}
+
+.img-wrapper img {
+    width: 150px;
+    opacity: 0.3;
+}

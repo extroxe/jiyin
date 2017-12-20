@@ -1,0 +1,258 @@
+
+/*// body,button,input,select,textarea { font:12px/1.5 \5b8b\4f53; }*/
+em, dt{ font:12px/1.5 \5b8b\4f53; }
+address,cite,dfn,em,var { font-style:normal; }
+code,kbd,pre,samp { font-family:courier new,courier,monospace; }
+a { text-decoration:none; }
+a:hover { text-decoration:underline; }
+button,input,select,textarea{ font-size:100%; }
+table { border-collapse:collapse; border-spacing:0; }
+
+/*分类搜索*/
+.subitem { float:left; width:100%; overflow:hidden; }
+.subitem dl { border-top:1px solid #ddd; padding:0px; overflow:hidden; zoom:1; }
+.subitem dt {     float: left;
+    background-color: #f9f9f9;
+    width: 105px;
+    line-height: 41px;
+    text-align: center;
+    font-weight: 700;
+    color: #222222;}
+.subitem dt a {
+    color: #666;
+    font-size: 17px;
+    font-family: '微软雅黑';
+    font-weight: normal;
+}
+.subitem dd { float:left; padding:3px 0px 0px; overflow:hidden; }
+.subitem dd em {     float: left;
+    height: 17px;
+    line-height: 17px;
+    padding: 0px 15px;
+    margin-top: 11px;
+}
+.subitem dd em a, .item-list dd a { color:#666; text-decoration:none; font-size: 15px; font-family: '微软雅黑'}
+.subitem dd em a:hover, .item-list dd a:hover { font-weight:normal; text-decoration:underline; color: #117d94}
+.subitem .fore{ margin: 0px auto;}
+.subitem .fore:last-child{border-bottom: 1px solid #ddd;}
+.subitem .bo{ border-bottom: 1px solid #eee }
+
+/*热卖推荐*/
+#page-content #hot_sale{
+    border: 1px solid #ddd;
+    margin-left: 0;
+    width: 222px;
+    float: left;
+}
+#page-content #hot_sale .title{height: 45px; padding: 10px auto;}
+#page-content #hot_sale .title h6{
+    height: 40px;
+    line-height: 45px;
+    font-family: '微软雅黑';
+    font-weight: normal;
+    color: #888;
+    font-size: 18px;
+    padding-left: 25px;
+}
+#page-content #hot_sale .title h6:before{
+    content: '';
+    width: 4px;
+    height: 19px;
+    margin-top: 12px;
+    position: absolute;
+    background-color: #117d94;
+    margin-left: -17px;
+}
+#page-content #hot_sale .confirm li{text-align: center}
+#page-content #hot_sale .confirm li img{
+    height: 253.64px;
+    width: 207.84px;
+}
+#page-content #hot_sale .confirm li .desc{
+    background-color: rgba(0,0,0,0.3);
+    position: absolute;
+    width: 207px;
+    margin-left: 7px;
+    margin-top: -56px;
+    padding: 10px 0;
+}
+#page-content #hot_sale .confirm li .desc a{
+    font-size: 14px;
+    line-height: 18px;
+    height: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    color: #fff;
+}
+#page-content #hot_sale .confirm li p{
+    color:#f6bf00;text-align: left;padding-left: 10px;margin: 10px 0;
+}
+
+/*搜索结果*/
+#page-content #search_list .evaluation{background-color: #f9f9f9;border-radius: 0; height: 34px;border: solid #ddd;  border-width: 1px 0;}
+#page-content #search_list .thumbnail > a > img{width:100%; height: 300.09px;}
+#page-content #search_list .thumbnail .contain{margin-left: 7px}
+#page-content #search_list .thumbnail .contain h6{color: #f6c31f; margin: 13px 0; font-family: '微软雅黑';display: inline-block}
+#page-content #search_list .thumbnail .contain h6 span{font-size: 17px; margin-right: 7px}
+#page-content #search_list .thumbnail .contain .commodity_name{
+    font-size: 15px;
+    line-height: 23px;
+    height: 42px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    color: #222;
+    margin-bottom: 15px;
+}
+#page-content #search_list .thumbnail .contain  .already_sale{
+    display: inline-block;
+    color: #aaa;
+}
+#page-content #search_list .thumbnail .contain  .review{
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+    color: #aaa;
+}
+.breadcrumb{background-color: #fff;border: none;    margin: 0 0 10px;}
+.breadcrumb>li{text-shadow: none}
+.sort .breadcrumb li{
+    display: inline-block;
+    background-color: #fff;
+    margin: 0;
+    padding: 6px 15px;
+    float: left;
+    border: solid #ddd;
+    border-width: 1px 1px 1px 0;
+}
+.sort .breadcrumb li:first-child{border-left-width: 1px}
+.breadcrumb>.active a{ color: #117d94; }
+.evaluation li.active{background-color: #117d94;}
+.evaluation li.active a{color: #fff}
+
+/*加入购物车，立即购买按钮*/
+.purchase ul{
+    border: solid #ddd;
+    border-width: 1px 0;
+}
+.purchase ul li{
+    cursor: pointer;
+    width: 48%;
+    display: inline-block;
+    height: 39px;
+    line-height: 39px;
+    border-right: 1px solid #ddd;
+}
+.purchase ul li:last-child{border-right: none}
+.purchase ul li a{ margin-left: 14px;}
+.purchase .addCart #cart{
+    width: 21px;
+    position: absolute;
+    margin-top: 8px;
+}
+.purchase .buy_directly img{
+    width: 19px;
+    position: absolute;
+    margin-top: 11px;
+}
+
+/*加入购物车*/
+.cart_to_cart{z-index: 100; margin-top: 3px; color: red}
+.animation1{animation: cart_to_cart 1s linear; color: red}
+
+.thumbnail{border-radius: 0px; padding: 20px 10px; border:none; box-shadow: none;
+    position: relative;}
+.thumbnails .thumbnail:hover{
+    box-shadow: 0px 0px 5px rgba(17, 125, 148, 1);
+}
+
+#paginate-render {
+    float: right;
+    margin-top: 80px;
+}
+
+#paginate-render a {
+    float: left;
+    display: inline-block;
+    color: #333;
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 14px;
+    margin-right: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#paginate-render a:hover{
+    text-decoration: none;
+    box-shadow: 0 1px 1px rgba(0,1,1,.08);
+}
+
+#paginate-render em {
+    float: left;
+    line-height: 38px;
+    font-size: 14px;
+}
+
+#paginate-render input {
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 0 3px;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 0;
+}
+
+#paginate-render b {
+    color: #666;
+}
+
+#paginate-render .skip {
+    margin-left: 20px;
+}
+
+#paginate-render .skip a {
+    margin-left: 10px;
+}
+
+#paginate-render .current-page {
+    border: 0 none;
+    padding: 1px 15px;
+    background: 0 0;
+    filter: none;
+    color: #e4393c;
+    cursor: default;
+}
+
+#paginate-render .next-page {
+    margin-right: 25px;
+}
+
+#paginate-render .page-break {
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 14px;
+    margin-right: 5px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.thumbnails>li{margin-left: -1px}
+.thumbnails{margin-left: 0px}
+
+.no-commodity {
+    text-align: center;
+    margin-top: 80px;
+    font-size: 18px;
+    font-weight: 700;
+}

@@ -1,0 +1,193 @@
+<!-- list -->
+<ul class="nav">
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.HEADER">Navigation</span>
+  </li>
+
+
+  <!-- 个人中心 -->
+  <li>
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="fa fa-user icon text-primary-dker"></i>
+      <span class="font-bold" translate="个人中心">个人中心</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li ui-sref-active="active">
+        <a ui-sref="app.user">
+          <i class="fa fa-user"></i>
+          <span>个人中心</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <!-- 首页管理 -->
+  <li>
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="fa fa-home icon text-primary-dker"></i>
+      <span class="font-bold" translate="首页管理">首页管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li ui-sref-active="active">
+        <a ui-sref="app.banner">
+          <i class="fa fa-home"></i>
+          <span>Banner管理</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="fa fa-home icon text-primary-dker"></i>
+      <span class="font-bold" translate="代理商管理">代理商管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li ui-sref-active="active">
+        <a ui-sref="app.agentInformation">
+          <i class="fa fa-user"></i>
+          <span>代理商信息管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.agentIndex">
+          <i class="fa fa-home"></i>
+          <span>代理商商品管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.agentCommodityCategory">
+          <i class="fa fa-desktop"></i>
+          <span>代理商商品主页管理</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <!-- 用户管理 -->
+  <li>
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-briefcase icon text-info-dker"></i>
+      <span class="font-bold">用户管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <i class="fa fa-user"></i>
+          <span translate="用户管理">用户管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.memberInformation">
+          <i class="fa fa-user"></i>
+          <span>用户信息管理</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <!-- 订单管理 -->
+  <li>
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-list text-primary-dker"></i>
+      <span class="font-bold">订单管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <i class="fa fa-truck"></i>
+          <span translate="订单管理">订单管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.ordinaryList">
+          <i class="fa fa-truck"></i>
+          <span>普通订单列表</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.offline">
+          <i class="fa fa-truck"></i>
+          <span>线下订单列表</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-list text-primary-dker"></i>
+      <span class="font-bold">报告管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <i class="fa fa-truck"></i>
+          <span translate="报告管理">报告管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.allReportList">
+          <i class="fa fa-truck"></i>
+          <span>报告列表</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.reportList({reportIsOnline: 1})">
+          <i class="fa fa-truck"></i>
+          <span>线上报告列表</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.reportList({reportIsOnline: 2})">
+          <i class="fa fa-truck"></i>
+          <span>线下报告列表</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.codeManagement">
+          <i class="fa fa-truck"></i>
+          <span>编码管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.sampleManagement">
+          <i class="fa fa-truck"></i>
+          <span>样本管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.sampleMagnet2">
+          <i class="fa fa-truck"></i>
+          <span>检测人信息导出</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+</ul>
+<!-- / list -->

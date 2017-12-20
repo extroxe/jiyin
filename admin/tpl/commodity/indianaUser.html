@@ -1,0 +1,92 @@
+<div ng-controller="indianaUserCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">积分夺宝结果管理</h1>
+    </div>
+    <div>
+        <div class="wrapper-md">
+            <div class="row">
+                <div class="col-md-2">
+                    <div>
+                        <a class="btn m-b-xs btn-sm btn-success btn-addon" style="width: 140px" href="#/app/integralIndiana"><i class="fa fa-angle-double-left"></i>返回积分夺宝</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    积分夺宝结果表
+                </div>
+                <div class="panel-body b-b b-light">
+                </div>
+                <div>
+                    <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                        <thead>
+                        <tr>
+                            <th>
+                                用户名
+                            </th>
+                            <th>
+                                奖品名称
+                            </th>
+                            <th>
+                                状态
+                            </th>
+                            <th>
+                                操作
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="data in indianaList">
+                            <td>{{data.nickname}}</td>
+                            <td>{{data.commodity_name}}</td>
+                            <td ng-if="data.integral_indiana_result_status == null"><span class="label bg-danger">未中奖</span></td>
+                            <td ng-if="data.integral_indiana_result_status == 0"><span class="label bg-info">未审核</span></td>
+                            <td ng-if="data.integral_indiana_result_status == 1"><span class="label bg-success">审核通过</span></td>
+                            <td ng-if="data.integral_indiana_result_status == 2"><span class="label bg-success">已领取</span></td>
+                            <td>
+                                <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-if="data.integral_indiana_result_status == null && !isAudit" ng-click="edit(data)">修改为中奖人</button>
+                                <button ng-if="data.integral_indiana_result_status == 0" class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="check(data)">审核</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <nav>
+                    <ul class="pager">
+                        <li><a ng-click="firstPage()">第一页</a></li>
+                        <li><a ng-click="previousPage()">上一页</a></li>
+                        <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                        <li><a ng-click="nextPage()">下一页</a></li>
+                        <li><a ng-click="lastPage()">最后一页</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">修改中奖人</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="articleForm" name="articleForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">中奖人</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="list.nickname" required >
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,62 @@
+<div ng-controller="detectionTemplateCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">检测模板管理</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                检测模板管理表
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-primary" ng-click="addList()"><i class="fa fa-plus"></i> 增加</button>
+                <!--<span class="pull-right">-->
+                    <!--Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>-->
+                <!--</span>-->
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th style="width: 15%;">
+                            检测模板名称
+                        </th>
+                        <th style="width: 40%;">
+                            模板描述
+                        </th>
+                        <th style="width: 15%;">
+                            海云模板ID
+                        </th>
+                        <th style="width: 15%;">
+                            创建时间
+                        </th>
+                        <th style="width: 15%;">
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in detectionTemplateList">
+                        <td>{{data.name}}</td>
+                        <td>{{data.description}}</td>
+                        <td>{{data.hy_template_id}}</td>
+                        <td>{{data.create_time}}</td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="editList(data)">编辑</button>
+                            <button class="btn m-b-xs btn-sm btn-default btn-addon" ng-click="deleteData(data)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

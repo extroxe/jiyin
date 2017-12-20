@@ -1,0 +1,151 @@
+/*header*/
+header #logo{
+    margin-left: 70px
+}
+header #logo img{
+
+}
+header .input_search{
+    width: 672px;margin: 16px 0 0 36px
+}
+header #search-btn{
+    border-radius: 0;position: absolute;
+}
+
+/*关注列表*/
+#page-content .container{
+    height: 1000px;
+    background-color: #e6f0fb;
+    border: 1px solid #eee;
+}
+.focus_lists{
+    position: relative;
+    width: 867px;
+    background-color: #fff;
+    float: left;
+    padding: 40px 20px 20px;
+    height: 900px;
+}
+.focus_lists ul{
+    border-top: 1px solid #ddd;
+}
+.focus_lists ul li{
+    padding: 15px 0 40px;
+    border-bottom: 1px dashed #ccc;
+    font-size: 15px;
+    position: relative;
+}
+.focus_lists ul li:hover{
+    background-color: #f4f9ff;
+}
+.focus_lists ul li .portrait{
+    width: 50px;
+    height: 50px;
+}
+
+.focus_lists ul li .name{
+    color: #0088cc;
+    margin: 0 20px;
+}
+
+.focus_lists ul li .follows{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.focus_lists ul li .add_focus{
+    font-size: 12px;
+    position: absolute;
+    right: 0px;
+    padding: 2px 9px;
+    top: 26px;
+    border: 1px solid;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 7px #aaa inset;
+}
+.focus_lists ul li a.focused_btn{
+    color: #d9534f;
+    box-shadow: 0px 0px 5px #d9534f inset;
+}
+
+/*个人信息*/
+.personal_info{
+    width: 213px;
+    float: left;
+    background-color: #e6f0fb;
+    padding: 10px;
+}
+.personal_info .head{
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: '黑体';
+    border-bottom: 1px solid #ccc;
+}
+.personal_info .data{
+    margin-top: 13px;
+    padding-bottom: 29px;
+    border-bottom: 1px solid #ccc;
+}
+.personal_info .data .portrait{
+    width: 64px;
+    height: 64px;
+    border: 1px solid #aaa;
+    padding: 1px;
+    background-color: #fff;
+    border-radius: 2px;
+    float: left;
+}
+.personal_info .data .info_list{
+    width: 135px;
+    float: left;
+    padding-left: 10px;
+    line-height: 27px;
+}
+.personal_info .data .info_list .name{
+    display: block;
+    font-size: 13px;
+    font-family: '宋体';
+    font-weight: bold;
+}
+.personal_info .data .info_list .sex{
+    display: block;
+    font-size: 14px;
+    color: #555;
+}
+.personal_info .data .info_list .follows,
+.personal_info .data .info_list .focus{
+    display: block;
+    font-size: 14px;
+}
+.personal_info .data .info_list .follows span,
+.personal_info .data .info_list .focus span{
+    font-size: 13px;
+    color: #0088cc;
+}
+
+/*分页*/
+.pagination ul{box-shadow: none;    border: none;}
+.pagination ul > li{border: none;}
+.pagination ul > li > a, .pagination ul > li > span{
+    float: none;
+    border:none;
+    text-decoration: underline;
+}
+#page_num{
+    width: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.pagination{
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+}
+
+.pagination ul li:hover{
+    background-color: #fff;
+    padding: 0;
+}

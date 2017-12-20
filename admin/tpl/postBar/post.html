@@ -1,0 +1,185 @@
+<div ng-controller="postCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">贴子管理</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                贴子管理表
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-primary" ng-click="show()"><i class="fa fa-plus"></i> 增加</button>
+                <button class="btn m-b-xs  btn-primary" ng-click="getAll()"><i class="fa fa-bolt"></i> 所有帖子</button>
+                <button class="btn m-b-xs  btn-primary" ng-click="getSome()"><i class="fa fa-eye"></i> 按贴吧查看</button>
+                <span class="pull-right">
+                    <!--Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>-->
+                    Search: <input id="search" type="text" ng-model="keyword" class="form-control input-sm w-sm inline m-r"/>
+                    <button class="btn m-b-xs  btn-success" ng-click="search()"><i class="fa fa-search"></i> 搜索</button>
+                </span>
+
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th>
+                            标题
+                        </th>
+                        <th>
+                            发表人
+                        </th>
+                        <th>
+                            状态
+                        </th>
+                        <th>
+                            是否置顶
+                        </th>
+                        <th>
+                            创建时间
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in postList">
+                        <td class="more">{{data.title}}</td>
+                        <td>{{data.username}}</td>
+                        <td ng-if="data.status_id == 1"><span class="label bg-info">{{data.status_name}}</span></td>
+                        <td ng-if="data.status_id == 2"><span class="label bg-success">{{data.status_name}}</span></td>
+                        <td ng-if="data.status_id == 3"><span class="label bg-primary">{{data.status_name}}</span></td>
+                        <td>
+                            <label class="i-switch m-t-xs m-r">
+                                <input type="checkbox" ng-model="data.is_stickied" ng-true-value="'1'" ng-false-value="'0'" ng-click="stick(data)">
+                                <i></i>
+                            </label>
+                        </td>
+                        <td>{{data.create_time}}</td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="edit(data)">编辑</button>
+                            <button class="btn m-b-xs btn-sm btn-default btn-addon" ng-click="deleteData(data)" ng-if="data.status_id != 3">删除</button>
+                            <button class="btn m-b-xs btn-sm bg-success btn-addon" ng-click="look(data)">查看评论</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="articleForm" name="articleForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">所属贴吧</label>
+                            <div class="col-lg-10">
+                                <select class="form-control m-b" ng-model="infoList.post_bar_id" ng-options="data.id as data.name for data in postbarList" required>
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">标题</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="infoList.title" placeholder="标题" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">内容</label>
+                            <div class="col-lg-10">
+                                <ui-editor id="abstract" ng-model="infoList.content" height="100px" ></ui-editor>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">是否置顶</label>
+                            <div class="col-lg-10">
+                                <label class="i-switch m-t-xs m-r">
+                                    <input type="checkbox" ng-model="infoList.is_stickied" ng-true-value="'1'" ng-false-value="'0'">
+                                    <i></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">状态</label>
+                            <div class="col-lg-10">
+                                <select class="form-control m-b" ng-model="infoList.status_id" ng-options="data.value as data.name for data in statusList" required>
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="add == false">
+                            <label class="col-lg-2 control-label redstar">评论数</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="infoList.comment_count" placeholder="评论数" required ng-disabled="true">
+                            </div>
+                            <label class="col-lg-2 control-label redstar">浏览量</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="infoList.page_view" placeholder="浏览量" required ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="add == false">
+                            <label class="col-lg-2 control-label redstar">创建时间</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="infoList.create_time" required ng-disabled="true">
+                            </div>
+                            <label class="col-lg-2 control-label redstar">发表时间</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="infoList.publish_time" required ng-disabled="true">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="cancel()">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="ok()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="po" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">选择贴吧</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="someForm" name="someForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">选择贴吧</label>
+                            <div class="col-lg-10">
+                                <select class="form-control m-b" ng-model="post_bar_id" ng-options="data.id as data.name for data in postbarList" required>
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="getPost()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

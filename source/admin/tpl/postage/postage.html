@@ -1,0 +1,61 @@
+<div ng-controller="postageCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">免邮规则管理</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                免邮规则管理
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs btn-primary" ng-click="addList()">添加
+                    <i class="fa fa-plus"></i>
+                </button>
+                <!--<span class="pull-right">-->
+                    <!--Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r" />-->
+                <!--</span>-->
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                        <tr>
+                            <th>包邮名称</th>
+                            <th>角色</th>
+                            <th>包邮类型</th>
+                            <th>包邮规则</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in postageList">
+                            <td>{{data.name}}</td>
+                            <td>{{data.role_name}}</td>
+                            <td ng-if="data.order_cost != null && (data.order_commodity_amount == 0 || data.order_commodity_amount == null)">满金额包邮</td>
+                            <td ng-if="data.order_commodity_amount != null && (data.order_cost == 0 || data.order_cost == null)">满数量包邮</td>
+                            <td ng-if="data.order_cost != null && data.order_cost != 0">{{data.order_cost}}元</td>
+                            <td ng-if="data.order_commodity_amount != null && data.order_commodity_amount != 0">{{data.order_commodity_amount}}件</td>
+                            <td ng-if="data.status == 1">开启</td>
+                            <td ng-if="data.status == 0">关闭</td>
+                            <td>
+                                <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="editList(data)">编辑</button>
+                                <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="enableUse()" ng-if="data.status == 1">关闭</button>
+                                <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="enableUse()" ng-if="data.status == 0">开启</button>
+                                <button class="btn m-b-xs btn-sm btn-default btn-addon" ng-click="deleteData(data)" ng-if="data.status_id != 0">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

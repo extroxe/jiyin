@@ -1,0 +1,134 @@
+#ordinaryListTable #operation{
+    padding: 20px 21px 12px;
+}
+#ordinaryListTable #operation li{
+    display: inline-block;
+}
+#ordinaryListTable #operation li a{
+    padding: 4px 30px;
+    border: 1px solid #aaa;
+    margin-right: 3px;
+    display: block;
+    color: #777;
+    margin-bottom: 5px
+}
+#ordinaryListTable #operation li.active a{
+    background: rgb(71, 144, 229);
+    color: #fff;
+    border-color: rgb(71, 144, 229);
+}
+
+#ordinaryListTable #orderList .head{
+    padding: 10px 12px;
+    border: solid #aaa;
+    border-width: 1px 1px 0;
+    overflow: hidden;
+}
+#ordinaryListTable #orderList .head span{
+    margin-right: 20px;
+}
+
+#ordinaryListTable #orderList .operateBtn{
+    color: rgb(71, 144, 229);
+}
+
+#ordinaryListTable #orderList .operateBtn span:not(.label){
+ cursor: pointer;
+}
+
+#ordinaryListTable #orderList thead th,
+#ordinaryListTable #orderDetail thead th{
+    background: #eee;
+    border-color: #ddd;
+}
+#ordinaryListTable #orderList .b-light{
+    border-color: #ddd;
+}
+#ordinaryListTable .table-bordered > tbody > tr > td{
+    border-color: #ddd;
+}
+#ordinaryListTable #orderDetail .col-xs-3,
+#ordinaryListTable #orderDetail .col-xs-2{
+    padding: 0;
+    position: relative;
+    margin-bottom: 7px;
+    text-align: left;
+    display: inline-block;
+    float: inherit;
+}
+#ordinaryListTable #orderDetail .col-xs-3 .node,
+#ordinaryListTable #orderDetail .col-xs-2 .node{
+    display: block;
+    position: absolute;
+    left: -14px;
+    top: 41%;
+    margin-top: -20px;
+    background: #eee;
+    color: #999;
+    box-sizing: border-box;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 20px;
+}
+#ordinaryListTable #orderDetail .col-xs-3 .node.active,
+#ordinaryListTable #orderDetail .col-xs-2 .node.active{
+    background: #23b7e5;
+    color: #fff;
+}
+#ordinaryListTable #orderDetail .col-xs-3 span:first-child,
+#ordinaryListTable #orderDetail .col-xs-2 span:first-child{
+    margin-left: -20px;
+}
+#ordinaryListTable #orderDetail .col-xs-3 span:last-child,
+#ordinaryListTable #orderDetail .col-xs-2 span:last-child{
+    margin-left: -39px;
+    display: inline-block;
+    text-align: center;
+    width: 71px;
+    height: 35px;
+}
+/*#ordinaryListTable #orderDetail .col-xs-2:last-child{*/
+    /*top: -19px;*/
+/*}*/
+/*#ordinaryListTable #orderDetail .col-xs-2:nth-child(even){*/
+    /*top: -15px;*/
+/*}*/
+/*#ordinaryListTable #orderDetail .col-xs-2:nth-child(even) span:first-child{*/
+    /*bottom: 31px;*/
+    /*position: absolute;*/
+/*}*/
+/*#ordinaryListTable #orderDetail .col-xs-2:nth-child(even) span:last-child{*/
+    /*margin-top: 20px;*/
+    /*position: absolute;*/
+/*}*/
+#ordinaryListTable #orderDetail .order-progress{
+    padding: 10px 50px;
+    text-align: center; 
+}
+#ordinaryListTable #orderDetail .progress{
+    margin: 13px 0;
+}
+
+#ordinaryListTable #orderDetail .orderInfoDetail{
+    overflow: hidden;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px 0 20px;
+}
+
+#ordinaryListTable #orderDetail .orderInfoDetail .form-group div:first-child{
+    color: #333;
+    line-height: 22px;
+}
+#ordinaryListTable #orderDetail .orderInfoDetail .form-group div:not(:first-child){
+    color: #999;
+    font-size: 13px;
+    line-height: 22px;
+}
+#ordinaryListTable #orderDetail span.ng-hide{
+    display: inline-block!important;
+    visibility: hidden;
+}

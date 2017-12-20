@@ -1,0 +1,370 @@
+.send_passcode{
+    margin-left: 10px;
+    height: 30px;
+    background-color: #117d94;
+    margin-right: 10px;
+}
+
+.another_send_passcode{
+    margin-left: 10px;
+    height: 30px;
+    /*    background-color: #117d94;*/
+    background-color: #44b9fc;
+    margin-right: 10px;
+}
+
+div.footer{
+    position: absolute;width: 100%;bottom: 0; margin: 0;
+}
+div.activity{
+    position: static;
+    width: 100%;
+    bottom: 0;
+    margin: 0;
+}
+
+.inputbox-left{
+    width: 25%;
+    text-align: right;
+}
+.group.add-report{
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    bottom:0;
+    background-color: #f9f9f9;
+}
+.group a.button{
+    background-color: #117d94;
+}
+
+.group a.another_button{
+    background-color: #44b9fc;
+}
+
+header .titlebar h1 {
+    margin-right: 40px;
+}
+header .titlebar {
+    background-image:none;
+    background-color: #117d94;
+
+}
+
+header .another_titlebar {
+    background-color: #44b9fc;
+    background-image: url('../img/titlebg.png');
+    background-size: cover;
+}
+
+.item:nth-child(1) {
+    margin-top: 12px;
+}
+hr:after{
+    background: #aaa;
+}
+.item {
+    /*margin-top: 20px;*/
+    margin: 12px;
+    overflow: hidden;
+}
+.item{
+    background: #fff;
+    border-radius: 8px;
+}
+.item > div {
+    padding: 10px 25px;
+
+}
+.item > div:first-child{
+    display: flex;
+    padding: 0 25px;
+}
+.item > div:first-child img{
+    width: 40px;
+    height: 45px;
+}
+.item > div:first-child p{
+    display: block;
+    text-align: right;
+    width: 100%;
+    line-height: 45px;
+}
+.item > div:last-child div{
+    display: block;
+    width: 100%;
+}
+.item hr {
+    width: 90%;
+    margin: auto;
+}
+.item .pdf-btn{
+    background: #117d94;
+    color: #fff;
+    text-align: center;
+    padding: 11px;
+}
+.item-title {
+    color: #969696;
+}
+
+.item-content {
+    display: flex;
+}
+.item-content div{
+    display: block;
+    width: 100%;
+}
+
+
+.item-content .item-name {
+    font-size: 15px;
+    display: flex;
+    margin-bottom: 2px;
+    justify-content: space-between;
+    color: #999;
+}
+
+.item-content .item-name span:last-child {
+    font-size: 14px;
+    display: block;
+    color: #333;
+    max-width: 68%;
+    text-overflow: ellipsis;
+    text-align: right;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.item-content p {
+    line-height: 25px;
+
+}
+
+
+.item-content p i.size20, .icon.size20{
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.item-content img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.item-content > div:nth-child(2) {
+    position: absolute;
+    right: 20px;
+    color: #666666;
+    text-align: center;
+}
+.item-content > div:nth-child(2) img{
+    width: 103px;
+    height: 48px;
+}
+.item-content > div:nth-child(2) p{
+    color: #aaa;
+    font-size: 14px;
+}
+
+.item-footer {
+    font-size: 14px;
+    color: #666666;
+    text-align: right;
+}
+
+/*添加报告按钮*/
+.group.add-report{
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    bottom:0;
+    background-color: #f9f9f9;
+}
+.group.add-report a.button, .button.submit{
+    background-color: #117d94;
+}
+.group:before, .group:after{
+    height: 0;
+}
+
+.search-report{
+    background-color: #f9f9f9;
+}
+.search-report input.input-text{
+    background-color: #fff;
+    margin-right: 10px;
+}
+
+/*添加报告信息*/
+.inputbox .input-text, .inputbox .input-textarea, .inputbox .input-pre{
+    text-align: left;
+}
+.address-parent{
+    display: none;
+    position: absolute;
+    right: 8px;
+    margin-top: -3px;
+}
+.icon-rdoclose{
+    font-size: 20px;
+    color: #aaa;
+    margin-top: 3px;
+    margin-left: 7px;
+}
+#next_step .group{
+    padding: 8px 0;
+}
+#next_step .check-code{
+    height: 200px;
+    margin: 8px 20px;
+}
+
+.location .input-text{
+    width: 30px;
+}
+.location .inputbox{
+    padding-right: 8px;
+}
+.location img{
+    width: 20px;
+}
+#curative_personal_effect,
+#curative_family_effect,
+#weight_height{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4) !important;
+}
+#curative_personal_effect > div,
+#weight_height > div,
+#curative_family_effect > div{
+    width: 200px;
+    height: 100%;
+    margin: auto;
+    padding: 3px 0 10px 0;
+    background-color: rgb(233,239,239);
+}
+#curative_personal_effect > div textarea.clinical_history_detail,
+#weight_height > div textarea.clinical_history_detail,
+#curative_family_effect > div textarea.clinical_history_detail{
+    margin-top: 15%;
+    padding: 10px;
+    line-height: 20px;
+    min-height: 170px;
+    width: 100%;
+    border-color: #117d94;
+}
+
+
+#curative_personal_effect > div .button,
+#weight_height > div .button,
+#curative_family_effect > div .button{
+    width: 30%;
+    margin: 40px 0 20px 0px;
+    background-color: #117D94;
+    margin-left: 30px;
+}
+#curative_personal_effect > div .cancel-btn,
+#weight_height > div .cancel-btn,
+#curative_family_effect > div .cancel-btn{
+    width: 30%;
+    margin: 40px 0 20px 0px;
+    background-color: rgb(204,204,204);
+    margin-left: 30px;
+}
+#weight_height .group:first-child{
+    margin: 34px 0 16px;
+}
+#weight_height .input-text{
+    width: 107px;
+    height: 19px;
+    padding: 5px 12px;
+    font-size: 14px;
+}
+
+#scan{
+    width: 32px;
+    position: absolute;
+    right: 8px;
+    top: 20px;
+}
+ul.scrollpicker-slot li, .scrollpicker-slot ul li{
+    text-align: center;
+}
+.warning-info{
+    padding: 20px 8px 10px;
+    font-size: 15px;
+    color: #de0404;
+    font-weight: bold;
+}
+
+/*下载报告*/
+#watch_pdf #myPDF .down-load-report{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+#watch_pdf #myPDF .down-load-report span{
+    color: #aaa;
+    font-size: 13px;
+    letter-spacing: .2em;
+}
+#watch_pdf #myPDF .down-load-report a{
+    display: block;
+    background: #44b9fc;
+    color: #fff;
+    padding: 9px;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+@media only screen and (max-width: 320px) {
+    .item-title {
+        font-size: 13px;
+    }
+
+    .item-content .item-name {
+        font-size: 15px;
+    }
+
+    .item-content .item-name span {
+        font-size: 12px;
+    }
+
+    .item-content p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .item-footer {
+        font-size: 12px;
+    }
+
+    .item-content > div:nth-child(2) {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+    .item-content > div:nth-child(2) > i {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+.alert{
+    border-radius: 18px;
+}
+.alert label{
+    line-height: 1.5em;
+    padding-top: 5px;
+    text-align: center;
+    letter-spacing: .05em;
+}
+.alert h1{
+    font-weight:bold;
+    letter-spacing: .2em;
+}

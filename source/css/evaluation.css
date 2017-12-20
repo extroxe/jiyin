@@ -1,0 +1,79 @@
+/*评价订单 ul*/
+#page-content ul.title{padding:20px 0 10px 10px; margin: 10px auto 30px auto;}
+#page-content ul.title{padding-bottom: 0;border-bottom: 1px solid #eee;padding-bottom: 0}
+#page-content ul.title li{color:#117d94;margin-left: -10px; padding-bottom: 10px;width:85px; text-align:center;border-bottom: 1px solid #117d94}
+
+/*订单编号*/
+#page-content #order_number a{color: #117d94}
+#page-content #order_number a:hover{color: #eb3c3f}
+#order_number .current_time{margin-left: 20px; }
+
+/*评价*/
+#page-content #all_product_box{margin: 30px 0; background-color: #fff;min-height: 312px;}
+#all_product_box .product_info{text-align: center;padding: 60px 30px; border-right: 1px solid #eee}
+#all_product_box .product_info img{width: 100px; height: 100px}
+#all_product_box .product_info p{ font-size: 13px;margin: 20px;line-height: 25px;}
+#all_product_box .product_info span{font-size: 15px;color: #eb3c3f;}
+
+
+#all_product_box .review_info{ padding: 10px 30px;}
+#all_product_box .review_info li{line-height: 40px}
+#all_product_box .review_info li:first-child img{display: inline-block}
+#all_product_box .review_info li:first-child p{font-size: 13px;color: #fea328; display: inline-block}
+/*#all_product_box .review_info li:nth-child(2) span:last-child{font-size: 10px;margin-left: 5px;color: #eb3c3f;}*/
+#all_product_box .review_info li:nth-child(2) span:not(last-child){color: #aaa;}
+#all_product_box .review_info li:nth-child(2) span:not(last-child):hover{color: #eb3c3f; cursor: pointer}
+#all_product_box .review_info li:nth-child(2) span.active{color: #eb3c3f; }
+#all_product_box .review_info .last_li{margin-top: 20px}
+#all_product_box .review_info .last_li label{float: left}
+#all_product_box .last_li .text_area{display: inline-block;position: relative; float: left}
+#all_product_box .text_area textarea{ padding: 10px;width: 480px;border-radius: 0;height: 60px;}
+
+/*上传图片*/
+#all_product_box .text_area .img_upload .img_detail{
+    /*width: 47px;display: inline-block;
+    height: 47px;border: 1px solid #ddd;
+    position: relative;top: -20px;margin-right: 8px;margin-bottom: 10px;border-radius: 3px;
+    cursor: pointer;*/
+    width: 47px;
+    display: inline-block;
+    height: 47px;
+    border: 1px solid #ddd;
+    position: relative;
+    margin-right: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+#all_product_box .text_area .img_upload .img_detail img{width: 48px; height: 48px;
+    position: absolute;}
+#all_product_box .text_area .img_upload .img_detail .img_loading{
+    opacity: 0.5;
+    top:0;
+}
+#all_product_box .text_area .img_upload .img_detail span{
+    position: absolute;
+    color: #aaa;
+    margin-top: -6px;
+    margin-left: 38px;
+     display: none;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+}
+#all_product_box .text_area .img_upload .img_detail:hover span{display: block}
+#all_product_box .text_area .img_upload .upload_img_btn{
+    background:url('../img/bg-upload.png');
+    width: 49px;height: 49px;display: inline-block;margin-bottom: 0;
+    cursor: pointer;
+}
+#all_product_box .text_area .img_upload .describle{
+    display: inline-block;font-size: 12px;
+    position: relative;top: -20px;left: 10px;
+}
+#all_product_box .review_info label{
+    display: inline-block;
+    margin-bottom: 5px;
+    width: 100px;}
+
+/*提交按钮*/
+#page-content #submit_btn{ text-align: center;padding: 30px;background-color: #f2f7ff;}
+#page-content #submit_btn button.btn{padding: 10px 30px;font-size: 18px;}

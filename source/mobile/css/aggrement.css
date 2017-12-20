@@ -1,0 +1,5 @@
+header .another_titlebar {
+    background-color: #44b9fc;
+    background-image: url('../img/titlebg.png');
+    background-size: cover;
+}

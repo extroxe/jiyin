@@ -1,0 +1,41 @@
+.titlebar .title{text-align: center;color: #fff;padding-right: 42px;}
+
+.group{
+    margin: 0;
+    padding: 10px;
+}
+
+.title .input-text{
+    border: 1px solid #eee;
+    margin-left: 10px;
+    padding: 6px 12px;
+    border-radius: 3px;
+}
+
+.content {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    padding-bottom: 42px;
+}
+.content span{
+    position: absolute;
+}
+.content textarea{
+    margin-left: 40px;
+    display: block;
+    -webkit-box-flex: 1.0;
+    box-sizing: content-box;
+    text-align: left;
+    border-radius: 3px;
+}
+.content a{
+    display: block;
+    text-align: right;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    border: 1px solid #eee;
+    padding: 3px 10px;
+    background-color: #f9f9f9;
+    border-radius: 3px;
+}

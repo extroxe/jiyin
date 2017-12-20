@@ -1,0 +1,136 @@
+body{background-color: #fff}
+.group{
+    padding-bottom: 17px;
+    background-color: #f9f9f9;
+    margin: 0;
+}
+.group:before, .group:after{
+    height: 0;
+}
+/*头部*/
+.titlebar{background-color: #117d94}
+.titlebar h1{
+    color: #eee;
+    text-align: center;
+    padding-right: 32px;
+}
+
+/*评价*/
+.evaluate_box .review_img{
+    padding: 16px 15px;
+    position: relative;
+    min-height: 100px;
+}
+.evaluate_box .review_img img{
+    width: 60px;height: 60px;
+    position: absolute;
+    top: 16px;
+}
+.textareanormal{
+    position: absolute;
+    top: 16px;
+    left: 83px;
+    width: 70%;
+    min-height: 98px;
+    border: none;
+    padding: 0 10px;
+}
+.textareabackgroung{
+    background-color: #f9f9f9;
+    position: absolute;
+    top: 16px;
+    left: 83px;
+    width: 70%;
+    min-height: 98px;
+    border: none;
+    padding: 0 10px;
+}
+.evaluate_box .load_img .camera{
+    border: 2px solid #eee;
+    width: 57px;
+    height: 57px;
+    text-align: center;
+}
+.evaluate_box .load_img .camera img{
+    width: 30px;
+    vertical-align: middle;
+    margin-top: 15px;
+}
+.evaluate_box .load_img .imgloaded{
+    border: 2px solid #eee;
+    margin: 0 4px;
+    width: 57px;
+    height: 57px;
+    top: 16px;
+}
+
+.evaluate_box .load_img span{
+    color: #aaa;
+    position: absolute;
+    top: -5px;
+    right: -2px;
+}
+
+.evaluate_box .score label{
+    padding: 12px 0 12px 15px;
+}
+
+.evaluate_box .score .star_box{
+    position: absolute;
+    top: 11px;
+    right: 15px;
+}
+
+
+.evaluate_box .submit_review{
+    padding: 10px 15px;
+    text-align: right;
+    height: 43px;
+    position: relative;
+}
+.evaluate_box .score .star img{
+    width: 23px;
+    margin-right: 5px;
+}
+.button{
+    height:35px ;
+    padding: 0 12px;
+    border: 1px solid #20aeff;
+    background-color: #fff;
+    color: #20aeff;
+    border-radius: 2px;
+    position: absolute;
+    right: 15px; top: 12px
+}
+
+@media (max-width: 320px) {
+    .evaluate_box .load_img .camera,
+    .evaluate_box .load_img .imgloaded{width: 45px; height: 45px}
+
+    .evaluate_box .load_img .camera img{margin-top: 7px}
+}
+
+@media (max-width: 360px) {
+    .evaluate_box .load_img .camera,
+    .evaluate_box .load_img .imgloaded{width: 55px; height: 55px}
+
+    .evaluate_box .load_img .camera img{margin-top: 7px}
+}
+
+/*点击放大图片*/
+.enlarge-mask{
+    position: absolute;
+    top: 0;
+    background: rgba(0,0,0,1);
+    height: 100%;
+    display: -webkit-box;
+    display: none;
+    width: 100%;
+}
+.enlarge-mask span{
+    display: table-cell;
+}
+.enlarge-mask img{
+    width: 100%;
+    /*margin-top: 50%;*/
+}

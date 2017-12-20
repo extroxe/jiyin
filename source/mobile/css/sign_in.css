@@ -1,0 +1,66 @@
+body{
+    background: url("../img/sign_in_bg.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.group:before, .group:after{height: 0}
+
+.group{
+    text-align: center;
+
+    background-color: transparent;
+}
+
+.logo{
+    margin: 0 auto;
+    width: 150px;
+    margin-top: 100px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 50px;
+}
+.inputbox{margin: 0 12px;}
+.input-text{padding:12px}
+.checkcode{margin-right:12px;padding: 0 8px;height: 32px;}
+.sendcode{padding:10px 12px; margin-top: 20px}
+.button{background-color: #117d94}
+
+.sign_in{}
+.topline:before, .underline:after, hr:after{
+    height: 0;
+}
+.button{
+    height: 44px;
+    width: 86%;
+    border-radius: 22px;
+    margin: 0 auto;
+
+}
+
+.inputbox{
+    background-color: transparent;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.inputbox img{
+    width: 26px;
+    position: absolute;
+    margin-left: 16px;
+    margin-top: 7px;
+}
+
+.inputbox .input-text{
+    padding-left: 61px;
+    border-radius: 27px;
+    background-color: rgba(0,0,0, 0.5);
+    color: #eee;
+}
+
+#eye_kan{
+    position: absolute;
+    margin-top: 10px;
+    right: 10px;
+    font-size: 22px;
+}

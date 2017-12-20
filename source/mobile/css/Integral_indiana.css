@@ -1,0 +1,296 @@
+.group{
+    padding: 10px;
+}
+.group:after, .group:before{
+    height:0;
+}
+.nav-list{
+    margin-top: 44px;
+    padding: 20px 10px 10px;
+}
+.awards-list{text-align: center}
+.awards-list img{
+    width: 14px;
+    height: 14px;
+}
+.awards-list #oDiv{
+    display: inline-block;
+    height: 30px;
+    overflow: hidden;
+    line-height: 30px;
+    vertical-align: middle;
+    margin-left: 10px;
+    color: #e62d2d;
+}
+
+.physical-product .more{
+    position: absolute;
+    right: 10px;
+    margin-top: -20px;
+}
+.awards li{
+    text-align: left;
+    padding: 0;
+    margin-bottom: 10px;
+}
+.grid[data-rowspace="8"] li{
+    padding-top: 0;
+}
+.bg-1{
+    display: block;
+    margin: 0 auto;
+    background-color: #fff;
+}
+.grid li > div{
+    margin: 0 3px;
+    padding: 10px;
+    background-color: #fff;
+    position: relative;
+}
+.grid li > div .publish-icon{
+    position: absolute;
+    background-color: #aaa;
+    margin-top: -63%;
+    right: 33%;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    font-size: 14px;
+}
+.grid li > div > a > img{
+    max-width: 100%;
+    height: 200px;
+}
+@media (max-width: 320px) {
+    .grid li > div > a > img{
+        max-width: 100%;
+        height: 150px;
+    }
+}
+
+.grid li > div > label{
+    display: block;
+    margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    min-height: 16px;
+    color: #9e9e9e;
+    margin-bottom: 5px;
+}
+.grid li > div > span{
+    font-size: 12px;
+    color: #555;
+}
+.progress{
+    padding: 1px;
+}
+.awards .progress-bar{
+    background-color: #9dc1ab;
+    width: 50%;
+    height: 6px;
+}
+.progressbox-content{
+    padding: 2px 0;
+}
+.progress-bar.theme-1{
+    border: none;
+}
+.awards .publish-awards{
+    display: block;
+    text-align: center;
+    width: 50%;
+    margin: 10px auto 0;
+    border: 1px solid #20aeff;
+    border-radius: 10px;
+}
+#help-center article{
+    padding: 10px;
+    line-height: 25px;
+}
+#new-awards .lists li{
+    display: block;
+    background-color: #f9f9f9;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    color: #113edc;
+    font-size: 18px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+section{
+    position: fixed;
+}
+
+/*弹框*/
+.alert label{
+text-align: center;
+}
+
+.alert h1{
+    color: #d89f23;
+}
+
+.alert-handler a:nth-of-type(2){
+    background-color: #fdc344;
+    border-style: solid;
+    color: #fff;
+    border-width: 0 0 0 1px;
+    border-color: inherit;
+}
+
+/*我的夺宝*/
+#my_awards .box{
+    padding:0 2px;
+}
+#my_awards .box ul{
+    width: 100%;
+}
+.my-awards-lists{
+    background-color: #f9f9f9;
+}
+.my-awards-lists img{
+    width: 100%;
+    height: 180px;
+}
+.my-awards-lists .prize-info{
+    margin-top: 17px;
+}
+.my-awards-lists .name{
+    font-size: 17px;
+    color: #fdd129;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 23px;
+    text-align: left;
+}
+.my-awards-lists .time{
+    font-size: 12px;
+    color: #aaa;
+    display: block;
+    margin-top: 17px;
+    text-align: right;
+}
+.my-awards-lists .accept-prize{
+    margin-top: 13px;
+    height: 25px;
+    padding: 0 15px;
+    border-radius: 14px;
+    margin-left: 50%;
+    font-size: 13px;
+    color: #fff;
+    background-color: #7ecef4;
+}
+.my-awards-lists .go-accept{
+    background-color: #ec6941;
+}
+.my-awards-lists .unknow-result{
+    background-color: #acd598;
+}
+
+.my-awards-lists .accept-img{
+    position: absolute;
+    right: 14px;
+    margin-top: -42px;
+    height: 43px;
+}
+.my-awards-lists .mask-accept {
+    position: absolute;
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    margin-left: -9px;
+    height: 100%;
+    top: 0px;
+}
+.my-awards-lists .mask-accept p{
+    width: 60px;
+    height: 60px;
+    background-color: #444;
+    color: #fff;
+    margin: 50% auto;
+    border-radius: 50%;
+    font-size: 17px;
+    text-align: center;
+    line-height: 20%;
+    vertical-align: super;
+    line-height: 60px;
+}
+
+@media (max-width: 320px){
+    .my-awards-lists .accept-prize{
+        padding: 0 12px;
+        margin-left: 46%;
+    }
+    .my-awards-lists img{
+        height: 145px;
+    }
+}
+.activity-rules-btn{
+    display: block;
+    background-color: #e9e9e9;
+    text-align: center;
+    padding: 4px 17px 4px 4px;
+    width: 100px;
+    margin: 0 auto;
+    border-radius: 20px;
+    font-size: 14px;
+    position: relative;
+    color: #aaa;
+}
+.activity-rules-btn i{
+    font-size: 14px;
+    margin-top: 4px;
+    position: absolute;
+}
+#rules{
+    font-size: 14px;
+    padding: 20px 10px 70px 10px;
+    background-color: #e9e9e9;
+    margin-top: 25px;
+    line-height: 25px;
+}
+
+/*回顶部*/
+.back-top{
+    position: fixed;
+    bottom: 63px;
+    right: 10px;
+    opacity: 0.8;
+}
+
+/*去夺宝*/
+.indiana{
+    width: 209px;
+    position: absolute;
+    top: 55%;
+    right: 24%;
+}
+
+@media (max-width: 320px) {
+    .indiana{
+        right: 16%;
+    }
+}
+.new-awards{
+    text-align: center;
+    padding: 10px;
+    font-size: 15px;
+}
+.new-awards .user-name{
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-right: 7px;
+    color: #2583b1;
+    font-weight: bold;
+}

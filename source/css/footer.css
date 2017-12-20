@@ -1,0 +1,32 @@
+/* ---------------------------------------------------------------------------- */
+/* -----------------------------------Footer---------------------------------- */
+/* ---------------------------------------------------------------------------- */
+footer {background: #117d94; margin-top: 100px;}
+
+footer .wrap-footer {padding: 50px 0;}
+
+footer .col-footer {border-right: 1px solid #888;padding: 0 30px;}
+footer .col-footer:last-child {border: none;}
+footer .col-footer .heading {margin: 0 0 20px;}
+footer .col-footer .heading h4{color: #fff;font-size: 23px;font-weight: 500;margin: 0 0 20px;}
+footer .col-footer a {color: #ccc;}
+footer .col-footer ul {padding-left: 25px;}
+footer .col-footer ul li{list-style: circle; margin: 10px auto; color: #ccc}
+
+footer .footer-1 img{margin-bottom: 10px;}
+footer .footer-1 p{ color: #ccc;}
+footer .footer-2 {}
+footer .footer-3 {}
+footer .footer-4 ul{padding-left: 0px;}
+footer .footer-4 ul li{margin-top: 10px; list-style: none;}
+footer .footer-4 span{margin-right:10px;}
+
+footer .copyright {background: #393939;padding: 20px 0;}
+footer .copyright a {color: #fff;}
+footer .copyright a:hover {text-decoration: underline;}
+footer .copyright ul li {display: inline-block;margin-left:10px; }
+
+footer#sign_in .foot_label{text-align: center}
+footer#sign_in .foot_label li{display: inline-block;border-right: 1px solid #ddd; padding-right: 20px; margin-left: 20px;}
+footer#sign_in .foot_label li a{color: #aaa}
+footer#sign_in .foot_label li a:hover{color: #117d94}

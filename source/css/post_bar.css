@@ -1,0 +1,192 @@
+/*header*/
+header #logo{
+    margin-left: 70px
+}
+header #logo img{
+
+}
+header .input_search{
+    width: 672px;margin: 16px 0 0 36px
+}
+header #search-btn-post{
+    border-radius: 0;position: absolute;
+}
+
+/*内容区域*/
+#page-content .post_bar .personal_info{
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    min-height: 500px;
+    width: 221px;
+    display: inline-block;
+    float: left;
+    overflow: hidden;
+    zoom: 1;
+    /*position: fixed;*/
+}
+.personal_info .personal_box span:first-child{
+    font-family: '黑体';
+    font-weight: bold;
+}
+.head_portrait img{
+    width: 80px;
+    height:80px;
+    border: 1px solid #aaa;
+    padding: 3px;
+}
+
+/*游客*/
+.tourist{
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #aaa;
+}
+.tourist .sign_in{
+    color: #117d94;
+    margin-left: 5px;
+}
+.tourist .sign_in:hover{
+    text-decoration: underline;
+}
+#page-content .post_bar .post_bar_content{
+    background-color: #f8f8f8;
+    min-height: 500px;
+    width: 672px;
+    display: inline-block;
+    float: left;
+    margin-left: 10px;
+    overflow: hidden;
+    zoom: 1;
+    border: 1px solid #eee;
+    border-top: none;
+    /*margin-left: 233px;*/
+}
+#page-content .post_bar .hot_post{
+    background-color: #f9f9f9;
+    height: 500px;
+    width: 221px;
+    margin-left: 10px;
+    float: left;
+    display: inline-block;
+    overflow: hidden;
+    zoom: 1;
+    border: 1px solid #eee;
+    border-top: none;
+}
+
+/*关注的吧*/
+.post_bar .personal_info .focused_bar_box ul li{
+    list-style: none;
+    display: inline-block;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    margin-top: 6px;
+    border-radius: 3px;
+    width: 67px;
+    height: 20px;
+    overflow: hidden;
+    background-color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 21px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.post_bar .personal_info .focused_bar_box ul li:nth-child(even){
+    margin-left: 11px;
+}
+
+.focused_bar_box a.more{
+    border: 1px solid #ccc;
+    padding: 3px;
+    border-radius: 3px;
+    margin-top: 15px;
+    display: block;
+    text-align: center;
+    background-color: #ffffff;
+    font-size: 15px;
+    color: #0088cc;
+    display: none;
+}
+
+/*内容区域*/
+.post_bar_content span:first-child{
+    display: block;
+    padding: 10px;
+}
+.post_bar_content .post_list_box{
+}
+
+.post_bar_content .post_list_box h5{
+    color: #444;
+    font-family: '黑体';
+    padding: 10px;
+    font-size: 16px;
+    background-color: #E5EDF2;
+    border: solid #C2D5E3;
+    border-width: 1px 0;
+}
+
+table{width: 100%}
+table .head_img{padding: 0 10px 20px; width: 32px;}
+table .head_img img{width: 31px;
+    display: none;}
+table .body_content{
+    font-size: 13px;
+    line-height: 21px; padding-left: 10px
+}
+table .body_content a:first-child{
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+}
+table .body_content span{
+    display: inline-block;
+    margin-right: 5px;
+}
+table .body_content a:last-child{display: block; color: #117d94;}
+td{
+    padding:10px;
+}
+tr{
+    border-bottom: 1px dashed #aaa;
+}
+tr:last-child{
+    border: none;
+}
+
+/*热门推荐*/
+.hot_post .hot_head{
+    display: block;
+    padding: 8px 7px;
+    border: solid #C2D5E3;
+    border-width: 1px 0;
+    background-color: #E5EDF2;
+    padding-top: 7px;
+    font-family: '黑体';
+}
+.hot_post ul{font-size: 13px; padding: 10px 5px;}
+.hot_post ul li{margin: 10px 0}
+.hot_post ul li .number{
+    padding: 0 5px;
+    font-size: 13px;
+}
+.hot_post ul li .background{
+    color: #fff;
+    background-color: #FF7F42;
+
+}
+.hot_post ul li .text_head{margin-left: 5px; font-size: 13px}
+.hot_post ul li .view_count{float: right; color: #888}
+.hot_post ul li a{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90px;
+    display: inline-block;
+}
+
+

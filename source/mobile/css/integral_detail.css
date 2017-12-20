@@ -1,0 +1,74 @@
+header .titlebar h1 {
+    margin-right: 40px;
+}
+
+header .titlebar:after {
+    width: 0;
+}
+
+.integral-bg {
+    background-image: url('../img/integral-detail.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 220px;
+}
+
+.integral-bg > span {
+    padding-top: 70px;
+    font-size: 18px;
+    color: #F9F9F9;
+    margin-left: 20px;
+}
+
+.integral-bg > p {
+    font-size: 48px;
+    color: #F6BF00;
+    text-align: center;
+    margin-top: 65px;
+}
+
+.integral-bg > p > span {
+    font-size: 16px;
+    padding-left: 10px;
+    position: absolute;
+    margin-top: 20px;
+}
+
+.item {
+    padding: 15px;
+    font-size: 16px;
+    background-color: #FFFFFF;
+}
+
+.item-block {
+    display: flex;
+    margin-top: 20px;
+}
+
+.item-block > div {
+    width: 50%;
+    text-align: center;
+    padding: 60px 0;
+    background-color: #FFFFFF;
+}
+
+.item-block > div:nth-child(1) {
+    border: 1px solid #FFFFFF;
+    border-right-color: #E1E1E1;
+}
+
+.item-block > div img {
+    width: 60px;
+}
+
+.item-block > div > p {
+    margin-top: 15px;
+}
+
+.item-block > div > p:nth-child(2) {
+    font-size: 16px;
+}
+
+.item-block > div > p:nth-child(3) {
+    color: #999999;
+}

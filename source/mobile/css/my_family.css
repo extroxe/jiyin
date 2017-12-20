@@ -1,0 +1,66 @@
+.my_family .title{text-align: center;color: #fff;padding-right: 42px;}
+.my_family .info_card{margin:0 0 17px;padding: 10px 20px;  position: relative;}
+.my_family .info_card .member_name{padding: 5px 0  }
+.my_family .info_card .member_name label:first-child{
+    font-size: 17px;
+    margin-right: 10px;
+}
+.my_family .info_card .member_name label:last-child{
+    /*width: 46px;*/
+    padding: 0 12px;
+    text-align: center;
+    border: 1px solid #20aeff;
+    border-radius: 10px;
+    color: #20aeff;
+    font-size: 14px;
+}
+.my_family .info_card .detail_info{padding: 10px 0}
+.my_family .info_card .detail_info span:first-child{margin-right: 10px; font-weight: bold;}
+.my_family .info_card .detail_info span:nth-child(2){margin-right: 10px; color: #888}
+.my_family .info_card .detail_info .treat,
+.my_family .info_card .detail_info .treat li
+{display: inline-block}
+.my_family .info_card .detail_info .treat li label:first-child{
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 48px;
+    overflow: hidden;
+    padding: 1px 7px;
+    color: #fff;
+    font-size: 14px;
+    /*min-width: 48px;*/
+    text-align: left;
+}
+.my_family .info_card .icon-arrowright{font-size: 23px; position:absolute; right: 25px; margin-top: -49px; color: #888}
+
+/*添加亲属按钮*/
+.my_family .sendcode{
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    padding: 10px 0 10px;
+    z-index: 100;
+}
+
+.my_family .sendcode a{
+    width: 262px;
+    margin: 0 auto;
+    background-color: #117d94;
+    font-size: 20px;
+}
+/*group*/
+.group:before, .group:after{height: 0}
+
+.clinical_history_fitness{
+    background: url("../img/icon/fitness.png") no-repeat left;
+    background-size:48px 21px;
+}
+.clinical_history_sub_health{
+    background: url("../img/icon/sub-health.png") no-repeat left;
+    background-size:48px 21px;
+}
+.clinical_history_illness{
+    background: url("../img/icon/sickness.png") no-repeat left;
+    background-size:48px 21px;
+}

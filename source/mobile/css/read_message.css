@@ -1,0 +1,14 @@
+.message-wrapper {
+    padding: 20px 10px 0 10px;
+}
+
+.message-wrapper .content {
+    padding: 20px 10px;
+}
+
+.message-wrapper .date {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 13px;
+    color: rgba(7, 17, 27, 0.6);
+}

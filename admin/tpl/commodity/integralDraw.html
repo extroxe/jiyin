@@ -1,0 +1,103 @@
+<div ng-controller="drawCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">积分抽奖活动</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                积分抽奖活动管理表
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-primary" ng-click="addInfo()"><i class="fa fa-plus"></i> 增加</button>
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th>
+                            活动名称
+                        </th>
+                        <th>
+                            消费积分
+                        </th>
+                        <th>
+                            开始时间
+                        </th>
+                        <th>
+                            结束时间
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in drawList">
+                        <td>{{data.name}}</td>
+                        <td>{{data.consume_points}}</td>
+                        <td>{{data.start_time}}</td>
+                        <td>{{data.end_time}}</td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="look(data)">查看抽奖结果</button>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="editList(data)">编辑</button>
+                            <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="deleteData(data)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="modal fade" id="partyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="partyForm" name="partyForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">活动名称</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="list.name" placeholder="活动名称" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">消费积分</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="list.consume_points" placeholder="消费积分" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">开始时间</label>
+                            <div class="col-lg-4">
+                                <input type="text" ui-datetime class="form-control" ng-model="list.start_time" placeholder="开始时间" required>
+                            </div>
+                            <label class="col-lg-2 control-label redstar">结束时间</label>
+                            <div class="col-lg-4">
+                                <input type="text" ui-datetime class="form-control" ng-model="list.end_time" placeholder="结束时间" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

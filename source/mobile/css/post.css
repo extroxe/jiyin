@@ -1,0 +1,126 @@
+.post_bar .title{text-align: center;color: #fff;padding-right: 42px;}
+.titlebar-button .icon-home{
+    color: #fff;
+    right: -27px;
+    margin-top: -12px;
+}
+
+.post_bar_info{
+    padding:10px 8px;
+    margin-top: 0
+}
+.post_bar_info .post_bar_detail{
+    /*margin-left: 13px;*/
+    float: left;
+}
+.post_bar_info .post_bar_portrait{
+    width: 90px;
+    height: 90px;
+    border-radius: 5px;
+    float: left;
+}
+.post_bar_info .post_bar_name{
+    font-size: 17px;
+}
+.post_bar_info .post_description{
+    display: block;
+    margin: 5px 0;
+    color: #777;
+    font-size: 14px;
+    line-height: 23px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.post_bar_info .focus_num{
+    font-size: 15px;
+    margin: 7px 0;
+    display: block;
+}
+.post_bar_info .focus_num span{
+    color: #f25e5e;
+    margin-top: -4px;
+}
+.post_bar_info .add_focus{
+    background-color: #0091e4;
+    padding: 6px 30px 6px 46px;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.post_bar_info .add_focus i{
+    position: absolute;
+    margin-left: -21px;
+    margin-top: 1px;
+    font-size: 17px;
+}
+
+/*帖子列表*/
+.post_item{padding: 8px}
+.post_item .post_title{
+    word-break: break-all;
+    color: #262626;
+    font-size: 16px;
+    line-height: 23px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.post_item .post_content{
+    color: #777;
+    font-size: 14px;
+    line-height: 23px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.post_item .publisher{
+    font-size: 15px;
+}
+.post_item .publish_time{
+    color: #999;
+    font-size: 13px;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+.post_item .evaluate{
+    display: inline-block;
+    position: absolute;
+    right: 12px;
+    font-size: 14px;
+    color: #555;
+}
+.post_item .evaluate .num{margin-top: 2px}
+
+.publish_post{
+    position: fixed;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    background-color: #f0f2f5;
+    text-align: center;
+    padding: 10px 0;
+}
+.publish_post a{
+    border: 1px solid #ddd;
+    padding: 3px 10px;
+    border-radius: 3px;
+    color: #666;
+}
+
+.dropload-load .loading{
+    border: none;
+}
+.loading:before, .loading:after{
+    width: 0;
+}

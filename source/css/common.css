@@ -1,0 +1,15 @@
+/**
+ * PC端通用样式写于本页面
+ */
+
+.back_index {
+
+}
+.home-color {
+    color: #117d94;
+}
+@media(max-width: 768px){
+    .back_index{
+        float: left;
+    }
+}

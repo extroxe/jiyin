@@ -1,0 +1,171 @@
+.follow-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 20px 20px 0 20px;
+}
+
+.follow-wrapper .nav ul {
+    display: flex;
+}
+
+.follow-wrapper .nav {
+    border-bottom: 1px solid rgba(7, 17, 27, 0.3);
+}
+
+.follow-wrapper .nav .nav-item {
+    position: relative;
+    top: 1px;
+    line-height: 15px;
+    font-size: 15px;
+    margin-left: 5px;
+    border: 1px solid rgba(7, 17, 27, 0.3);
+    background: #eee;
+}
+
+.follow-wrapper .nav .nav-item a {
+    display: block;
+}
+
+.follow-wrapper .nav .nav-item a span{
+    display: inline-block;
+    margin: 8px 10px;
+}
+
+.follow-wrapper .nav .nav-item.active {
+    font-weight: 700;
+    border-bottom: 1px solid #fff;
+    background: none;
+}
+
+.follow-wrapper .tab-content .tab-pane {
+    padding-bottom: 80px;
+}
+
+.follow-wrapper .tab-content .follow-item {
+    display: inline-flex;
+    padding: 10px;
+    margin: 0 10px 10px 0;
+    border: 1px solid rgba(7, 17, 27, 0.2);
+}
+
+.follow-wrapper .tab-content .follow-item:hover {
+    background: rgba(7, 17, 27, 0.1);
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+.follow-wrapper .tab-content .follow-item .cancel {
+    display: none;
+    cursor: pointer;
+    float: right;
+    line-height: 16px;
+    font-size: 12px;
+    color: rgb(240, 20, 20);
+}
+
+.follow-wrapper .tab-content .follow-avatar {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.follow-wrapper .tab-content .follow-avatar img {
+    width: 50px;
+    height: 50px;
+}
+
+.follow-wrapper .tab-content .name span {
+    line-height: 15px;
+    font-size: 15px;
+}
+
+.follow-wrapper .tab-content .name .username {
+    display: inline-block;
+    width: 130px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.follow-wrapper .tab-content .autograph {
+    width: 190px;
+}
+
+.follow-wrapper .tab-content .autograph .nickname {
+    vertical-align: bottom;
+    width: 130px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.follow-wrapper .tab-content .autograph span {
+    display: inline-block;
+    line-height: 20px;
+    font-size: 12px;
+    color: rgba(7, 17, 27, 0.8);
+}
+
+.follow-wrapper .post-page {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    bottom: 20px;
+}
+
+.follow-wrapper .post-page .page-wrapper {
+    margin: 0 auto;
+}
+
+.follow-wrapper .post-page .page-wrapper div {
+    display: inline-block;
+    line-height: 20px;
+    font-size: 15px;
+    padding: 2px 8px;
+    border: 1px solid rgba(7, 17, 27, 0.1);
+    border-radius: 2px;
+}
+
+.follow-wrapper .post-page .page-wrapper div:hover {
+    background: rgba(7, 17, 27, 0.1);
+}
+
+.no-follow-person,
+.no-follow-post{
+    padding: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-family: '黑体';
+    display: none;
+}
+
+#follow_post {
+    position: relative;
+    flex: 1;
+    margin: 20px 20px 0 20px;
+}
+
+#follow_post .follow-post-item {
+    padding: 10px 5px;
+    font-size: 15px;
+    line-height: 15px;
+    border-bottom: 1px dotted rgba(7, 17, 27, 0.2);
+}
+
+#follow_post .follow-post-item a {
+    margin: 0 2px;
+    color: #117d94;
+}
+
+#follow_post .follow-post-item .item-date {
+    float: right;
+    font-size: 12px;
+    color: rgba(7, 17, 27, 0.4);
+}
+
+#follow_post .follow-post-item .operated {
+    float: right;
+    font-size: 12px;
+    margin-left: 10px;
+    color: rgb(240, 20, 20);
+    cursor: pointer;
+}

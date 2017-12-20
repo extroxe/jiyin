@@ -1,0 +1,135 @@
+<div ng-controller="indianaCtrl">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">积分夺宝</h1>
+    </div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                积分夺宝管理表
+            </div>
+            <div class="panel-body b-b b-light">
+                <button class="btn m-b-xs  btn-primary" ng-click="addInfo()"><i class="fa fa-plus"></i> 增加</button>
+            </div>
+            <div>
+                <table class="table table-striped m-b-none" ui-footable="footable" data-filter="#filter">
+                    <thead>
+                    <tr>
+                        <th>
+                            商品名称
+                        </th>
+                        <th>
+                            商品包装
+                        </th>
+                        <th>
+                            总积分
+                        </th>
+                        <th>
+                            每柱积分
+                        </th>
+                        <th>
+                            总积分规则
+                        </th>
+                        <th>
+                            消费总额规则
+                        </th>
+                        <th>
+                            注册起止时间
+                        </th>
+                        <th>
+                            状态
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in indianaList">
+                        <td>{{data.commodity_name}}</td>
+                        <td>{{data.package_type_name}}</td>
+                        <td>{{data.total_points}}</td>
+                        <td>{{data.amount_bet}}</td>
+                        <td>{{data.user_total_point}}</td>
+                        <td>{{data.user_expenditure}}</td>
+                        <td>{{data.register_start_time}} - {{data.register_end_time}}</td>
+                        <td ng-if="data.integral_indiana_status == 1"><span class="label bg-info">进行中</span></td>
+                        <td ng-if="data.integral_indiana_status == 2"><span class="label bg-success">已结束</span></td>
+                        <td ng-if="data.integral_indiana_status == 3"><span class="label bg-danger">已删除</span></td>
+                        <td>
+                            <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="look(data)">查看夺宝结果</button>
+                            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="editList(data)">编辑</button>
+                            <button ng-if="data.integral_indiana_status != 3" class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="deleteData(data)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a ng-click="firstPage()">第一页</a></li>
+                    <li><a ng-click="previousPage()">上一页</a></li>
+                    <li> 当 前 第 <input type="text" style="padding: 5px; width: 50px; text-align: center" ng-model="inputPage" ng-change="selectPage(inputPage)"> 页 / 共 {{totalPage}} 页 </li>
+                    <li><a ng-click="nextPage()">下一页</a></li>
+                    <li><a ng-click="lastPage()">最后一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="modal fade" id="partyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="partyForm" name="partyForm" class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">选择商品</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="list.commodity_name" ng-focus="selectCommodity()" placeholder="选择商品" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label redstar">所需总积分</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="list.total_points" placeholder="所需总积分" required>
+                            </div>
+                            <label class="col-lg-2 control-label redstar">每柱积分</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="list.amount_bet" placeholder="每柱积分" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">总积分大于多少</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="list.user_total_point" placeholder="总积分大于多少" required>
+                            </div>
+                            <label class="col-lg-2 control-label">消费额大于多少</label>
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control" ng-model="list.user_expenditure" placeholder="消费额大于多少" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">注册时间段起点规则</label>
+                            <div class="col-lg-4">
+                                <input type="text" ui-datetime class="form-control" ng-model="list.register_start_time" placeholder="注册时间段起点" required>
+                            </div>
+                            <label class="col-lg-2 control-label">注册时间段终点规则</label>
+                            <div class="col-lg-4">
+                                <input type="text" ui-datetime class="form-control" ng-model="list.register_end_time" placeholder="注册时间段终点" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
